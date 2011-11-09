@@ -1,1 +1,2 @@
 c:\users\administrator\documents\visual studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7LibraryContent\obj\Windows Phone\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7LibraryContent\obj\Windows Phone\Debug\ResolveAssemblyReference.cache

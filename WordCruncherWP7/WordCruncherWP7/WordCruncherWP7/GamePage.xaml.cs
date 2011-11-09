@@ -162,16 +162,9 @@ namespace WordCruncherWP7
             if (scale < 1)
             {
                 time++;
-                scale = EasingOut(time, 0.0f, 1.0f, 50);
+                scale = MathFunctions.CircularInOut(time, 0.0f, 1.0f, 50);
             }
         }
-
-        public static float EasingOut(double time, float initVal, float endVal, double duration)
-        {
-            return endVal * (float)Math.Sin(time / duration * (Math.PI / 2)) + initVal;
-
-        }
-
 
         /// <summary>
         /// Allows the page to draw itself.
