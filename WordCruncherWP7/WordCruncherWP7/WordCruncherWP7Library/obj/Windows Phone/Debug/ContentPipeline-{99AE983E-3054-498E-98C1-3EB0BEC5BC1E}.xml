@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>redRect.jpg</Source>
+      <Name>redRect</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\administrator\documents\visual studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\redRect.xnb</Output>
+      <Time>2011-11-05T16:50:51.2958985-07:00</Time>
+    </Item>
+    <Item>
+      <Source>CourierNew.spritefont</Source>
+      <Name>CourierNew</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\CourierNew.xnb</Output>
+      <Time>2011-11-07T12:11:16.7128906-08:00</Time>
+    </Item>
+    <Item>
+      <Source>squareValue.spritefont</Source>
+      <Name>squareValue</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\squareValue.xnb</Output>
+      <Time>2011-11-07T12:11:16.7041015-08:00</Time>
+    </Item>
+    <Item>
+      <Source>labelsFont.spritefont</Source>
+      <Name>labelsFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\labelsFont.xnb</Output>
+      <Time>2011-11-05T19:50:11.8496093-07:00</Time>
+    </Item>
+    <Item>
+      <Source>square_blue.png</Source>
+      <Name>square_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_blue.xnb</Output>
+      <Time>2011-11-08T13:20:59.2275391-08:00</Time>
+    </Item>
+    <Item>
+      <Source>square_red.png</Source>
+      <Name>square_red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_red.xnb</Output>
+      <Time>2011-11-08T13:20:59.241211-08:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{99AE983E-3054-498E-98C1-3EB0BEC5BC1E}</ContentProjectGUID>
+      <TargetPlatform>WindowsPhone</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7LibraryContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\obj\Windows Phone\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Administrator\Documents\Visual Studio 2010\Projects\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-06-02T18:48:34-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-06-02T18:48:34-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-06-02T18:48:34-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-06-02T18:48:34-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-06-02T18:48:34-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-06-02T18:48:34-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2011-08-10T00:47:51.9052734-07:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

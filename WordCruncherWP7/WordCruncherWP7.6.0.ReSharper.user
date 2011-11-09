@@ -1,0 +1,173 @@
+<Configuration>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:App.xaml.cs" caret="399" fromTop="13" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:MainPage.xaml" caret="0" fromTop="0" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GameSquare.cs" caret="768" fromTop="20" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:WordGame.cs" caret="1796" fromTop="17" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6910" fromTop="15" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:WordGame.cs" caret="1234" fromTop="32" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:WordGame.cs" caret="1190" fromTop="29" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6474" fromTop="32" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6474" fromTop="28" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:WordGame.cs" caret="870" fromTop="20" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6474" fromTop="32" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6447" fromTop="25" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6447" fromTop="26" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6475" fromTop="26" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="3648" fromTop="7" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="2702" fromTop="29" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="1676" fromTop="27" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6447" fromTop="6" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6448" fromTop="26" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="5399" fromTop="16" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="4476" fromTop="16" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="4849" fromTop="9" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="2356" fromTop="26" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="8397" fromTop="28" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="7803" fromTop="19" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GameSquare.cs" caret="531" fromTop="13" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GameSquare.cs" caret="768" fromTop="20" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:WordGame.cs" caret="1796" fromTop="17" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="8043" fromTop="26" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="978" fromTop="13" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6669" fromTop="13" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="7639" fromTop="38" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6910" fromTop="17" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6912" fromTop="21" />
+      <File id="B03DE614-7123-42F3-9B35-45A6560045DD/f:GamePage.xaml.cs" caret="6910" fromTop="15" />
+    </RecentEdits>
+  </RecentFiles>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="Math`0" priority="63" />
+      <Item value="this" priority="127" />
+      <Item value="maxSquares" priority="63" />
+      <Item value="Rectangle" priority="28" />
+      <Item value="rect" priority="95" />
+      <Item value="int" priority="127" />
+      <Item value="gs" priority="383" />
+      <Item value="Color`0" priority="95" />
+      <Item value="else" priority="63" />
+      <Item value="List" priority="31" />
+      <Item value="GameSquare`0" priority="63" />
+      <Item value="new" priority="95" />
+      <Item value="List&lt;GameSquare&gt;" priority="57" />
+      <Item value="if" priority="159" />
+      <Item value="wordGame" priority="447" />
+      <Item value="public" priority="63" />
+      <Item value="string" priority="31" />
+      <Item value="return" priority="63" />
+      <Item value="selectedSquares" priority="127" />
+      <Item value="ToString`0" priority="26" />
+      <Item value="Array`0" priority="31" />
+      <Item value="using" priority="61" />
+      <Item value="Microsoft" priority="30" />
+      <Item value="System" priority="61" />
+      <Item value="Linq" priority="26" />
+      <Item value="Linq.Expressions" priority="27" />
+      <Item value="as" priority="31" />
+      <Item value="squares" priority="31" />
+      <Item value="var" priority="31" />
+      <Item value="from" priority="32" />
+      <Item value="select" priority="31" />
+      <Item value="sq" priority="31" />
+      <Item value="String`0" priority="31" />
+      <Item value="s" priority="31" />
+      <Item value="bool" priority="63" />
+      <Item value="x" priority="31" />
+      <Item value="y" priority="31" />
+      <Item value="c" priority="31" />
+      <Item value="next" priority="63" />
+      <Item value="current" priority="63" />
+      <Item value="try" priority="31" />
+      <Item value="catch" priority="31" />
+      <Item value="Exception`0" priority="31" />
+      <Item value="value" priority="63" />
+      <Item value="false" priority="63" />
+      <Item value="ValueType`0" priority="31" />
+      <Item value="true" priority="31" />
+      <Item value="Texture2D`0" priority="31" />
+      <Item value="float" priority="63" />
+      <Item value="scale" priority="95" />
+      <Item value="Vector2`0" priority="63" />
+      <Item value="Vector2" priority="28" />
+      <Item value="boxSize" priority="63" />
+      <Item value="textureBlue" priority="31" />
+      <Item value="double" priority="31" />
+      <Item value="time" priority="63" />
+      <Item value="EasingOut`0" priority="31" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Math">
+      <Item value="Max`0" priority="26" />
+      <Item value="Abs`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:WordCruncherWP7.WordGame">
+      <Item value="columns" priority="26" />
+      <Item value="rows" priority="26" />
+      <Item value="selectedSquares" priority="350" />
+      <Item value="GetLetters`0" priority="26" />
+      <Item value="IsValidNextSquare`0" priority="26" />
+      <Item value="Selecting" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:WordCruncherWP7.GameSquare">
+      <Item value="collisionRect" priority="135" />
+      <Item value="color" priority="53" />
+      <Item value="letter" priority="107" />
+      <Item value="x" priority="135" />
+      <Item value="y" priority="80" />
+      <Item value="rect" priority="188" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Xna.Framework.Rectangle">
+      <Item value="X" priority="53" />
+      <Item value="Y" priority="53" />
+      <Item value="Width" priority="107" />
+      <Item value="Height" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Color">
+      <Item value="Blue" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Contains`0" priority="53" />
+      <Item value="Add`0" priority="26" />
+      <Item value="Count" priority="81" />
+      <Item value="RemoveAt`0" priority="26" />
+      <Item value="Last`1" priority="53" />
+      <Item value="ToArray`0" priority="80" />
+      <Item value="Select`2" priority="54" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="Join`4" priority="26" />
+      <Item value="ToString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Join`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Xna.Framework.Content.ContentManager">
+      <Item value="Load`1" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Vector2">
+      <Item value="Zero" priority="53" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+</Configuration>

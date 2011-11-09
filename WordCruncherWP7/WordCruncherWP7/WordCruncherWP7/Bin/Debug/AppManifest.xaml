@@ -1,0 +1,6 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="WordCruncherWP7" EntryPointType="WordCruncherWP7.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="WordCruncherWP7" Source="WordCruncherWP7.dll" />
+    <AssemblyPart x:Name="WordCruncherWP7LibraryTest" Source="WordCruncherWP7LibraryTest.dll" />
+  </Deployment.Parts>
+</Deployment>
