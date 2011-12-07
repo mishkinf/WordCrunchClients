@@ -9,12 +9,13 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace WordCruncherWP7.Messages
 {
-    public class GuessWordMessage : Message
+    public class GuessWordMessage : iMessage
     {
-        /*
+        
         public static int TYPE_CODE = 0x0005;
         private static Random rand = new Random();
         private static int guessId = 0;
@@ -22,28 +23,24 @@ namespace WordCruncherWP7.Messages
         public int id;
         private String encoded;
 
-        public GuessWordMessage(SelectedSquare[] selection) {
-            JObject json = new JObject();
+        public GuessWordMessage(int[] selection) {
             id = guessId++;
 
-            json.put("type", "guess_word");
-            json.put("id", id);
-            JArray selectionJson = new JArray();
-            json.put("selection", selectionJson);
+            JObject o = new JObject(new JProperty("type", "guess_word"));
+            o.Add(new JProperty("id", id));
+            o.Add(new JProperty("selection", selection));
 
-            for(int i = 0; i < selection.length; i++) {
-                SelectedSquare selectedSquare = selection[i];
-
-                selectionJson.add(selectedSquare.index + 1);
-            }
-
-            encoded = json.ToString();
+            encoded = o.ToString();
         }
 
         public String encode() {
             return encoded;
-        }*/
+        }
 
-        public String encode() { return ""; }
+        public void fromJSON(string message)
+        {
+
+        }
+
     }
 }

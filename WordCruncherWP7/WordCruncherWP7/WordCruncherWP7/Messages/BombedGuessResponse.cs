@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace WordCruncherWP7.Messages
 {
-    public class BombedGuessResponse : Message
+    public class BombedGuessResponse : iMessage
     {
         /*
         public static int TYPE_CODE = 0x0012;
@@ -47,6 +47,11 @@ namespace WordCruncherWP7.Messages
             this.scores = scores;
             this.bombs = bombs;
         }*/
+
+        public void fromJSON(string message)
+        {
+
+        }
 
         public String encode() { return ""; }
     }

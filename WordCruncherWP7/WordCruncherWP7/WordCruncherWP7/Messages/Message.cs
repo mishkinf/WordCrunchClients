@@ -11,8 +11,9 @@ using System.Windows.Shapes;
 
 namespace WordCruncherWP7.Messages
 {
-    public interface Message
+    public interface iMessage
     {
         String encode();
+        void fromJSON(string message);
     }
 }

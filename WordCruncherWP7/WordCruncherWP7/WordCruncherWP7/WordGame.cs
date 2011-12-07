@@ -12,21 +12,21 @@ using System.Linq.Expressions;
 
 namespace WordCruncherWP7
 {
-    
-
-    public class WordGame
+    public static class WordGame
     {
-        public int columns;
-        public int rows;
-        private int boxSize;
-        private int boxPadding;
-        string[] letters = new string[26] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        public static int columns = 5;
+        public static int rows = 5;
+        private static int boxSize;
+        private static int boxPadding;
+        static string[] letters = new string[26] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         static Random rand = new Random();
-        public List<GameSquare> squares = new List<GameSquare>();
-        public List<GameSquare> selectedSquares = new List<GameSquare>();
-        public bool Selecting = false;
+        public static GameSquare[,] squares = new GameSquare[5,5];
+        public static List<GameSquare> selectedSquares = new List<GameSquare>();
+        public static bool Selecting = false;
+        public static int player1Score = 0;
+        public static int player2Score = 0;
 
-        public bool IsValidNextSquare(GameSquare current, GameSquare next)
+        public static bool IsValidNextSquare(GameSquare current, GameSquare next)
         {
             bool value = false;
 
@@ -41,39 +41,44 @@ namespace WordCruncherWP7
             return value;
         }
 
-        public string GetLetters()
+        public static string GetLetters()
         {
             return String.Join(", ", selectedSquares.Select(s => s.letter));
         }
 
-        public WordGame(int width, int height) {
-            this.columns = 4;
-            this.rows = 6;
-
-            SetSquareSizes(width, height);
-
-            for (int r = 0; r < this.rows; r++)
-            {
-                for (int c = 0; c < this.columns; c++)
-                {
-
-                    squares.Add(new GameSquare(letters[rand.Next(26)], new Rectangle(c * (boxSize + boxPadding), r * (boxSize + boxPadding), boxSize, boxSize), Color.Blue, c, r));
-                }
-            }
+        public static void SetWordGameSize(int cols, int rows) {
+            WordGame.columns = cols;
+            WordGame.rows = rows;
 	    }
 
-        private void SetSquareSizes(int width, int height)
+        public static void InitGame(int width, int height)
+        {
+            //WordGame.InitBoard();
+            WordGame.SetSquareSizes(width, height);
+        }
+
+        private static void InitBoard()
+        {
+            WordGame.squares = new GameSquare[WordGame.columns, WordGame.rows];
+        }
+
+        public static void SetSquare(string letter, int value, int c, int r, int index)
+        {
+            WordGame.squares[c,r] = new GameSquare(letter, value, new Rectangle(c * (boxSize + boxPadding), r * (boxSize + boxPadding), boxSize, boxSize), Color.Blue, c, r, index);
+        }
+
+        private static void SetSquareSizes(int width, int height)
         {
             int side = Math.Min(width, height);
             int boxSide;
 
             if (width < height)
             {
-                boxSide = side/this.columns;
+                boxSide = side/WordGame.columns;
             }
             else
             {
-                boxSide = side/this.rows;
+                boxSide = side/WordGame.rows;
             }
 
             boxSize = (int) (boxSide*0.8f);

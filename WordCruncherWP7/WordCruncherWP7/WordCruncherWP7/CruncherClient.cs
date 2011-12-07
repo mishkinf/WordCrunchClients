@@ -21,6 +21,8 @@ namespace WordCruncherWP7
         private Socket connection;
         private string server;
         private int port;
+        private byte[] mybuffer = new byte[MAX_BUFFER_SIZE];
+
         private EndPoint ClientEndPoint
         {
             get { return new DnsEndPoint(this.server, this.port); }
@@ -49,7 +51,8 @@ namespace WordCruncherWP7
         public void SetupReceive()
         {
             SocketAsyncEventArgs args = getSocketEventArgs();
-            args.SetBuffer(new byte[MAX_BUFFER_SIZE], 0, MAX_BUFFER_SIZE);
+            mybuffer = new byte[MAX_BUFFER_SIZE];
+            args.SetBuffer(mybuffer, 0, MAX_BUFFER_SIZE);
             //args.SetBuffer(0, 4);
             args.Completed += setupReceive_complete;
 
@@ -63,23 +66,17 @@ namespace WordCruncherWP7
 
         void setupReceive_complete(object sender, SocketAsyncEventArgs e)
         {
-            if (e.SocketError != SocketError.Success)
-            {
-                if (OnCreateConnectionCompleted != null)
-                    OnCreateConnectionCompleted(this, new ConnectionArgs(false));
-
-                return;
-            }
-
             byte[] header = new byte[4] { e.Buffer[0], e.Buffer[1], e.Buffer[2], e.Buffer[3] };
             Array.Reverse(header);
             int length = System.BitConverter.ToInt32(header, 0);
             string response = UTF8Encoding.UTF8.GetString(e.Buffer, 4, length);
 
-            if (OnCreateConnectionCompleted != null)
+            if (OnDataReceivedSuccessfully != null)
             {
-                OnCreateConnectionCompleted(this, new ConnectionArgs(true));
+                OnDataReceivedSuccessfully(this, new MessageArgs(response));
             }
+
+            this.SetupReceive();
         }
 
         byte[] Combine(byte[] a1, byte[] a2)
@@ -100,7 +97,7 @@ namespace WordCruncherWP7
             return args;
         }
 
-        public bool SendMessage(Message item)
+        public bool SendMessage(iMessage item)
         {
             if (!this.connection.Connected)
             {

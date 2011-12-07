@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using WordCruncherWP7.Messages;
 
 namespace WordCruncherWP7
 {
@@ -28,8 +29,7 @@ namespace WordCruncherWP7
         SpriteFont letterValueFont;
         SpriteFont labelsFont;
 
-        private WordGame wordGame;
-        private float scale = 0.01f;
+        private float scale = 1.0f;
         private double time = -2.0;
 
         public GamePage()
@@ -44,7 +44,7 @@ namespace WordCruncherWP7
             timer.UpdateInterval = TimeSpan.FromTicks(333333);
             timer.Update += OnUpdate;
             timer.Draw += OnDraw;
-            wordGame = new WordGame(550, 800); //SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Width, SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Height);   
+           WordGame.InitGame(550, 800); //SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Width, SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Height);   
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -110,12 +110,12 @@ namespace WordCruncherWP7
                 {
                     case TouchLocationState.Pressed:
 
-                        foreach (GameSquare gs in wordGame.squares)
+                        foreach (GameSquare gs in WordGame.squares)
                             if (gs.collisionRect.Contains((int) fingerX, (int) fingerY))
                             {
-                                wordGame.Selecting = true;
+                                WordGame.Selecting = true;
                                 gs.color = Color.Red;
-                                wordGame.selectedSquares.Add(gs);
+                                WordGame.selectedSquares.Add(gs);
 
                             }
 
@@ -123,32 +123,39 @@ namespace WordCruncherWP7
                         break;
                     case TouchLocationState.Released:
                         //Don't care about released state in this demo
-                        foreach (GameSquare gs in wordGame.squares)
+                        int[] selectedIndexes = new int[WordGame.selectedSquares.Count];
+                        int index = 0;
+                        foreach (GameSquare gs in WordGame.selectedSquares)
+                            selectedIndexes[index++] = gs.index+1;
+
+                        CrunchCore.SendMessage(new GuessWordMessage(selectedIndexes));
+
+                        foreach (GameSquare gs in WordGame.squares)
                             gs.color = Color.Blue;
 
-                        wordGame.Selecting = false;
-                        wordGame.selectedSquares = new List<GameSquare>();
+                        WordGame.Selecting = false;
+                        WordGame.selectedSquares = new List<GameSquare>();
                         break;
                     case TouchLocationState.Moved:
-                        if (wordGame.Selecting)
+                        if (WordGame.Selecting)
                         {
-                            foreach (GameSquare gs in wordGame.squares)
+                            foreach (GameSquare gs in WordGame.squares)
                             {
                                 if (gs.collisionRect.Contains((int) fingerX, (int) fingerY))
                                 {
-                                    if (wordGame.selectedSquares.Count > 0 && !wordGame.selectedSquares.Contains(gs) &&
-                                        wordGame.IsValidNextSquare(wordGame.selectedSquares.Last(), gs))
+                                    if (WordGame.selectedSquares.Count > 0 && !WordGame.selectedSquares.Contains(gs) &&
+                                        WordGame.IsValidNextSquare(WordGame.selectedSquares.Last(), gs))
                                     {
                                         gs.color = Color.Red;
-                                        wordGame.selectedSquares.Add(gs);
+                                        WordGame.selectedSquares.Add(gs);
                                     }
                                     else
                                     {
-                                        if (wordGame.selectedSquares.Count - 2 >= 0 &&
-                                            wordGame.selectedSquares[wordGame.selectedSquares.Count - 2] == gs)
+                                        if (WordGame.selectedSquares.Count - 2 >= 0 &&
+                                            WordGame.selectedSquares[WordGame.selectedSquares.Count - 2] == gs)
                                         {
-                                            wordGame.selectedSquares.Last().color = Color.Blue;
-                                            wordGame.selectedSquares.RemoveAt(wordGame.selectedSquares.Count - 1);
+                                            WordGame.selectedSquares.Last().color = Color.Blue;
+                                            WordGame.selectedSquares.RemoveAt(WordGame.selectedSquares.Count - 1);
                                         }
                                     }
                                 }
@@ -159,14 +166,14 @@ namespace WordCruncherWP7
                 }
             }
 
-            if (time < 2)
-            {
-                time+=0.05;
+            //if (time < 2)
+            //{
+            //    time+=0.05;
 
-                if(time >= 0)
-                    for (int i = 0; i < wordGame.squares.Count && i < time*20; i++)
-                        wordGame.squares[i].scale = MathFunctions.easeOutBounce(time, 0.0f, 1.0f, 2);
-            }
+            //    if(time >= 0)
+            //        for (int i = 0; i < WordGame.squares.Count && i < time * 20; i++)
+            //            WordGame.squares[i].scale = MathFunctions.easeOutBounce(time, 0.0f, 1.0f, 2);
+            //}
 
     }
 
@@ -183,25 +190,29 @@ namespace WordCruncherWP7
             spriteBatch.Begin();
 //            spriteBatch.Draw(texture, spritePosition, Color.White);
 
-            
-            foreach (GameSquare gs in wordGame.squares)
+
+            foreach (GameSquare gs in WordGame.squares)
             {
-                if(gs.color == Color.Blue)
-                    spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.Blue, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.scale, SpriteEffects.None, 0.0f);
-//                    spriteBatch.Draw(textureBlue, gs.rect, Color.Blue);
+                if (gs != null)
+                {
+                    if (gs.color == Color.Blue)
+                        spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.Blue, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.scale, SpriteEffects.None, 0.0f);
+                    //                    spriteBatch.Draw(textureBlue, gs.rect, Color.Blue);
 
-                if(gs.color == Color.Red)
-                    spriteBatch.Draw(textureRed, new Vector2(gs.rect.X + gs.rect.Width/2, gs.rect.Y + gs.rect.Height/2), null, Color.Red, 0.0f, new Vector2(gs.rect.Width/2, gs.rect.Height/2), 0.8f, SpriteEffects.None, 0.0f);
+                    if (gs.color == Color.Red)
+                        spriteBatch.Draw(textureRed, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.Red, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), 0.8f, SpriteEffects.None, 0.0f);
 
-//                    spriteBatch.Draw(textureRed, gs.rect, Color.Red);
+                    //                    spriteBatch.Draw(textureRed, gs.rect, Color.Red);
 
-                spriteBatch.DrawString(letterValueFont, gs.GetValue().ToString(), new Vector2(gs.rect.X, gs.rect.Y+5), Color.LightBlue);
-                spriteBatch.DrawString(letterFont, gs.letter.ToString(), new Vector2(gs.rect.X + 40, gs.rect.Y + 25), Color.White);
+                    spriteBatch.DrawString(letterValueFont, gs.GetValue().ToString(), new Vector2(gs.rect.X, gs.rect.Y + 5), Color.LightBlue);
+                    spriteBatch.DrawString(letterFont, gs.letter.ToString(), new Vector2(gs.rect.X + 40, gs.rect.Y + 25), Color.White);
+                }
             }
 
 //            spriteBatch.DrawString(labelsFont, "Time Left? 1:34", new Vector2(80, 650), Color.Lavender);
-//            spriteBatch.DrawString(labelsFont, "You: 120", new Vector2(10, 700), Color.Green);
-            spriteBatch.DrawString(labelsFont, wordGame.GetLetters(), new Vector2(20, 750), Color.White);
+            spriteBatch.DrawString(labelsFont, "You: " + WordGame.player1Score.ToString(), new Vector2(10, 650), Color.Green);
+            spriteBatch.DrawString(labelsFont, "Him: " + WordGame.player2Score.ToString(), new Vector2(10, 700), Color.Red);
+            spriteBatch.DrawString(labelsFont, WordGame.GetLetters(), new Vector2(20, 750), Color.White);
 
             spriteBatch.End();
         }

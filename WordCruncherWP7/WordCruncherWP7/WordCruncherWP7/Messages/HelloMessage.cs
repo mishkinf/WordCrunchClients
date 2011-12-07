@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 
 namespace WordCruncherWP7.Messages
 {
-    public class HelloMessage : Message
+    public class HelloMessage : iMessage
     {
         public static int TYPE_CODE = 0x0001;
 
@@ -20,6 +20,11 @@ namespace WordCruncherWP7.Messages
 
         public static HelloMessage fromJson(JObject json) {
             return new HelloMessage((String) json.Property("username").Value);
+        }
+
+        public void fromJSON(string message)
+        {
+
         }
 
         public HelloMessage(String username) {

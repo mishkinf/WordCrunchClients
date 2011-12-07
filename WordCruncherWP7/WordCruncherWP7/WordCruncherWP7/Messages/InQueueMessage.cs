@@ -11,9 +11,14 @@ using System.Windows.Shapes;
 
 namespace WordCruncherWP7.Messages
 {
-    public class InQueueMessage : Message
+    public class InQueueMessage : iMessage
     {
         public static int TYPE_CODE = 0x0003;
+
+        public void fromJSON(string message)
+        {
+
+        }
 
         public String encode() { return ""; }
     }

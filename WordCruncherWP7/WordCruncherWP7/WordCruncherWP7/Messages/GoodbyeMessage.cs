@@ -11,10 +11,15 @@ using System.Windows.Shapes;
 
 namespace WordCruncherWP7.Messages
 {
-    public class GoodbyeMessage : Message
+    public class GoodbyeMessage : iMessage
     {
         public static int TYPE_CODE = 0x0006;
 
         public String encode() { return ""; }
+
+        public void fromJSON(string message)
+        {
+
+        }
     }
 }

@@ -13,13 +13,19 @@ using Newtonsoft.Json.Linq;
 
 namespace WordCruncherWP7.Messages
 {
-    public class MatchRequestMessage : Message
+    public class MatchRequestMessage : iMessage
     {
         public MatchRequestMessage()
         {
         }
 
         public static int TYPE_CODE = 0x0002;
+
+        public void fromJSON(string message)
+        {
+            JObject o = JObject.Parse(message);
+
+        }
 
         public String encode() {
             JObject o = new JObject(new JProperty("type", "match_request"));
