@@ -40,7 +40,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Play" Height="92" HorizontalAlignment="Left" Margin="50,69,0,0" Name="button1" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
+            <Button Content="Play" Height="92" HorizontalAlignment="Left" Margin="50,69,0,0" Name="playButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
             	<Button.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF5660EF" Offset="0"/>
@@ -48,7 +48,7 @@
             		</LinearGradientBrush>
             	</Button.Background>
             </Button>
-            <Button Content="Options" Height="92" HorizontalAlignment="Left" Margin="50,174,0,0" x:Name="button1_Copy" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
+            <Button Content="Options" Height="92" HorizontalAlignment="Left" Margin="50,174,0,0" x:Name="optionsButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
             	<Button.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF5660EF" Offset="0"/>
@@ -56,7 +56,7 @@
             		</LinearGradientBrush>
             	</Button.Background>
             </Button>
-            <Button Content="High Score" Height="92" HorizontalAlignment="Left" Margin="50,281,0,0" x:Name="button1_Copy1" VerticalAlignment="Top" Width="352" Click="playGame" >
+            <Button Content="High Score" Height="92" HorizontalAlignment="Left" Margin="50,281,0,0" x:Name="highScoreButton" VerticalAlignment="Top" Width="352" Click="playGame" >
             	<Button.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF5660EF" Offset="0"/>
@@ -64,6 +64,15 @@
             		</LinearGradientBrush>
             	</Button.Background>
             </Button>
+            <Button Content="Test Connection" Height="92" HorizontalAlignment="Left" Margin="50,379,0,0" Name="textConnectionButton" VerticalAlignment="Top" Width="352" Click="textConnectionButton_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF5660EF" Offset="0" />
+                        <GradientStop Color="#FF0010FF" Offset="1" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <TextBlock Height="73" HorizontalAlignment="Left" Margin="46,493,0,0" Name="connectionResult" Text="Not Connected. " VerticalAlignment="Top" Width="354" FontSize="36" />
         </Grid>
     </Grid>
  

@@ -17,6 +17,7 @@ namespace WordCruncherWP7
         public Rectangle rect, collisionRect;
         public Color color;
         public int x, y;
+        public float scale = 0.01f;
 
         public GameSquare(string letter, Rectangle rect, Color c, int x, int y)
         {

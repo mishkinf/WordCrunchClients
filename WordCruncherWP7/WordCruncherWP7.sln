@@ -5,7 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCruncherWP7", "WordCrun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCruncherWP7Library", "WordCruncherWP7\WordCruncherWP7Library\WordCruncherWP7Library.csproj", "{879ACC22-F845-4815-A122-72A12D463382}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "WordCruncherWP7LibraryContent", "WordCruncherWP7\WordCruncherWP7LibraryContent\WordCruncherWP7LibraryContent.contentproj", "{99AE983E-3054-498E-98C1-3EB0BEC5BC1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCruncherWP7LibraryContent", "WordCruncherWP7\WordCruncherWP7LibraryContent\WordCruncherWP7LibraryContent.contentproj", "{99AE983E-3054-498E-98C1-3EB0BEC5BC1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json.WindowsPhone", "..\..\Json.net\Source\Src\Newtonsoft.Json\Newtonsoft.Json.WindowsPhone.csproj", "{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,16 @@ Global
 		{99AE983E-3054-498E-98C1-3EB0BEC5BC1E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{99AE983E-3054-498E-98C1-3EB0BEC5BC1E}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{99AE983E-3054-498E-98C1-3EB0BEC5BC1E}.Release|Windows Phone.ActiveCfg = Debug|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Debug|Windows Phone.ActiveCfg = Debug|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}.Release|Windows Phone.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

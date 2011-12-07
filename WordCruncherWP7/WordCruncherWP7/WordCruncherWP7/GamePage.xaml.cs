@@ -30,7 +30,7 @@ namespace WordCruncherWP7
 
         private WordGame wordGame;
         private float scale = 0.01f;
-        private double time = 0.0;
+        private double time = -2.0;
 
         public GamePage()
         {
@@ -111,7 +111,7 @@ namespace WordCruncherWP7
                     case TouchLocationState.Pressed:
 
                         foreach (GameSquare gs in wordGame.squares)
-                            if (gs.collisionRect.Contains((int)fingerX, (int)fingerY))
+                            if (gs.collisionRect.Contains((int) fingerX, (int) fingerY))
                             {
                                 wordGame.Selecting = true;
                                 gs.color = Color.Red;
@@ -124,7 +124,7 @@ namespace WordCruncherWP7
                     case TouchLocationState.Released:
                         //Don't care about released state in this demo
                         foreach (GameSquare gs in wordGame.squares)
-                                gs.color = Color.Blue;
+                            gs.color = Color.Blue;
 
                         wordGame.Selecting = false;
                         wordGame.selectedSquares = new List<GameSquare>();
@@ -159,12 +159,16 @@ namespace WordCruncherWP7
                 }
             }
 
-            if (scale < 1)
+            if (time < 2)
             {
-                time++;
-                scale = MathFunctions.CircularInOut(time, 0.0f, 1.0f, 50);
+                time+=0.05;
+
+                if(time >= 0)
+                    for (int i = 0; i < wordGame.squares.Count && i < time*20; i++)
+                        wordGame.squares[i].scale = MathFunctions.easeOutBounce(time, 0.0f, 1.0f, 2);
             }
-        }
+
+    }
 
         /// <summary>
         /// Allows the page to draw itself.
@@ -183,7 +187,7 @@ namespace WordCruncherWP7
             foreach (GameSquare gs in wordGame.squares)
             {
                 if(gs.color == Color.Blue)
-                    spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.Blue, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), scale, SpriteEffects.None, 0.0f);
+                    spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.Blue, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.scale, SpriteEffects.None, 0.0f);
 //                    spriteBatch.Draw(textureBlue, gs.rect, Color.Blue);
 
                 if(gs.color == Color.Red)
