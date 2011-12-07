@@ -57,6 +57,10 @@
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
     <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
     <Reference Include="microsoft.xna.framework.interop" />
+    <Reference Include="Newtonsoft.Json, Version=4.0.4.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Json.net\Bin\WindowsPhone\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -117,10 +121,6 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Json.net\Source\Src\Newtonsoft.Json\Newtonsoft.Json.WindowsPhone.csproj">
-      <Project>{7A7F70AB-5C07-47ED-BDD2-ECC14DBACA5E}</Project>
-      <Name>Newtonsoft.Json.WindowsPhone</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WordCruncherWP7Library\WordCruncherWP7Library.csproj">
       <Name>WordCruncherWP7Library</Name>
     </ProjectReference>

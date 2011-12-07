@@ -66,3 +66,4 @@ C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCru
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7\obj\Debug\XapCacheFile.xml
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7\Bin\Debug\Newtonsoft.Json.dll
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7\Bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7\Bin\Debug\Newtonsoft.Json.xml
