@@ -42,18 +42,23 @@ namespace WordCruncherWP7
             SocketAsyncEventArgs args = getSocketEventArgs();
 
             args.Completed += SocketAsyncEventArgs_Completed;
+
             this.connection.ConnectAsync(args);
-
-
         }
 
         public void SetupReceive()
         {
             SocketAsyncEventArgs args = getSocketEventArgs();
-            args.SetBuffer(0, 4);
-            args.Completed += new EventHandler<SocketAsyncEventArgs>(setupReceive_complete);
+            args.SetBuffer(new byte[MAX_BUFFER_SIZE], 0, MAX_BUFFER_SIZE);
+            //args.SetBuffer(0, 4);
+            args.Completed += setupReceive_complete;
 
-            this.connection.ReceiveFromAsync(args);
+            this.connection.ReceiveAsync(args);
+
+            if (OnCreateConnectionCompleted != null)
+            {
+                OnCreateConnectionCompleted(this, new ConnectionArgs(true));
+            }
         }
 
         void setupReceive_complete(object sender, SocketAsyncEventArgs e)
@@ -65,6 +70,11 @@ namespace WordCruncherWP7
 
                 return;
             }
+
+            byte[] header = new byte[4] { e.Buffer[0], e.Buffer[1], e.Buffer[2], e.Buffer[3] };
+            Array.Reverse(header);
+            int length = System.BitConverter.ToInt32(header, 0);
+            string response = UTF8Encoding.UTF8.GetString(e.Buffer, 4, length);
 
             if (OnCreateConnectionCompleted != null)
             {
@@ -85,7 +95,7 @@ namespace WordCruncherWP7
             // create event args
             var args = new SocketAsyncEventArgs();
             args.RemoteEndPoint = this.ClientEndPoint;
-            args.Completed += SocketAsyncEventArgs_Completed;
+            //args.Completed += SocketAsyncEventArgs_Completed;
 
             return args;
         }
