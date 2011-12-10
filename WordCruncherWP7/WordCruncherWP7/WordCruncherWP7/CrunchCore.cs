@@ -17,11 +17,22 @@ namespace WordCruncherWP7
 {
     public static class CrunchCore
     {
-        //static CruncherClient c = new CruncherClient("10.211.55.2", 2222);
+        static CruncherClient c = new CruncherClient("10.211.55.2", 2222);
         static bool inited = false;
         public static event EventHandler OnGameStart;
         public static event EventHandler OnScoreChange;
-        static CruncherClient c = new CruncherClient("ec2-184-73-99-238.compute-1.amazonaws.com", 2222);
+        public static event EventHandler<BombedArgs> OnBombed;
+        //static CruncherClient c = new CruncherClient("ec2-184-73-99-238.compute-1.amazonaws.com", 2222);
+
+        public class BombedArgs : EventArgs
+        {
+            public int[] bomd_indices;
+
+            public BombedArgs(int[] indices)
+            {
+                bomd_indices = indices;
+            }
+        }
 
         public static void Setup()
         {
@@ -66,6 +77,18 @@ namespace WordCruncherWP7
 
                     if (OnScoreChange != null)
                         OnScoreChange("Crunch Core", new RoutedEventArgs());
+                    break;
+                case "bombed_guess_response":
+                    BombedGuessResponse bomb = new BombedGuessResponse();
+                    bomb.fromJSON(e.Message);
+
+                    RoutedEventArgs args = new RoutedEventArgs();
+                    
+                    if (OnBombed != null)
+                        OnBombed("CrunchCore", new BombedArgs(bomb.bombs));
+
+                    break;
+                case "end_game":
                     break;
             }
             //if((string)o["type"] == "hi")

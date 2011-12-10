@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="MathFunctions.cs" />
     <Compile Include="Messages\BombedGuessResponse.cs" />
+    <Compile Include="Messages\DropBombMessage.cs" />
     <Compile Include="Messages\GoodbyeMessage.cs" />
     <Compile Include="Messages\GoodGuessResponse.cs" />
     <Compile Include="Messages\GuessWordMessage.cs" />

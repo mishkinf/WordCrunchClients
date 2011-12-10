@@ -32,6 +32,9 @@ namespace WordCruncherWP7
         private float scale = 1.0f;
         private double time = -2.0;
 
+        bool bombing = false;
+        int bomb_ticks = 100;
+
         public GamePage()
         {
             InitializeComponent();
@@ -44,8 +47,17 @@ namespace WordCruncherWP7
             timer.UpdateInterval = TimeSpan.FromTicks(333333);
             timer.Update += OnUpdate;
             timer.Draw += OnDraw;
-           WordGame.InitGame(550, 800); //SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Width, SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Height);   
+            WordGame.InitGame(550, 800); //SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Width, SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Height);   
+            CrunchCore.OnBombed += new EventHandler<CrunchCore.BombedArgs>(CrunchCore_OnBombed);
         }
+
+
+        void CrunchCore_OnBombed(object sender, CrunchCore.BombedArgs e)
+        {
+            bombing = true;
+            bomb_ticks = 100;
+        }
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -90,6 +102,15 @@ namespace WordCruncherWP7
         private void OnUpdate(object sender, GameTimerEventArgs e)
         {
             // TODO: Add your update logic here
+
+            if (bomb_ticks < 1)
+            {
+                bomb_ticks = 100;
+                bombing = false;
+            }
+
+            if(bombing)
+                bomb_ticks--;
 
             // Move the sprite around.
             UpdateSprite(e);
@@ -190,6 +211,8 @@ namespace WordCruncherWP7
             spriteBatch.Begin();
 //            spriteBatch.Draw(texture, spritePosition, Color.White);
 
+            if(bombing)
+                spriteBatch.Draw(textureRed, new Rectangle(0, 0, 480, 800), Color.Red);
 
             foreach (GameSquare gs in WordGame.squares)
             {

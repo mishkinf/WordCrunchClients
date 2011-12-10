@@ -19,6 +19,7 @@ namespace WordCruncherWP7
     {
         CruncherClient c = new CruncherClient("10.211.55.2", 2222);
         bool inited = false;
+
         //CruncherClient c = new CruncherClient("ec2-184-73-99-238.compute-1.amazonaws.com", 2222);
         // Constructor
         public MainPage()
@@ -27,6 +28,7 @@ namespace WordCruncherWP7
             MatchRequestMessage m = new MatchRequestMessage();
             m.encode();
             CrunchCore.OnGameStart += new EventHandler(CrunchCore_OnGameStart);
+
         }
 
         void CrunchCore_OnGameStart(object sender, EventArgs e)

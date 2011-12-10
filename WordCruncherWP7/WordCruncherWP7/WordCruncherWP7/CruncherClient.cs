@@ -145,7 +145,6 @@ namespace WordCruncherWP7
                     break;
                 case SocketAsyncOperation.Send:
                     HandleSend(e);
-                    int iu = 2;
                     break;
                 case SocketAsyncOperation.Receive:
                     string response = UTF8Encoding.UTF8.GetString(e.Buffer, 4, e.Buffer.Length - 4);

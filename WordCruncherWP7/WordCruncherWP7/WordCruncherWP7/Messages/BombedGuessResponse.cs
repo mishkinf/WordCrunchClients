@@ -8,49 +8,51 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
 
 namespace WordCruncherWP7.Messages
 {
     public class BombedGuessResponse : iMessage
     {
-        /*
         public static int TYPE_CODE = 0x0012;
 
         public int id;
         public int[] scores;
         public int[] bombs;
 
-        public static BombedGuessResponse fromJson(JSONObject json) {
-            int id = ((Long) json.get("id")).intValue();
+        public void fromJSON(string message) {
+            JObject o = JObject.Parse(message);
+            int id = (int) o["id"];
             int[] scores;
             int[] bombs;
 
-            JSONArray scoresJson = (JSONArray) json.get("scores");
-            int length = scoresJson.size();
+            JArray scoresJson = (JArray) o["scores"];
+            int length = scoresJson.Count;
             scores = new int[length];
+
             for(int i = 0; i < length; i++) {
-                scores[i] = ((Long) scoresJson.get(i)).intValue();
+                scores[i] = (int)scoresJson[i];
             }
 
-            JSONArray bombsJson = (JSONArray) json.get("bombs");
-            length = bombsJson.size();
+            JArray bombsJson = (JArray) o["bombs"];
+            length = bombsJson.Count;
             bombs = new int[length];
             for(int i = 0; i < length; i++) {
-                bombs[i] = ((Long) bombsJson.get(i)).intValue();
+                bombs[i] = (int) bombsJson[i];
             }
 
-            return new BombedGuessResponse(id, scores, bombs);
+
         }
 
         public BombedGuessResponse(int id, int[] scores, int[] bombs) {
             this.id = id;
             this.scores = scores;
             this.bombs = bombs;
-        }*/
+        }
 
-        public void fromJSON(string message)
+        public BombedGuessResponse()
         {
-
+         
         }
 
         public String encode() { return ""; }
