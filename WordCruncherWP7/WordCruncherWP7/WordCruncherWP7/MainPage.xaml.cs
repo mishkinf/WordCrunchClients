@@ -106,13 +106,14 @@ namespace WordCruncherWP7
             if(!inited)
                 c.SendMessage(new HelloMessage("mishkin"));
             inited = true;
-            Dispatcher.BeginInvoke( () => { 
-                //your ui update code 
-                if (e.ConnectionOk)
-                    connectionResult.Text = "Successfully Connected!";
-                else
-                    connectionResult.Text = "Nope.";
-            });
+
+            //Dispatcher.BeginInvoke( () => { 
+            //    //your ui update code 
+            //    if (e.ConnectionOk)
+            //        connectionResult.Text = "Successfully Connected!";
+            //    else
+            //        connectionResult.Text = "Nope.";
+            //});
         }
 
 

@@ -1,11 +1,12 @@
-﻿<phone:PhoneApplicationPage 
-    x:Class="WordCruncherWP7.MainPage"
+﻿<phone:PhoneApplicationPage
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+    x:Class="WordCruncherWP7.MainPage"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -40,7 +41,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Play" Height="92" HorizontalAlignment="Left" Margin="50,69,0,0" Name="playButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
+            <Button Content="Play Random Match" Height="92" HorizontalAlignment="Left" Margin="50,69,0,0" x:Name="playButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
             	<Button.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF5660EF" Offset="0"/>
@@ -48,7 +49,12 @@
             		</LinearGradientBrush>
             	</Button.Background>
             </Button>
-            <Button Content="Options" Height="92" HorizontalAlignment="Left" Margin="50,174,0,0" x:Name="optionsButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
+            <Button Content="Find a Friend" Height="92" HorizontalAlignment="Left" Margin="50,174,0,0" x:Name="findFriendButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
+            	<i:Interaction.Triggers>
+            		<i:EventTrigger EventName="Click">
+            			<ec:NavigateToPageAction TargetPage="/FindFriends.xaml"/>
+            		</i:EventTrigger>
+            	</i:Interaction.Triggers>
             	<Button.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF5660EF" Offset="0"/>
@@ -56,7 +62,12 @@
             		</LinearGradientBrush>
             	</Button.Background>
             </Button>
-            <Button Content="High Score" Height="92" HorizontalAlignment="Left" Margin="50,281,0,0" x:Name="highScoreButton" VerticalAlignment="Top" Width="352" Click="playGame" >
+            <Button Content="High Scores" Height="92" HorizontalAlignment="Left" Margin="50,281,0,0" x:Name="highScoreButton" VerticalAlignment="Top" Width="352" Click="playGame" >
+            	<i:Interaction.Triggers>
+            		<i:EventTrigger EventName="Click">
+            			<ec:NavigateToPageAction TargetPage="/HighScores.xaml"/>
+            		</i:EventTrigger>
+            	</i:Interaction.Triggers>
             	<Button.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF5660EF" Offset="0"/>
@@ -64,15 +75,32 @@
             		</LinearGradientBrush>
             	</Button.Background>
             </Button>
-            <Button Content="Test Connection" Height="92" HorizontalAlignment="Left" Margin="50,379,0,0" Name="textConnectionButton" VerticalAlignment="Top" Width="352" Click="textConnectionButton_Click">
+            <Button Content="Settings" Height="92" HorizontalAlignment="Left" Margin="50,379,0,0" x:Name="settingsButton" VerticalAlignment="Top" Width="352" Click="textConnectionButton_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF5660EF" Offset="0" />
                         <GradientStop Color="#FF0010FF" Offset="1" />
                     </LinearGradientBrush>
                 </Button.Background>
+            	<i:Interaction.Triggers>
+            		<i:EventTrigger EventName="Click">
+            			<ec:NavigateToPageAction TargetPage="/Settings.xaml"/>
+            		</i:EventTrigger>
+            	</i:Interaction.Triggers>
             </Button>
-            <TextBlock Height="73" HorizontalAlignment="Left" Margin="46,493,0,0" Name="connectionResult" Text="Not Connected. " VerticalAlignment="Top" Width="354" FontSize="36" />
+            <Button Content="Feedback" Height="92" HorizontalAlignment="Left" Margin="50,475,0,0" x:Name="feedbackButton" VerticalAlignment="Top" Width="352" Click="textConnectionButton_Click">
+            	<Button.Background>
+            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            			<GradientStop Color="#FF5660EF" Offset="0" />
+            			<GradientStop Color="#FF0010FF" Offset="1" />
+            		</LinearGradientBrush>
+            	</Button.Background>
+            	<i:Interaction.Triggers>
+            		<i:EventTrigger EventName="Click">
+            			<ec:NavigateToPageAction TargetPage="/Feedback.xaml"/>
+            		</i:EventTrigger>
+            	</i:Interaction.Triggers>
+            </Button>
         </Grid>
     </Grid>
  
