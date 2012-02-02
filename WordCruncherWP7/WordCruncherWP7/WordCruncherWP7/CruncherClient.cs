@@ -19,8 +19,8 @@ namespace WordCruncherWP7
         // The maximum size of the data buffer to use with the asynchronous socket methods
         const int MAX_BUFFER_SIZE = 2048;
         private Socket connection;
-        private string server;
-        private int port;
+        private string server = Constants.ServerURL;
+        private int port = System.Convert.ToInt32(Constants.ServerPort);
         private byte[] mybuffer = new byte[MAX_BUFFER_SIZE];
 
         private EndPoint ClientEndPoint
@@ -35,8 +35,8 @@ namespace WordCruncherWP7
         public CruncherClient(string serverAddress, int port)
         {
             this.connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            this.server = serverAddress;
-            this.port = port;
+            this.server = Constants.ServerURL;
+            this.port = System.Convert.ToInt32(Constants.ServerPort);
         }
 
         public void Connect()

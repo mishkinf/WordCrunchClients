@@ -5,7 +5,7 @@
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
 	x:Class="WordCruncherWP7.Settings"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -22,7 +22,7 @@
 		
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="ApplicationTitle" Text="Word Cruncher" Style="{StaticResource PhoneTextNormalStyle}"/>
 			<TextBlock x:Name="PageTitle" Text="Settings" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
 
@@ -30,8 +30,11 @@
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
 				<CheckBox Content="Play Sound Effects" IsChecked="True"/>
-				<Button Content="Save"/>
-			</StackPanel>
+                <TextBlock TextWrapping="Wrap" Text="Server" Style="{StaticResource PhoneTextTitle3Style}"/>
+                <TextBox Height="79" Name="serverUrlTextbox" Text="ec2-184-73-99-238.compute-1.amazonaws.com" Width="446" InputScope="Url" TextChanged="serverUrlTextbox_TextChanged" />
+                <TextBlock TextWrapping="Wrap" Text="Port #" Style="{StaticResource PhoneTextTitle3Style}"/>
+                <TextBox Height="79" InputScope="Number" Name="portTextBox" Text="2222" Width="446" TextChanged="portTextBox_TextChanged" />
+            </StackPanel>
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

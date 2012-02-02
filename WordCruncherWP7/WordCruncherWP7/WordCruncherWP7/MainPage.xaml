@@ -13,93 +13,428 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Resources>
+		<Style x:Key="CrunchBtnStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.1"/>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonBackground">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<DoubleAnimation Duration="0" To="0.929" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.966" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="#FF2CAAEF" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="White" Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ContentContainer" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonBackground">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="ButtonBackground" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}" RenderTransformOrigin="0.5,0.5">
+								<Border.Background>
+									<SolidColorBrush Color="#FF2CAAEF"/>
+								</Border.Background>
+								<Border.RenderTransform>
+									<CompositeTransform/>
+								</Border.RenderTransform>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left">
+									<ContentControl.Foreground>
+										<SolidColorBrush Color="White"/>
+									</ContentControl.Foreground>
+								</ContentControl>
+							</Border>
+							<Image Margin="39,43,45,44" Source="WCrunch_07.png"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="FriendBtnStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="grid" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.3">
+											<VisualTransition.GeneratedEasingFunction>
+												<CircleEase EasingMode="EaseOut"/>
+											</VisualTransition.GeneratedEasingFunction>
+										</VisualTransition>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="0.82" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.82" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="White" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="ButtonBackground" BorderBrush="Black" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}" Background="#FF2CAAEF" RenderTransformOrigin="0.5,0.5">
+								<Border.RenderTransform>
+									<CompositeTransform/>
+								</Border.RenderTransform>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="Friends" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" Foreground="White"/>
+							</Border>
+							<Image Margin="41,38,43,49" Source="WCrunch_11.png"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="HighScoresBtnStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.3">
+											<VisualTransition.GeneratedEasingFunction>
+												<CircleEase EasingMode="EaseOut"/>
+											</VisualTransition.GeneratedEasingFunction>
+										</VisualTransition>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Normal">
+										<Storyboard>
+											<ColorAnimation Duration="0" To="#FF2CAAEF" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="0.787" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.821" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="#FF2CAAEF" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="White" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="ButtonBackground" BorderBrush="Black" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}" RenderTransformOrigin="0.5,0.5" Background="#FF2CAAEF">
+								<Border.RenderTransform>
+									<CompositeTransform/>
+								</Border.RenderTransform>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left"/>
+							</Border>
+							<Image Margin="37,38,47,49" Source="WCrunch_13.png"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="SettingsBtnStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.3">
+											<VisualTransition.GeneratedEasingFunction>
+												<CircleEase EasingMode="EaseOut"/>
+											</VisualTransition.GeneratedEasingFunction>
+										</VisualTransition>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="0.796" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.796" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="White" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="ButtonBackground" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}" Background="#FF3FA9F5" RenderTransformOrigin="0.5,0.5" BorderBrush="Black">
+								<Border.RenderTransform>
+									<CompositeTransform/>
+								</Border.RenderTransform>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" BorderBrush="{x:Null}" Foreground="White"/>
+							</Border>
+							<Image Margin="39,35,45,52" Source="WCrunch_21.png"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="FeedbackBtnStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.3">
+											<VisualTransition.GeneratedEasingFunction>
+												<CircleEase EasingMode="EaseOut"/>
+											</VisualTransition.GeneratedEasingFunction>
+										</VisualTransition>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="0.82" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.842" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="White" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="ButtonBackground" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}" RenderTransformOrigin="0.5,0.5" BorderBrush="Black">
+								<Border.RenderTransform>
+									<CompositeTransform/>
+								</Border.RenderTransform>
+								<Border.Background>
+									<SolidColorBrush Color="#FF3FA9F5"/>
+								</Border.Background>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" Foreground="White"/>
+							</Border>
+							<Image Margin="42,33,42,54" Source="WCrunch_18.png"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
-    	<Grid.Background>
-    		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-    			<GradientStop Color="Black" Offset="0"/>
-    			<GradientStop Color="#FF375FDA" Offset="1"/>
-    		</LinearGradientBrush>
-    	</Grid.Background>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Black">
+    	<i:Interaction.Triggers>
+    		<i:EventTrigger EventName="Loaded">
+    			<ec:GoToStateAction StateName="PreLoaded"/>
+    		</i:EventTrigger>
+    	</i:Interaction.Triggers>
+    	<VisualStateManager.VisualStateGroups>
+    		<VisualStateGroup x:Name="VisualStateGroup">
+    			<VisualStateGroup.Transitions>
+    				<VisualTransition GeneratedDuration="0:0:0.3">
+    					<VisualTransition.GeneratedEasingFunction>
+    						<CircleEase EasingMode="EaseOut"/>
+    					</VisualTransition.GeneratedEasingFunction>
+    				</VisualTransition>
+    			</VisualStateGroup.Transitions>
+    			<VisualState x:Name="PreLoaded">
+    				<Storyboard>
+    					<DoubleAnimation Duration="0" To="-253" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="playButton">
+    						<EasingDoubleKeyFrame KeyTime="0" Value="20">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="findFriendButton">
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="highScoreButton">
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="settingsButton">
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="20">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="feedbackButton">
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="20">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="playButton">
+    						<EasingDoubleKeyFrame KeyTime="0" Value="0">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="findFriendButton">
+    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="highScoreButton">
+    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="settingsButton">
+    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="feedbackButton">
+    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+    							<EasingDoubleKeyFrame.EasingFunction>
+    								<CircleEase EasingMode="EaseOut"/>
+    							</EasingDoubleKeyFrame.EasingFunction>
+    						</EasingDoubleKeyFrame>
+    						<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+    					</DoubleAnimationUsingKeyFrames>
+    				</Storyboard>
+    			</VisualState>
+    		</VisualStateGroup>
+    	</VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+        	<RowDefinition Height="Auto"/>
+        	<RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="PageTitle" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Text="w0rd crunch3r">
-            	<TextBlock.Foreground>
-            		<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-            			<GradientStop Color="#FFA3A8FF" Offset="0"/>
-            			<GradientStop Color="#FF2432FF" Offset="1"/>
-            		</LinearGradientBrush>
-            	</TextBlock.Foreground>
-            </TextBlock>
+        	<Image x:Name="image" Height="98" Source="WCrunch_03.png" Margin="0,0,-242,0" RenderTransformOrigin="0.5,0.5" Opacity="0" HorizontalAlignment="Right" Width="450">
+        		<Image.RenderTransform>
+        			<CompositeTransform/>
+        		</Image.RenderTransform>
+        	</Image>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Play Random Match" Height="92" HorizontalAlignment="Left" Margin="50,69,0,0" x:Name="playButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
-            	<Button.Background>
-            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            			<GradientStop Color="#FF5660EF" Offset="0"/>
-            			<GradientStop Color="#FF0010FF" Offset="1"/>
-            		</LinearGradientBrush>
-            	</Button.Background>
+            <Button Content="Play" Height="202" HorizontalAlignment="Left" Margin="-1,0,0,0" x:Name="playButton" VerticalAlignment="Top" Width="391" Click="playGame" d:LayoutOverrides="VerticalAlignment" Foreground="White" BorderBrush="{x:Null}" Style="{StaticResource CrunchBtnStyle}" Background="#FF2CAAEF" FontSize="16" RenderTransformOrigin="0.5,0.5" Opacity="0" >
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
             </Button>
-            <Button Content="Find a Friend" Height="92" HorizontalAlignment="Left" Margin="50,174,0,0" x:Name="findFriendButton" VerticalAlignment="Top" Width="352" Click="playGame" d:LayoutOverrides="VerticalAlignment" >
+            <Button Content="Find a Friend" Height="202" HorizontalAlignment="Left" Margin="-1,187,0,0" x:Name="findFriendButton" VerticalAlignment="Top" Width="202" d:LayoutOverrides="HorizontalAlignment" BorderBrush="{x:Null}" Style="{StaticResource FriendBtnStyle}" Background="#FF2CAAEF" FontSize="21.333" RenderTransformOrigin="0.5,0.5" Opacity="0" >
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="Click">
             			<ec:NavigateToPageAction TargetPage="/FindFriends.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
-            	<Button.Background>
-            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            			<GradientStop Color="#FF5660EF" Offset="0"/>
-            			<GradientStop Color="#FF0010FF" Offset="1"/>
-            		</LinearGradientBrush>
-            	</Button.Background>
             </Button>
-            <Button Content="High Scores" Height="92" HorizontalAlignment="Left" Margin="50,281,0,0" x:Name="highScoreButton" VerticalAlignment="Top" Width="352" Click="playGame" >
+            <Button Content="High Scores" Height="202" HorizontalAlignment="Left" Margin="188,187,0,0" x:Name="highScoreButton" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}" Style="{StaticResource HighScoresBtnStyle}" Background="#FF2CAAEF" RenderTransformOrigin="0.5,0.5" Opacity="0" >
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="Click">
             			<ec:NavigateToPageAction TargetPage="/HighScores.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
-            	<Button.Background>
-            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            			<GradientStop Color="#FF5660EF" Offset="0"/>
-            			<GradientStop Color="#FF0010FF" Offset="1"/>
-            		</LinearGradientBrush>
-            	</Button.Background>
             </Button>
-            <Button Content="Settings" Height="92" HorizontalAlignment="Left" Margin="50,379,0,0" x:Name="settingsButton" VerticalAlignment="Top" Width="352" Click="textConnectionButton_Click">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF5660EF" Offset="0" />
-                        <GradientStop Color="#FF0010FF" Offset="1" />
-                    </LinearGradientBrush>
-                </Button.Background>
+            <Button Content="Settings" Height="201" HorizontalAlignment="Left" Margin="-1,375,0,0" x:Name="settingsButton" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}" Style="{StaticResource SettingsBtnStyle}" Background="#FF2CAAEF" d:LayoutOverrides="HorizontalAlignment" RenderTransformOrigin="0.5,0.5" Opacity="0">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="Click">
             			<ec:NavigateToPageAction TargetPage="/Settings.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
             </Button>
-            <Button Content="Feedback" Height="92" HorizontalAlignment="Left" Margin="50,475,0,0" x:Name="feedbackButton" VerticalAlignment="Top" Width="352" Click="textConnectionButton_Click">
-            	<Button.Background>
-            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            			<GradientStop Color="#FF5660EF" Offset="0" />
-            			<GradientStop Color="#FF0010FF" Offset="1" />
-            		</LinearGradientBrush>
-            	</Button.Background>
-            	<i:Interaction.Triggers>
-            		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/Feedback.xaml"/>
-            		</i:EventTrigger>
-            	</i:Interaction.Triggers>
+            <Button Content="Rate this app!" Height="201" HorizontalAlignment="Left" Margin="188,375,0,0" x:Name="feedbackButton" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}" Style="{StaticResource FeedbackBtnStyle}" Background="#FF2CAAEF" Click="feedbackButton_Click" RenderTransformOrigin="0.5,0.5" Opacity="0">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
             </Button>
         </Grid>
     </Grid>

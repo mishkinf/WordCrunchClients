@@ -19,5 +19,15 @@ namespace WordCruncherWP7
         {
             InitializeComponent();
         }
+
+        private void serverUrlTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Constants.ServerURL = ((TextBox)sender).Text;
+        }
+
+        private void portTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Constants.ServerPort = ((TextBox)sender).Text;
+        }
     }
 }

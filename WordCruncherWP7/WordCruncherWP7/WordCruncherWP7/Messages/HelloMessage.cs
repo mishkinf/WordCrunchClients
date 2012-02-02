@@ -17,18 +17,21 @@ namespace WordCruncherWP7.Messages
         public static int TYPE_CODE = 0x0001;
 
         public String username;
-
-        public static HelloMessage fromJson(JObject json) {
-            return new HelloMessage((String) json.Property("username").Value);
-        }
+        public String token;
+        public int version;
 
         public void fromJSON(string message)
         {
-
+            JObject json = JObject.Parse(message);
+            this.username = (String)json.Property("username").Value;
+            this.token = (String)json.Property("token").Value;
+            this.version = (int)json.Property("version").Value;
         }
 
-        public HelloMessage(String username) {
+        public HelloMessage(String username, String token, int version) {
             this.username = username;
+            this.token = token;
+            this.version = version;
         }
 
         public String encode() {

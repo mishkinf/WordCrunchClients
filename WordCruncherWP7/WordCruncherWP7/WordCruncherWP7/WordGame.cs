@@ -43,7 +43,7 @@ namespace WordCruncherWP7
 
         public static string GetLetters()
         {
-            return String.Join(", ", selectedSquares.Select(s => s.letter));
+            return String.Join("", selectedSquares.Select(s => s.letter));
         }
 
         public static void SetWordGameSize(int cols, int rows) {
@@ -67,22 +67,28 @@ namespace WordCruncherWP7
             WordGame.squares[c,r] = new GameSquare(letter, value, new Rectangle(c * (boxSize + boxPadding), r * (boxSize + boxPadding), boxSize, boxSize), Color.Blue, c, r, index);
         }
 
+        public static double GetLetterDistance(int x1, int y1, int x2, int y2)
+        {
+            return Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+        }
+
         private static void SetSquareSizes(int width, int height)
         {
-            int side = Math.Min(width, height);
-            int boxSide;
+            int side =  Math.Min(width, height);
+            int separation = 4;
+            int boxAvailability = side - (4 * separation);
 
-            if (width < height)
-            {
-                boxSide = side/WordGame.columns;
-            }
-            else
-            {
-                boxSide = side/WordGame.rows;
-            }
+            //if (width < height)
+            //{
+            //    boxSide = boxAvailability / 5;// WordGame.columns;
+            //}
+            //else
+            //{
+            //    boxSide = boxAvailability / 5;// WordGame.rows;
+            //}
 
-            boxSize = (int) (boxSide*0.8f);
-            boxPadding = (int) ((boxSide*0.2f)/2);
+            WordGame.boxSize = boxAvailability / 5;
+            WordGame.boxPadding = separation / 2; // (int)((boxSide * 0.2f) / 2);
         }
     }
 

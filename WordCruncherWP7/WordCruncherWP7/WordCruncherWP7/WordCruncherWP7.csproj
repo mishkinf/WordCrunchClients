@@ -74,8 +74,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="CruncherClient.cs" />
     <Compile Include="CrunchCore.cs" />
+    <Compile Include="EndGame.xaml.cs">
+      <DependentUpon>EndGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Feedback.xaml.cs">
       <DependentUpon>Feedback.xaml</DependentUpon>
     </Compile>
@@ -92,11 +96,11 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MathFunctions.cs" />
-    <Compile Include="Messages\BombedGuessResponse.cs" />
+    <Compile Include="Messages\BadGuessResponseMessage.cs" />
+    <Compile Include="Messages\BombedGuessResponseMessage.cs" />
     <Compile Include="Messages\DropBombMessage.cs" />
     <Compile Include="Messages\GoodbyeMessage.cs" />
-    <Compile Include="Messages\GoodGuessResponse.cs" />
+    <Compile Include="Messages\GoodGuessResponseMessage.cs" />
     <Compile Include="Messages\GuessWordMessage.cs" />
     <Compile Include="Messages\HelloMessage.cs" />
     <Compile Include="Messages\InQueueMessage.cs" />
@@ -104,6 +108,9 @@
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\StartGameMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleData\highScoresData\highScoresData.xaml.cs">
+      <DependentUpon>highScoresData.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
@@ -114,6 +121,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="EndGame.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Feedback.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +145,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SampleData\highScoresData\highScoresData.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Settings.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
@@ -142,22 +157,32 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
+    <DesignTimeOnly Include="SampleData\highScoresData\highScoresData.xsd" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ApplicationIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Background.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="ApplicationIcon.png" />
+    <Resource Include="Background.png" />
     <Content Include="SplashScreenImage.jpg" />
+    <Resource Include="wcrunchicon.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Mishimation\Mishimation.csproj">
+      <Project>{35014165-7C54-4E13-839F-C58108D76E29}</Project>
+      <Name>Mishimation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WordCruncherWP7Library\WordCruncherWP7Library.csproj">
       <Name>WordCruncherWP7Library</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="menu_icon.png" />
+    <Resource Include="play_again_icon.png" />
+    <Resource Include="WCrunch_03.png" />
+    <Resource Include="WCrunch_07.png" />
+    <Resource Include="WCrunch_11.png" />
+    <Resource Include="WCrunch_13.png" />
+    <Resource Include="WCrunch_18.png" />
+    <Resource Include="WCrunch_21.png" />
     <Resource Include="word_cruncher_logo.png" />
     <Resource Include="word_cruncher_logo_03.png" />
   </ItemGroup>

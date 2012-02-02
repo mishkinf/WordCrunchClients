@@ -15,6 +15,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using WordCruncherWP7.Messages;
+using Mishimation;
 
 namespace WordCruncherWP7
 {
@@ -30,10 +31,11 @@ namespace WordCruncherWP7
         SpriteFont labelsFont;
 
         private float scale = 1.0f;
-        private double time = -2.0;
+        private double time = 0;
 
         bool bombing = false;
-        int bomb_ticks = 100;
+        int bomb_ticks = 50;
+        int[] bombed_indices = {};
 
         public GamePage()
         {
@@ -47,8 +49,14 @@ namespace WordCruncherWP7
             timer.UpdateInterval = TimeSpan.FromTicks(333333);
             timer.Update += OnUpdate;
             timer.Draw += OnDraw;
-            WordGame.InitGame(550, 800); //SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Width, SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Height);   
+            //WordGame.InitGame(420, 800); //SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Width, SharedGraphicsDeviceManager.Current.GraphicsDevice.Viewport.Height);   
             CrunchCore.OnBombed += new EventHandler<CrunchCore.BombedArgs>(CrunchCore_OnBombed);
+
+            //Animator.AddAnimation(new Animation(0.2f, 1.0f, WordGame.squares[0,0].ScaleProperty, 0.5f, Easings.easeOutBounce));
+            //foreach (GameSquare s in WordGame.squares)
+            //{
+            //    s.scale = 0.2f;
+            //}
         }
 
 
@@ -56,6 +64,8 @@ namespace WordCruncherWP7
         {
             bombing = true;
             bomb_ticks = 100;
+
+            this.bombed_indices = e.bomd_indices;
         }
 
 
@@ -73,7 +83,7 @@ namespace WordCruncherWP7
             
             textureRed = content.Load<Texture2D>("square_red"); //new Texture2D(SharedGraphicsDeviceManager.Current.GraphicsDevice, 1, 1);
 //            textureRed.SetData(new Color[] { Color.Red });
-
+            
             letterFont = content.Load<SpriteFont>("CourierNew");
             letterValueFont = content.Load<SpriteFont>("squareValue");
             labelsFont = content.Load<SpriteFont>("labelsFont");
@@ -187,13 +197,28 @@ namespace WordCruncherWP7
                 }
             }
 
-            //if (time < 2)
+            //Animator.Update();
+            //if (time <= 1.5 )
             //{
-            //    time+=0.05;
+            //    time += 0.05;
+            //    foreach (GameSquare s in WordGame.squares)
+            //        if (1.0 != s.scale)
+            //            s.scale = Easings.easeOutBounce(time, s.tempScale, 1.0f, 3.5);
+            //}
+            //if (time <= 1.5)
+            //{
+            //    time += 0.05;
+            //    int i = 0;
 
-            //    if(time >= 0)
-            //        for (int i = 0; i < WordGame.squares.Count && i < time * 20; i++)
-            //            WordGame.squares[i].scale = MathFunctions.easeOutBounce(time, 0.0f, 1.0f, 2);
+            //    if (time >= 0)
+            //        foreach (GameSquare s in WordGame.squares)
+            //        {
+            //            if(i < time * 20)
+            //                s.scale = MathFunctions.easeOutBounce(time, 0.0f, 1.0f, 1.5);
+            //            i++;
+            //        }
+            //        //for (int i = 0; i < WordGame.squares.Length && i < time * 20; i++)
+            //            //WordGame.squares[i].scale = MathFunctions.easeOutBounce(time, 0.0f, 1.0f, 2);
             //}
 
     }
@@ -219,17 +244,19 @@ namespace WordCruncherWP7
                 if (gs != null)
                 {
                     if (gs.color == Color.Blue)
-                        spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.Blue, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.scale, SpriteEffects.None, 0.0f);
+                        //spriteBatch.Draw(textureBlue, gs.rect, Color.Blue);
+                        //spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X, gs.rect.Y), gs.rect, Color.Blue, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.scale, SpriteEffects.None, 0.0f);
+                        spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.FromNonPremultiplied(63,169,245,255), 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.Scale, SpriteEffects.None, 0.0f);
                     //                    spriteBatch.Draw(textureBlue, gs.rect, Color.Blue);
 
-                    if (gs.color == Color.Red)
-                        spriteBatch.Draw(textureRed, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.Red, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), 0.8f, SpriteEffects.None, 0.0f);
-
+                    if (gs.color == Color.Red || (bombed_indices != null && bombed_indices.Contains(gs.GetServerIndex()) && bombing ))
+                        spriteBatch.Draw(textureRed, gs.rect, Color.Red); 
                     //                    spriteBatch.Draw(textureRed, gs.rect, Color.Red);
 
-                    spriteBatch.DrawString(letterValueFont, gs.GetValue().ToString(), new Vector2(gs.rect.X, gs.rect.Y + 5), Color.LightBlue);
-                    spriteBatch.DrawString(letterFont, gs.letter.ToString(), new Vector2(gs.rect.X + 40, gs.rect.Y + 25), Color.White);
+                    spriteBatch.DrawString(letterValueFont, gs.GetValue().ToString().ToLower(), new Vector2(gs.rect.X + 89, gs.rect.Y + 100), Color.DarkGray, 0.0f, letterFont.MeasureString(gs.GetValue().ToString().ToLower()) / 2, 1.0f, SpriteEffects.None, 0.0f);
+                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.White, 0.0f, letterFont.MeasureString(gs.letter.ToLower())/2, 1.0f, SpriteEffects.None, 0.0f);
                 }
+
             }
 
 //            spriteBatch.DrawString(labelsFont, "Time Left? 1:34", new Vector2(80, 650), Color.Lavender);
@@ -240,4 +267,7 @@ namespace WordCruncherWP7
             spriteBatch.End();
         }
     }
+
+    // username: word_crunch
+    // password: word_crunch
 }

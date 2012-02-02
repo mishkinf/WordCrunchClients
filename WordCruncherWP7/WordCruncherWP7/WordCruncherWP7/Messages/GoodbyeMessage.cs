@@ -19,7 +19,7 @@ namespace WordCruncherWP7.Messages
 
         public void fromJSON(string message)
         {
-
+         
         }
     }
 }

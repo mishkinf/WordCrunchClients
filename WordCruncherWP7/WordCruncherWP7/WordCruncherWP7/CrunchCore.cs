@@ -12,17 +12,18 @@ using Newtonsoft.Json.Linq;
 using WordCruncherWP7.Messages;
 using System.Windows.Threading;
 using System.Windows.Navigation;
+using Microsoft.Phone.Controls;
 
 namespace WordCruncherWP7
 {
     public static class CrunchCore
     {
-        static CruncherClient c = new CruncherClient("10.211.55.2", 2222);
+        static CruncherClient c = new CruncherClient(Constants.ServerURL, System.Convert.ToInt32(Constants.ServerPort));
         static bool inited = false;
         public static event EventHandler OnGameStart;
+        public static event EventHandler OnGameEnd;
         public static event EventHandler OnScoreChange;
         public static event EventHandler<BombedArgs> OnBombed;
-        //static CruncherClient c = new CruncherClient("ec2-184-73-99-238.compute-1.amazonaws.com", 2222);
 
         public class BombedArgs : EventArgs
         {
@@ -57,11 +58,13 @@ namespace WordCruncherWP7
                 case "hello":
                     c.SendMessage(new MatchRequestMessage());
                     break;
+                case "hello_response":
+                    break;
                 case "in_queue":
                     // Do nothing.. Display waiting message to user
                     break;
                 case "start_game":
-                    WordGame.InitGame(550, 800);
+                    WordGame.InitGame(500, 800);
                     StartGameMessage s = new StartGameMessage();
                     s.fromJSON(e.Message);
 
@@ -69,7 +72,7 @@ namespace WordCruncherWP7
                         OnGameStart("CrunchCore", new RoutedEventArgs());
                     break;
                 case "good_guess_response":
-                    GoodGuessResponse response = new GoodGuessResponse();
+                    GoodGuessResponseMessage response = new GoodGuessResponseMessage();
                     response.fromJSON(e.Message);
 
                     WordGame.player1Score = response.scores[0];
@@ -79,7 +82,7 @@ namespace WordCruncherWP7
                         OnScoreChange("Crunch Core", new RoutedEventArgs());
                     break;
                 case "bombed_guess_response":
-                    BombedGuessResponse bomb = new BombedGuessResponse();
+                    BombedGuessResponseMessage bomb = new BombedGuessResponseMessage();
                     bomb.fromJSON(e.Message);
 
                     RoutedEventArgs args = new RoutedEventArgs();
@@ -89,6 +92,11 @@ namespace WordCruncherWP7
 
                     break;
                 case "end_game":
+                    JObject json = JObject.Parse(e.Message);
+                    string reason = (String)json.Property("reason").Value;
+
+                    if (OnGameEnd != null)
+                        OnGameEnd("CrunchCore", new EventArgs());
                     break;
             }
             //if((string)o["type"] == "hi")
@@ -98,7 +106,7 @@ namespace WordCruncherWP7
         private static void c_CreateConnectionCompleted(object sender, ConnectionArgs e)
         {
             if (!inited)
-                c.SendMessage(new HelloMessage("mishkin"));
+                c.SendMessage(new HelloMessage("mishkin", "some token", 1));
             inited = true;
 
             //Dispatcher.BeginInvoke(() =>

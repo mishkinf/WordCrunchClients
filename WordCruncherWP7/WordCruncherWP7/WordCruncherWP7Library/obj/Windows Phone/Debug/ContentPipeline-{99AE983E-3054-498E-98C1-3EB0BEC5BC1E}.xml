@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_blue.xnb</Output>
-      <Time>2011-11-21T21:22:18.8143847-08:00</Time>
+      <Time>2011-12-15T00:00:34.6804844-08:00</Time>
     </Item>
     <Item>
       <Source>square_red.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_red.xnb</Output>
-      <Time>2011-11-21T21:22:18.8153847-08:00</Time>
+      <Time>2011-12-12T22:09:08.3613281-08:00</Time>
     </Item>
     <Item>
       <Source>CourierNew.spritefont</Source>
@@ -44,7 +44,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\squareValue.xnb</Output>
-      <Time>2011-11-21T21:22:18.8123845-08:00</Time>
+      <Time>2011-12-12T21:38:35.0063516-08:00</Time>
     </Item>
     <Item>
       <Source>labelsFont.spritefont</Source>
@@ -53,7 +53,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\labelsFont.xnb</Output>
-      <Time>2011-11-21T21:22:18.7973837-08:00</Time>
+      <Time>2011-12-12T21:31:47.4995156-08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
