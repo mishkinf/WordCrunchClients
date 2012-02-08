@@ -9,35 +9,48 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Newtonsoft.Json.Linq;
+using Microsoft.Phone.Info; 
 
 namespace WordCruncherWP7.Messages
 {
-    public class HelloMessage : iMessage
+    public class HelloMessage : iMessage, iEncodableMessage
     {
-        public static int TYPE_CODE = 0x0001;
-
         public String username;
         public String token;
         public int version;
 
-        public void fromJSON(string message)
-        {
-            JObject json = JObject.Parse(message);
-            this.username = (String)json.Property("username").Value;
-            this.token = (String)json.Property("token").Value;
-            this.version = (int)json.Property("version").Value;
-        }
+        //public static HelloMessage fromJSON(string message)
+        //{
+        //    JObject json = JObject.Parse(message);
+        //    String username = (String)json.Property("username").Value;
+        //    String token = (String)json.Property("token").Value;
+        //    int version = (int)json.Property("version").Value;
 
-        public HelloMessage(String username, String token, int version) {
+        //    return new HelloMessage(usename, token, version);
+        //}
+
+        public HelloMessage(String username) {
             this.username = username;
-            this.token = token;
-            this.version = version;
         }
 
         public String encode() {
+            string deviceUniqueID = string.Empty;
+            object deviceID;
+            if (DeviceExtendedProperties.TryGetValue("DeviceUniqueId", out deviceID))
+            {
+                deviceUniqueID =  Convert.ToBase64String((byte[])deviceID);
+                Constants.username = deviceUniqueID;
+            }
+
+            if (deviceUniqueID == null || deviceUniqueID == "")
+                deviceUniqueID = "FAKEUNIQUEID";
+
+
             JObject json = new JObject(
                 new JProperty("type", "hello"),
-                new JProperty("username", this.username)
+                new JProperty("username", deviceUniqueID),
+                new JProperty("token", Constants.username),
+                new JProperty("version", Constants.ProtocolVersion)
                 );
       
             return json.ToString();

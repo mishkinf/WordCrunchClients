@@ -19,13 +19,13 @@ namespace WordCruncherWP7
         {
             InitializeComponent();
 
-            if (WordGame.player1Score > WordGame.player2Score)
+            if (WordGame.scoreYou > WordGame.scoreOpponent)
                 gameStatus.Text = "You Won!";
             else
                 gameStatus.Text = "You Lost!";
 
-           yourScore.Text = WordGame.player1Score.ToString();
-           opponentScore.Text = WordGame.player2Score.ToString();
+           yourScore.Text = WordGame.scoreYou.ToString();
+           opponentScore.Text = WordGame.scoreOpponent.ToString();
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)

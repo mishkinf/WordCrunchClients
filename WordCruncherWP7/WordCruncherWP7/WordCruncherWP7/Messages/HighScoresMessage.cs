@@ -12,25 +12,23 @@ using Newtonsoft.Json.Linq;
 
 namespace WordCruncherWP7.Messages
 {
-    public class DropBombMessage : iMessage, iEncodableMessage
+    public class HighScoresMessage : iMessage, iEncodableMessage
     {
-        public int index;
-
-        public static DropBombMessage fromJson(JObject json) {
-            return new DropBombMessage((int)json.Property("index").Value);
-        }
-
-        public DropBombMessage(int index)
+        public static HighScoresMessage fromJSON(string message)
         {
-            this.index = index;
+            return new HighScoresMessage();
         }
 
-        public String encode() {
+        public HighScoresMessage()
+        {
+        }
+
+        public String encode()
+        {
             JObject json = new JObject(
-                new JProperty("type", "drop_bomb"),
-                new JProperty("index", index)
+                new JProperty("type", "high_scores")
                 );
-      
+
             return json.ToString();
         }
     }

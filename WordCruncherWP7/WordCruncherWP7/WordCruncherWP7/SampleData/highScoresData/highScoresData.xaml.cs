@@ -49,6 +49,10 @@ namespace Expression.Blend.SampleData.highScoresData
 		}
 	}
 
+	public class ItemCollection : System.Collections.ObjectModel.ObservableCollection<Item>
+	{ 
+	}
+
 	public class Item : System.ComponentModel.INotifyPropertyChanged
 	{
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -80,66 +84,62 @@ namespace Expression.Blend.SampleData.highScoresData
 			}
 		}
 
-		private bool _Status = false;
+		private bool _Result = false;
 
-		public bool Status
+		public bool Result
 		{
 			get
 			{
-				return this._Status;
+				return this._Result;
 			}
 
 			set
 			{
-				if (this._Status != value)
+				if (this._Result != value)
 				{
-					this._Status = value;
-					this.OnPropertyChanged("Status");
+					this._Result = value;
+					this.OnPropertyChanged("Result");
 				}
 			}
 		}
 
-		private double _Your_Score = 0;
+		private double _YourScore = 0;
 
-		public double Your_Score
+		public double YourScore
 		{
 			get
 			{
-				return this._Your_Score;
+				return this._YourScore;
 			}
 
 			set
 			{
-				if (this._Your_Score != value)
+				if (this._YourScore != value)
 				{
-					this._Your_Score = value;
-					this.OnPropertyChanged("Your_Score");
+					this._YourScore = value;
+					this.OnPropertyChanged("YourScore");
 				}
 			}
 		}
 
-		private double _Their_Score = 0;
+		private double _OpponentsScore = 0;
 
-		public double Their_Score
+		public double OpponentsScore
 		{
 			get
 			{
-				return this._Their_Score;
+				return this._OpponentsScore;
 			}
 
 			set
 			{
-				if (this._Their_Score != value)
+				if (this._OpponentsScore != value)
 				{
-					this._Their_Score = value;
-					this.OnPropertyChanged("Their_Score");
+					this._OpponentsScore = value;
+					this.OnPropertyChanged("OpponentsScore");
 				}
 			}
 		}
-	}
-
-	public class ItemCollection : System.Collections.ObjectModel.ObservableCollection<Item>
-	{ 
 	}
 #endif
 }

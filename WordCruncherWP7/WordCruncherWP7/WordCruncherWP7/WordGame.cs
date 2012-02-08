@@ -22,9 +22,10 @@ namespace WordCruncherWP7
         static Random rand = new Random();
         public static GameSquare[,] squares = new GameSquare[5,5];
         public static List<GameSquare> selectedSquares = new List<GameSquare>();
+        public static List<GameWall> walls = new List<GameWall>();
         public static bool Selecting = false;
-        public static int player1Score = 0;
-        public static int player2Score = 0;
+        public static int scoreYou = 0;
+        public static int scoreOpponent = 0;
 
         public static bool IsValidNextSquare(GameSquare current, GameSquare next)
         {
@@ -65,6 +66,22 @@ namespace WordCruncherWP7
         public static void SetSquare(string letter, int value, int c, int r, int index)
         {
             WordGame.squares[c,r] = new GameSquare(letter, value, new Rectangle(c * (boxSize + boxPadding), r * (boxSize + boxPadding), boxSize, boxSize), Color.Blue, c, r, index);
+        }
+
+        public static Microsoft.Xna.Framework.Point IndexToPoint(int index) 
+        {
+            int x = (index-1) % 5;
+            int y = (index-1) / 5;
+
+            return new Microsoft.Xna.Framework.Point(x, y);
+        }
+
+        public static double GetLetterDistance(int s1Index, int s2Index)
+        {
+            Microsoft.Xna.Framework.Point pt1 = IndexToPoint(s1Index);
+            Microsoft.Xna.Framework.Point pt2 = IndexToPoint(s2Index);
+
+            return Math.Sqrt(Math.Pow(pt2.X - pt1.X, 2) + Math.Pow(pt2.Y - pt1.Y, 2));
         }
 
         public static double GetLetterDistance(int x1, int y1, int x2, int y2)

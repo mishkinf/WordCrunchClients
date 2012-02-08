@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using WordCruncherWP7.Messages;
 using Newtonsoft.Json.Linq;
 using Microsoft.Phone.Tasks;
+using WordCruncherWP7.CrunchEventArgs;
 
 namespace WordCruncherWP7
 {
@@ -30,6 +31,20 @@ namespace WordCruncherWP7
             m.encode();
             CrunchCore.OnGameStart += new EventHandler(CrunchCore_OnGameStart);
             CrunchCore.OnGameEnd += new EventHandler(CrunchCore_OnGameEnd);
+            CrunchCore.OnError += new EventHandler<ErrorArgs>(CrunchCore_OnError);
+        }
+
+        void CrunchCore_OnError(object sender, ErrorArgs e)
+        {
+            Dispatcher.BeginInvoke(() =>
+            {
+                if (!Constants.ErrorFlagged)
+                {
+                    MessageBox.Show(e.errorMessage);
+                    Constants.ErrorFlagged = true;
+                }
+
+            });
         }
 
         void CrunchCore_OnGameEnd(object sender, EventArgs e)
@@ -50,6 +65,7 @@ namespace WordCruncherWP7
 
         private void playGame(object sender, RoutedEventArgs e)
         {
+            Constants.ErrorFlagged = false;
             CrunchCore.Setup();
         }
 

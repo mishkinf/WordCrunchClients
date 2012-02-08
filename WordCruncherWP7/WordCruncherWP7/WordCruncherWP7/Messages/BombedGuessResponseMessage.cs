@@ -12,47 +12,47 @@ using Newtonsoft.Json.Linq;
 
 namespace WordCruncherWP7.Messages
 {
-    public class BombedGuessResponseMessage : iMessage
+    public class BombedGuessResponseMessage : iMessage, iDecodableMessage
     {
-        public static int TYPE_CODE = 0x0012;
-
         public int id;
-        public int[] scores;
+        public int scoreYou, scoreOpponent;
         public int[] bombs;
+        public int player_index;
 
-        public void fromJSON(string message) {
+        public static BombedGuessResponseMessage fromJSON(string message) {
             JObject o = JObject.Parse(message);
             int id = (int) o["id"];
-
-            JArray scoresJson = (JArray) o["scores"];
-            int length = scoresJson.Count;
-            scores = new int[length];
-
-            for(int i = 0; i < length; i++) {
-                scores[i] = (int)scoresJson[i];
+            int scoreYou = -1, scoreOpponent = -1, length;
+            int[] bombs;
+            int player_index = (int)o["player_index"];
+           
+            if (Constants.PlayerIndex == 1)
+            {
+                scoreYou = (int)o["scores"][0];
+                scoreOpponent = (int)o["scores"][1];
+            }
+            else if (Constants.PlayerIndex == 2)
+            {
+                scoreYou = (int)o["scores"][1];
+                scoreOpponent = (int)o["scores"][0];
             }
 
             JArray bombsJson = (JArray) o["bombs"];
             length = bombsJson.Count;
             bombs = new int[length];
             for(int i = 0; i < length; i++) {
-                bombs[i] = (int) bombsJson[i];
+                bombs[i] = (int) bombsJson[i] - 1;
             }
 
-
+            return new BombedGuessResponseMessage(id, scoreYou, scoreOpponent, bombs, player_index);
         }
 
-        public BombedGuessResponseMessage(int id, int[] scores, int[] bombs) {
+        public BombedGuessResponseMessage(int id, int scoreYou, int scoreOpponent, int[] bombs, int player_index) {
             this.id = id;
-            this.scores = scores;
+            this.scoreYou = scoreYou;
+            this.scoreOpponent = scoreOpponent;
             this.bombs = bombs;
+            this.player_index = player_index;
         }
-
-        public BombedGuessResponseMessage()
-        {
-         
-        }
-
-        public String encode() { return ""; }
     }
 }

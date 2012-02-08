@@ -5,15 +5,15 @@
 -->
 <SampleData:highScoresData xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.highScoresData" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
   <SampleData:highScoresData.Collection>
-    <SampleData:Item Opponent="Cras" Status="True" Your_Score="952" Their_Score="438" />
-    <SampleData:Item Opponent="Maecenas" Status="False" Your_Score="368" Their_Score="968" />
-    <SampleData:Item Opponent="Praesent" Status="True" Your_Score="857" Their_Score="846" />
-    <SampleData:Item Opponent="Aenean" Status="False" Your_Score="358" Their_Score="316" />
-    <SampleData:Item Opponent="Class" Status="True" Your_Score="625" Their_Score="184" />
-    <SampleData:Item Opponent="Nam" Status="False" Your_Score="958" Their_Score="989" />
-    <SampleData:Item Opponent="Accumsan" Status="True" Your_Score="262" Their_Score="666" />
-    <SampleData:Item Opponent="Sed" Status="False" Your_Score="986" Their_Score="104" />
-    <SampleData:Item Opponent="Curae" Status="True" Your_Score="832" Their_Score="138" />
-    <SampleData:Item Opponent="Mauris" Status="False" Your_Score="110" Their_Score="960" />
+    <SampleData:Item Opponent="Cras" Result="True" YourScore="952" OpponentsScore="438" />
+    <SampleData:Item Opponent="Maecenas" Result="False" YourScore="368" OpponentsScore="968" />
+    <SampleData:Item Opponent="Praesent" Result="True" YourScore="857" OpponentsScore="846" />
+    <SampleData:Item Opponent="Aenean" Result="False" YourScore="358" OpponentsScore="316" />
+    <SampleData:Item Opponent="Class" Result="True" YourScore="625" OpponentsScore="184" />
+    <SampleData:Item Opponent="Nam" Result="False" YourScore="958" OpponentsScore="989" />
+    <SampleData:Item Opponent="Accumsan" Result="True" YourScore="262" OpponentsScore="666" />
+    <SampleData:Item Opponent="Sed" Result="False" YourScore="986" OpponentsScore="104" />
+    <SampleData:Item Opponent="Curae" Result="True" YourScore="832" OpponentsScore="138" />
+    <SampleData:Item Opponent="Mauris" Result="False" YourScore="110" OpponentsScore="960" />
   </SampleData:highScoresData.Collection>
 </SampleData:highScoresData>

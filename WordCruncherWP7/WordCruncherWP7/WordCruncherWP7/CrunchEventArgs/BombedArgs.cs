@@ -8,20 +8,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using WordCruncherWP7.Messages;
 
-namespace WordCruncherWP7.Messages
+namespace WordCruncherWP7.CrunchEventArgs
 {
-    public interface iMessage
+    public class BombedArgs : EventArgs
     {
-    }
+        public BombedGuessResponseMessage bombMessage;
 
-    public interface iEncodableMessage
-    {
-        String encode();
-    }
-
-    public interface iDecodableMessage
-    {
-       // iMessage fromJSON(string json);
+        public BombedArgs(BombedGuessResponseMessage bombMsg)
+        {
+            bombMessage = bombMsg;
+        }
     }
 }

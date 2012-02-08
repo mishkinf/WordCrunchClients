@@ -75,11 +75,18 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="CreateUser.xaml.cs">
+      <DependentUpon>CreateUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CrunchEventArgs\HighScoresArgs.cs" />
+    <Compile Include="GameWall.cs" />
     <Compile Include="CruncherClient.cs" />
     <Compile Include="CrunchCore.cs" />
     <Compile Include="EndGame.xaml.cs">
       <DependentUpon>EndGame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CrunchEventArgs\BombedArgs.cs" />
+    <Compile Include="CrunchEventArgs\ErrorArgs.cs" />
     <Compile Include="Feedback.xaml.cs">
       <DependentUpon>Feedback.xaml</DependentUpon>
     </Compile>
@@ -96,18 +103,23 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MatchResult.cs" />
     <Compile Include="Messages\BadGuessResponseMessage.cs" />
     <Compile Include="Messages\BombedGuessResponseMessage.cs" />
+    <Compile Include="Messages\Class1.cs" />
+    <Compile Include="Messages\DropWallMessage.cs" />
     <Compile Include="Messages\DropBombMessage.cs" />
-    <Compile Include="Messages\GoodbyeMessage.cs" />
     <Compile Include="Messages\GoodGuessResponseMessage.cs" />
     <Compile Include="Messages\GuessWordMessage.cs" />
     <Compile Include="Messages\HelloMessage.cs" />
+    <Compile Include="Messages\HighScoresMessage.cs" />
+    <Compile Include="Messages\HighScoresResponseMessage.cs" />
     <Compile Include="Messages\InQueueMessage.cs" />
     <Compile Include="Messages\MatchRequestMessage.cs" />
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\StartGameMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quad.cs" />
     <Compile Include="SampleData\highScoresData\highScoresData.xaml.cs">
       <DependentUpon>highScoresData.xaml</DependentUpon>
     </Compile>
@@ -121,6 +133,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="CreateUser.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EndGame.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
@@ -160,10 +176,10 @@
     <DesignTimeOnly Include="SampleData\highScoresData\highScoresData.xsd" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ApplicationIcon.png" />
     <Resource Include="Background.png" />
-    <Content Include="SplashScreenImage.jpg" />
     <Resource Include="wcrunchicon.jpg" />
+    <Resource Include="wordcrunchlogo_transparent.png" />
+    <Resource Include="wordcrunch_bannerlogo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Mishimation\Mishimation.csproj">
@@ -183,8 +199,10 @@
     <Resource Include="WCrunch_13.png" />
     <Resource Include="WCrunch_18.png" />
     <Resource Include="WCrunch_21.png" />
-    <Resource Include="word_cruncher_logo.png" />
-    <Resource Include="word_cruncher_logo_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SplashScreenImage.jpg" />
+    <Resource Include="ApplicationIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

@@ -289,9 +289,6 @@
     			</VisualStateGroup.Transitions>
     			<VisualState x:Name="PreLoaded">
     				<Storyboard>
-    					<DoubleAnimation Duration="0" To="-253" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
     					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="playButton">
     						<EasingDoubleKeyFrame KeyTime="0" Value="20">
     							<EasingDoubleKeyFrame.EasingFunction>
@@ -387,11 +384,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-        	<Image x:Name="image" Height="98" Source="WCrunch_03.png" Margin="0,0,-242,0" RenderTransformOrigin="0.5,0.5" Opacity="0" HorizontalAlignment="Right" Width="450">
-        		<Image.RenderTransform>
-        			<CompositeTransform/>
-        		</Image.RenderTransform>
-        	</Image>
+        	<Image Source="wordcrunch_bannerlogo.png" Margin="0" RenderTransformOrigin="0.5,0.5"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->

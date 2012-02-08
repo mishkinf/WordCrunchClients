@@ -13,10 +13,8 @@ using Newtonsoft.Json;
 
 namespace WordCruncherWP7.Messages
 {
-    public class GuessWordMessage : iMessage
+    public class GuessWordMessage : iMessage, iEncodableMessage
     {
-        
-        public static int TYPE_CODE = 0x0005;
         private static Random rand = new Random();
         private static int guessId = 0;
 
@@ -36,11 +34,5 @@ namespace WordCruncherWP7.Messages
         public String encode() {
             return encoded;
         }
-
-        public void fromJSON(string message)
-        {
-
-        }
-
     }
 }

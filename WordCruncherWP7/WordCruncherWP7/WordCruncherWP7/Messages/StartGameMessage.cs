@@ -13,9 +13,11 @@ using System.Collections.Generic;
 
 namespace WordCruncherWP7.Messages
 {
-    public class StartGameMessage : iMessage
-    {                                                                                                   
-        public void fromJSON(string message)
+    public class StartGameMessage : iMessage, iDecodableMessage
+    {
+        public String player1, player2;
+        public int bombCount, columns, rows;                                                                                    
+        public static StartGameMessage fromJSON(string message)
         {
             JObject o = JObject.Parse(message);
 
@@ -40,12 +42,31 @@ namespace WordCruncherWP7.Messages
                     int value = (int)o["board"]["matrix"][index][1];
 
                     WordGame.SetSquare(letter, value, r, c, index);
-                
+
+                    if (index < 24)
+                    {
+                        //int x = WordGame.squares[r, c].x + WordGame.squares[r, c].rect.Width - 15;
+                        //int y = WordGame.squares[r, c].y;
+                        //int width = 30;
+                       // int height = WordGame.squares[r, c].rect.Height;
+
+                        //WordGame.walls.Add(new GameWall(new Microsoft.Xna.Framework.Rectangle(x, y, width, height), index, index + 1));
+                    }
+                    
                     index++;
                 }
             }
+
+            return new StartGameMessage(player1, player2, bomb_count, columns, rows);
         }
 
-        public String encode() { return "";  }
+        public StartGameMessage(String player1, String player2, int bombCount, int columns, int rows)
+        {
+            this.player1 = player1;
+            this.player2 = player2;
+            this.bombCount = bombCount;
+            this.columns = columns;
+            this.rows = rows;
+        }
     }
 }

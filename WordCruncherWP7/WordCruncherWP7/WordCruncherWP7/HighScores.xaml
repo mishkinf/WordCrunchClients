@@ -4,8 +4,8 @@
 	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="HighScoresPage"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
 	x:Class="WordCruncherWP7.HighScores"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -16,9 +16,9 @@
 		<DataTemplate x:Key="ItemTemplate">
 			<StackPanel Width="455" Orientation="Horizontal" Height="77">
 				<TextBlock Text="{Binding Opponent}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="Red" Width="224" VerticalAlignment="Center"/>
-				<TextBlock Text="{Binding Their_Score}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FFFF8181" VerticalAlignment="Center"/>
-				<TextBlock Text="{Binding Your_Score}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FF8DA4FF" VerticalAlignment="Center"/>
-				<CheckBox IsChecked="{Binding Status, Mode=TwoWay}" VerticalAlignment="Center"/>
+				<TextBlock Text="{Binding OpponentsScore}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FFFF8181" VerticalAlignment="Center"/>
+				<TextBlock Text="{Binding YourScore}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FF8DA4FF" VerticalAlignment="Center"/>
+				<CheckBox IsChecked="{Binding Result, Mode=TwoWay}" VerticalAlignment="Center"/>
 			</StackPanel>
 		</DataTemplate>
 	</phone:PhoneApplicationPage.Resources>
@@ -38,7 +38,7 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<ListBox ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding Collection}"/>
+			<ListBox x:Name="highScoresListBox" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding ElementName=MatchResults, Path=.}" />
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

@@ -9,19 +9,15 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace WordCruncherWP7.Messages
+namespace WordCruncherWP7.CrunchEventArgs
 {
-    public interface iMessage
+    public class ErrorArgs : EventArgs
     {
-    }
+        public String errorMessage;
 
-    public interface iEncodableMessage
-    {
-        String encode();
-    }
-
-    public interface iDecodableMessage
-    {
-       // iMessage fromJSON(string json);
+        public ErrorArgs(String errorMsg)
+        {
+            this.errorMessage = errorMsg;
+        }
     }
 }

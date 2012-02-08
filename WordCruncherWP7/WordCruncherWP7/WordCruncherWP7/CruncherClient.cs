@@ -97,7 +97,7 @@ namespace WordCruncherWP7
             return args;
         }
 
-        public bool SendMessage(iMessage item)
+        public bool SendMessage(iEncodableMessage item)
         {
             if (!this.connection.Connected)
             {

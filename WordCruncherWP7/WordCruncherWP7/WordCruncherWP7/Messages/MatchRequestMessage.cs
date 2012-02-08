@@ -13,18 +13,10 @@ using Newtonsoft.Json.Linq;
 
 namespace WordCruncherWP7.Messages
 {
-    public class MatchRequestMessage : iMessage
+    public class MatchRequestMessage : iMessage, iEncodableMessage
     {
         public MatchRequestMessage()
         {
-        }
-
-        public static int TYPE_CODE = 0x0002;
-
-        public void fromJSON(string message)
-        {
-            JObject o = JObject.Parse(message);
-
         }
 
         public String encode() {

@@ -12,33 +12,34 @@ using Newtonsoft.Json.Linq;
 
 namespace WordCruncherWP7.Messages
 {
-    public class GoodGuessResponseMessage : iMessage
+    public class GoodGuessResponseMessage : iMessage, iDecodableMessage
     {
-        public static int TYPE_CODE = 0x0011;
-
         public int id;
-        public int[] scores;
+        public int scoreYou, scoreOpponent;
 
-        public void fromJSON(string json) {
+        public static GoodGuessResponseMessage fromJSON(string json) {
             JObject o = JObject.Parse(json);
-            this.id = (int)o["id"];
-            int player1Score = (int)o["scores"][0];
-            int player2Score = (int)o["scores"][1];
+            int id = (int)o["id"];
+            int scoreYou = -1, scoreOpponent = -1;
 
-            this.scores = new int[2] { player1Score, player2Score };
+            if (Constants.PlayerIndex == 1)
+            {
+                scoreYou = (int)o["scores"][0];
+                scoreOpponent = (int)o["scores"][1];
+            }
+            else if (Constants.PlayerIndex == 2)
+            {
+                scoreYou = (int)o["scores"][1];
+                scoreOpponent = (int)o["scores"][0];
+            }
 
-            //return new GoodGuessResponse(id, scores);
+            return new GoodGuessResponseMessage(id, scoreYou, scoreOpponent);
         }
 
-        public GoodGuessResponseMessage()
-        {
-        }
-
-        public GoodGuessResponseMessage(int id, int[] scores) {
+        public GoodGuessResponseMessage(int id, int scoreYou, int scoreOpponent) {
             this.id = id;
-            this.scores = scores;
+            this.scoreYou = scoreYou;
+            this.scoreOpponent = scoreOpponent;
         }
-
-        public String encode() { return ""; }
     }
 }

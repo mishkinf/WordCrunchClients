@@ -18,8 +18,8 @@
   </xs:complexType>
   <xs:complexType name="Item">
     <xs:attribute blend:FormatParameters="1,8" name="Opponent" type="xs:string" />
-    <xs:attribute name="Status" type="xs:boolean" />
-    <xs:attribute blend:FormatParameters="3" name="Your_Score" type="xs:double" />
-    <xs:attribute blend:FormatParameters="3" name="Their_Score" type="xs:double" />
+    <xs:attribute name="Result" type="xs:boolean" />
+    <xs:attribute blend:FormatParameters="3" name="YourScore" type="xs:double" />
+    <xs:attribute blend:FormatParameters="3" name="OpponentsScore" type="xs:double" />
   </xs:complexType>
 </xs:schema>
