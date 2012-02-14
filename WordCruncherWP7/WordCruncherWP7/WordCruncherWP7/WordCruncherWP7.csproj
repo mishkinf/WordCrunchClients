@@ -74,30 +74,35 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bombs.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="CreateUser.xaml.cs">
+    <Compile Include="Pages\CreateUser.xaml.cs">
       <DependentUpon>CreateUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CrunchEventArgs\GoodGuessArgs.cs" />
     <Compile Include="CrunchEventArgs\HighScoresArgs.cs" />
+    <Compile Include="ePlayer.cs" />
+    <Compile Include="GameInput.cs" />
     <Compile Include="GameWall.cs" />
     <Compile Include="CruncherClient.cs" />
     <Compile Include="CrunchCore.cs" />
-    <Compile Include="EndGame.xaml.cs">
+    <Compile Include="Pages\EndGame.xaml.cs">
       <DependentUpon>EndGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="CrunchEventArgs\BombedArgs.cs" />
     <Compile Include="CrunchEventArgs\ErrorArgs.cs" />
-    <Compile Include="Feedback.xaml.cs">
+    <Compile Include="Pages\Feedback.xaml.cs">
       <DependentUpon>Feedback.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FindFriends.xaml.cs">
+    <Compile Include="Pages\FindFriends.xaml.cs">
       <DependentUpon>FindFriends.xaml</DependentUpon>
     </Compile>
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameSquare.cs" />
-    <Compile Include="HighScores.xaml.cs">
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Pages\HighScores.xaml.cs">
       <DependentUpon>HighScores.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
@@ -118,14 +123,20 @@
     <Compile Include="Messages\MatchRequestMessage.cs" />
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\StartGameMessage.cs" />
+    <Compile Include="Particles\ParticleSystems\FireworksParticleSystem.cs" />
+    <Compile Include="Particles\Particle.cs" />
+    <Compile Include="Particles\ParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\SmokeTrailParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\SparksParticleSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quad.cs" />
     <Compile Include="SampleData\highScoresData\highScoresData.xaml.cs">
       <DependentUpon>highScoresData.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.xaml.cs">
+    <Compile Include="Pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Word.cs" />
     <Compile Include="WordGame.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,19 +144,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="CreateUser.xaml">
+    <Page Include="Pages\CreateUser.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EndGame.xaml">
+    <Page Include="Pages\EndGame.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Feedback.xaml">
+    <Page Include="Pages\Feedback.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FindFriends.xaml">
+    <Page Include="Pages\FindFriends.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -153,7 +164,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HighScores.xaml">
+    <Page Include="Pages\HighScores.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -165,7 +176,7 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Settings.xaml">
+    <Page Include="Pages\Settings.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -178,8 +189,8 @@
   <ItemGroup>
     <Resource Include="Background.png" />
     <Resource Include="wcrunchicon.jpg" />
-    <Resource Include="wordcrunchlogo_transparent.png" />
-    <Resource Include="wordcrunch_bannerlogo.png" />
+    <Resource Include="Images\wordcrunchlogo_transparent.png" />
+    <Resource Include="Images\wordcrunch_bannerlogo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Mishimation\Mishimation.csproj">
@@ -191,19 +202,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="menu_icon.png" />
-    <Resource Include="play_again_icon.png" />
-    <Resource Include="WCrunch_03.png" />
-    <Resource Include="WCrunch_07.png" />
-    <Resource Include="WCrunch_11.png" />
-    <Resource Include="WCrunch_13.png" />
-    <Resource Include="WCrunch_18.png" />
-    <Resource Include="WCrunch_21.png" />
+    <Resource Include="Images\menu_icon.png" />
+    <Resource Include="Images\play_again_icon.png" />
+    <Resource Include="Images\WCrunch_03.png" />
+    <Resource Include="Images\WCrunch_07.png" />
+    <Resource Include="Images\WCrunch_11.png" />
+    <Resource Include="Images\WCrunch_13.png" />
+    <Resource Include="Images\WCrunch_18.png" />
+    <Resource Include="Images\WCrunch_21.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SplashScreenImage.jpg" />
     <Resource Include="ApplicationIcon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

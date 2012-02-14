@@ -15,22 +15,10 @@ namespace WordCruncherWP7.Messages
 {
     public class HelloMessage : iMessage, iEncodableMessage
     {
-        public String username;
         public String token;
         public int version;
 
-        //public static HelloMessage fromJSON(string message)
-        //{
-        //    JObject json = JObject.Parse(message);
-        //    String username = (String)json.Property("username").Value;
-        //    String token = (String)json.Property("token").Value;
-        //    int version = (int)json.Property("version").Value;
-
-        //    return new HelloMessage(usename, token, version);
-        //}
-
-        public HelloMessage(String username) {
-            this.username = username;
+        public HelloMessage() {
         }
 
         public String encode() {
@@ -49,7 +37,7 @@ namespace WordCruncherWP7.Messages
             JObject json = new JObject(
                 new JProperty("type", "hello"),
                 new JProperty("username", deviceUniqueID),
-                new JProperty("token", Constants.username),
+                new JProperty("token", deviceUniqueID),
                 new JProperty("version", Constants.ProtocolVersion)
                 );
       

@@ -37,6 +37,7 @@ namespace WordCruncherWP7
         public int index = 0;
         public bool bombed = false;
         public bool hasBomb = false;
+        public bool yourBomb = false;
 
         public GameSquare(string letter, int value, Rectangle rect, Color c, int x, int y, int index)
         {

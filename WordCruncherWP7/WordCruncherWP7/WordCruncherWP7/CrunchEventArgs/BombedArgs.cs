@@ -14,11 +14,11 @@ namespace WordCruncherWP7.CrunchEventArgs
 {
     public class BombedArgs : EventArgs
     {
-        public BombedGuessResponseMessage bombMessage;
+        public BombedGuessResponseMessage Message;
 
-        public BombedArgs(BombedGuessResponseMessage bombMsg)
+        public BombedArgs(BombedGuessResponseMessage message)
         {
-            bombMessage = bombMsg;
+            Message = message;
         }
     }
 }

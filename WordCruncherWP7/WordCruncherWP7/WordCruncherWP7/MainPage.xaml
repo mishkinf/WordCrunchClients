@@ -68,7 +68,7 @@
 									</ContentControl.Foreground>
 								</ContentControl>
 							</Border>
-							<Image Margin="39,43,45,44" Source="WCrunch_07.png"/>
+							<Image Margin="39,43,45,44" Source="Images/WCrunch_07.png"/>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -115,7 +115,7 @@
 								</Border.RenderTransform>
 								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="Friends" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" Foreground="White"/>
 							</Border>
-							<Image Margin="41,38,43,49" Source="WCrunch_11.png"/>
+							<Image Margin="41,38,43,49" Source="Images/WCrunch_11.png"/>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -165,7 +165,7 @@
 								</Border.RenderTransform>
 								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left"/>
 							</Border>
-							<Image Margin="37,38,47,49" Source="WCrunch_13.png"/>
+							<Image Margin="37,38,47,49" Source="Images/WCrunch_13.png"/>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -212,7 +212,7 @@
 								</Border.RenderTransform>
 								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" BorderBrush="{x:Null}" Foreground="White"/>
 							</Border>
-							<Image Margin="39,35,45,52" Source="WCrunch_21.png"/>
+							<Image Margin="39,35,45,52" Source="Images/WCrunch_21.png"/>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -262,7 +262,7 @@
 								</Border.Background>
 								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" Foreground="White"/>
 							</Border>
-							<Image Margin="42,33,42,54" Source="WCrunch_18.png"/>
+							<Image Margin="42,33,42,54" Source="Images/WCrunch_18.png"/>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -384,7 +384,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-        	<Image Source="wordcrunch_bannerlogo.png" Margin="0" RenderTransformOrigin="0.5,0.5"/>
+        	<Image Source="Images/wordcrunch_bannerlogo.png" Margin="0" RenderTransformOrigin="0.5,0.5"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -400,7 +400,7 @@
             	</Button.RenderTransform>
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/FindFriends.xaml"/>
+            			<ec:NavigateToPageAction TargetPage="/Pages/FindFriends.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
             </Button>
@@ -410,7 +410,7 @@
             	</Button.RenderTransform>
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/HighScores.xaml"/>
+            			<ec:NavigateToPageAction TargetPage="/Pages/HighScores.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
             </Button>
@@ -420,7 +420,7 @@
             	</Button.RenderTransform>
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/Settings.xaml"/>
+            			<ec:NavigateToPageAction TargetPage="/Pages/Settings.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
             </Button>

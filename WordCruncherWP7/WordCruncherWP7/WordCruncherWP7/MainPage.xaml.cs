@@ -51,7 +51,7 @@ namespace WordCruncherWP7
         {
             Dispatcher.BeginInvoke(() =>
             {
-                NavigationService.Navigate(new Uri("/EndGame.xaml", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Pages/EndGame.xaml", UriKind.Relative));
             });
         }
 
@@ -67,6 +67,8 @@ namespace WordCruncherWP7
         {
             Constants.ErrorFlagged = false;
             CrunchCore.Setup();
+            CrunchCore.inited = false;
+            CrunchCore.Connect();
         }
 
         private void feedbackButton_Click(object sender, RoutedEventArgs e)

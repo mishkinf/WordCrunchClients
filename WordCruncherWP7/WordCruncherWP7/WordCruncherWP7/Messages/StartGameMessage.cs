@@ -23,6 +23,7 @@ namespace WordCruncherWP7.Messages
 
             string player1 = (string)o["players"][0];
             string player2 = (string)o["players"][1];
+
             int bomb_count = (int)o["bomb_count"];
 
             int columns = (int)o["board"]["columns"];
@@ -56,6 +57,8 @@ namespace WordCruncherWP7.Messages
                     index++;
                 }
             }
+
+            
 
             return new StartGameMessage(player1, player2, bomb_count, columns, rows);
         }

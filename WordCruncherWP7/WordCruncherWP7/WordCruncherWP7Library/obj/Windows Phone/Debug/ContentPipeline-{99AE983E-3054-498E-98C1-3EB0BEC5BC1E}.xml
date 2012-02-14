@@ -64,6 +64,69 @@
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb.xnb</Output>
       <Time>2012-02-05T15:41:58.1699219-08:00</Time>
     </Item>
+    <Item>
+      <Source>deletemetexture.jpg</Source>
+      <Name>deletemetexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\deletemetexture.xnb</Output>
+      <Time>2012-02-08T00:20:30.1738281-08:00</Time>
+    </Item>
+    <Item>
+      <Source>fadeup.png</Source>
+      <Name>fadeup</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\fadeup.xnb</Output>
+      <Time>2012-02-11T14:06:31.0839062-08:00</Time>
+    </Item>
+    <Item>
+      <Source>fadeup2.png</Source>
+      <Name>fadeup2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\fadeup2.xnb</Output>
+      <Time>2012-02-11T14:38:19.0214843-08:00</Time>
+    </Item>
+    <Item>
+      <Source>fadeup3.png</Source>
+      <Name>fadeup3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\fadeup3.xnb</Output>
+      <Time>2012-02-11T14:38:19.0234375-08:00</Time>
+    </Item>
+    <Item>
+      <Source>spark.png</Source>
+      <Name>spark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark.xnb</Output>
+      <Time>2012-02-11T15:20:38.071289-08:00</Time>
+    </Item>
+    <Item>
+      <Source>spark_enemy.png</Source>
+      <Name>spark_enemy</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_enemy.xnb</Output>
+      <Time>2012-02-11T22:58:17-08:00</Time>
+    </Item>
+    <Item>
+      <Source>spark2.png</Source>
+      <Name>spark2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark2.xnb</Output>
+      <Time>2012-02-11T22:58:17-08:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{99AE983E-3054-498E-98C1-3EB0BEC5BC1E}</ContentProjectGUID>

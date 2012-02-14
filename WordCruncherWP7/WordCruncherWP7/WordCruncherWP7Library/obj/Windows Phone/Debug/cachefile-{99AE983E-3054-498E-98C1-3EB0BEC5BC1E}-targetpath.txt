@@ -5,3 +5,10 @@ Content\CourierNew.xnb
 Content\squareValue.xnb
 Content\labelsFont.xnb
 Content\bomb.xnb
+Content\deletemetexture.xnb
+Content\fadeup.xnb
+Content\fadeup2.xnb
+Content\fadeup3.xnb
+Content\spark.xnb
+Content\spark_enemy.xnb
+Content\spark2.xnb

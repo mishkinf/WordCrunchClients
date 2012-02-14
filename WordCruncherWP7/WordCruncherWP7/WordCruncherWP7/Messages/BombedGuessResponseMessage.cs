@@ -17,15 +17,27 @@ namespace WordCruncherWP7.Messages
         public int id;
         public int scoreYou, scoreOpponent;
         public int[] bombs;
+        public int[] selectionPath;
         public int player_index;
+        public ePlayer Player;
+        public bool YourGuess { get { return player_index == Constants.PlayerIndex; } }
+        public Word Word;
 
         public static BombedGuessResponseMessage fromJSON(string message) {
             JObject o = JObject.Parse(message);
             int id = (int) o["id"];
             int scoreYou = -1, scoreOpponent = -1, length;
-            int[] bombs;
+            int[] bombs, selectionPath;
             int player_index = (int)o["player_index"];
-           
+            ePlayer player;
+            Word word;
+            GameSquare[] squares;
+
+            if (Constants.PlayerIndex == player_index)
+                player = ePlayer.You;
+            else
+                player = ePlayer.Opponent;
+
             if (Constants.PlayerIndex == 1)
             {
                 scoreYou = (int)o["scores"][0];
@@ -44,15 +56,29 @@ namespace WordCruncherWP7.Messages
                 bombs[i] = (int) bombsJson[i] - 1;
             }
 
-            return new BombedGuessResponseMessage(id, scoreYou, scoreOpponent, bombs, player_index);
+            JArray selectionJson = (JArray)o["selection"];
+            length = selectionJson.Count;
+            selectionPath = new int[length];
+            for (int i = 0; i < length; i++)
+            {
+                selectionPath[i] = (int)selectionJson[i] - 1;
+            }
+
+            squares = new GameSquare[selectionPath.Length];
+
+            for (int i = 0; i < squares.Length; i++)
+                squares[i] = WordGame.squares2[selectionPath[i]];
+
+            word = new Word(id, selectionPath, squares);
+            return new BombedGuessResponseMessage(scoreYou, scoreOpponent, word, bombs, player);
         }
 
-        public BombedGuessResponseMessage(int id, int scoreYou, int scoreOpponent, int[] bombs, int player_index) {
-            this.id = id;
+        public BombedGuessResponseMessage(int scoreYou, int scoreOpponent, Word word, int[] bombs, ePlayer player) {
             this.scoreYou = scoreYou;
             this.scoreOpponent = scoreOpponent;
             this.bombs = bombs;
-            this.player_index = player_index;
+            this.Word = word;
+            this.Player = player;
         }
     }
 }

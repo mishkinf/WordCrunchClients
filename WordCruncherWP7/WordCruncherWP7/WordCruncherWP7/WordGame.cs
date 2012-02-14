@@ -21,6 +21,7 @@ namespace WordCruncherWP7
         static string[] letters = new string[26] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         static Random rand = new Random();
         public static GameSquare[,] squares = new GameSquare[5,5];
+        public static GameSquare[] squares2 = new GameSquare[25];
         public static List<GameSquare> selectedSquares = new List<GameSquare>();
         public static List<GameWall> walls = new List<GameWall>();
         public static bool Selecting = false;
@@ -65,7 +66,9 @@ namespace WordCruncherWP7
 
         public static void SetSquare(string letter, int value, int c, int r, int index)
         {
-            WordGame.squares[c,r] = new GameSquare(letter, value, new Rectangle(c * (boxSize + boxPadding), r * (boxSize + boxPadding), boxSize, boxSize), Color.Blue, c, r, index);
+            GameSquare sq = new GameSquare(letter, value, new Rectangle(c * (boxSize + boxPadding), r * (boxSize + boxPadding), boxSize, boxSize), Color.Blue, c, r, index);
+            WordGame.squares2[index] = sq;
+            WordGame.squares[c, r] = sq;
         }
 
         public static Microsoft.Xna.Framework.Point IndexToPoint(int index) 

@@ -15,24 +15,33 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using WordCruncherWP7.CrunchEventArgs;
 using Microsoft.Phone.Shell;
+using System.Collections.Generic;
 
 namespace WordCruncherWP7
 {
     public static class CrunchCore
     {
         static CruncherClient c = new CruncherClient(Constants.ServerURL, System.Convert.ToInt32(Constants.ServerPort));
-        static bool inited = false;
+        public static bool inited = false;
         public static event EventHandler OnGameStart;
         public static event EventHandler OnGameEnd;
         public static event EventHandler OnScoreChange;
         public static event EventHandler<ErrorArgs> OnError;
         public static event EventHandler<BombedArgs> OnBombed;
+        public static event EventHandler<GoodGuessArgs> OnGoodGuess;
         public static event EventHandler<HighScoresArgs> OnHighScoresReturned;
+        public static List<Word> yourWords = new List<Word>();
+        public static List<Word> opponentsWords = new List<Word>();
 
         public static void Setup()
         {
             c.OnCreateConnectionCompleted += c_CreateConnectionCompleted;
             c.OnDataReceivedSuccessfully += c_OnDataReceivedSuccessfully;
+
+        }
+
+        public static void Connect()
+        {
             c.Connect();
         }
 
@@ -83,6 +92,10 @@ namespace WordCruncherWP7
 
                         if (OnScoreChange != null)
                             OnScoreChange("Crunch Core", new RoutedEventArgs());
+
+                        if (OnGoodGuess != null)
+                            OnGoodGuess("CrunchCore", new GoodGuessArgs(response));
+
                         break;
                     case "bombed_guess_response":
                         BombedGuessResponseMessage bomb = BombedGuessResponseMessage.fromJSON(e.Message);
@@ -126,7 +139,7 @@ namespace WordCruncherWP7
         private static void c_CreateConnectionCompleted(object sender, ConnectionArgs e)
         {
             if (!inited)
-                c.SendMessage(new HelloMessage("mishkinnewest"));
+                c.SendMessage(new HelloMessage());
             inited = true;
         }
     }
