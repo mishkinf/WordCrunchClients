@@ -26,14 +26,14 @@ namespace WordCruncherWP7
 
         public void DropBomb(int[] indices)
         {
+            ResetBombs();
             bombedIndices.AddRange(indices);
-            Reset();
         }
 
         public void DropBomb(int index) 
         {
+            ResetBombs();
             bombedIndices.Add(index);
-            Reset();
         }
 
         private void Reset()
@@ -85,6 +85,8 @@ namespace WordCruncherWP7
                         s.hasBomb = false;
                 }
             }
+
+            bombedIndices.Clear();
         }
     }
 

@@ -199,7 +199,7 @@
 								</Border.RenderTransform>
 								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left"/>
 							</Border>
-							<Image Margin="37,38,47,49" Source="Images/play_again_icon.png"/>
+							<Image Margin="37,38,47,49" Source="/WordCruncherWP7;component/Images/play_again_icon.png"/>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -267,35 +267,35 @@
 		</Grid.RowDefinitions>
 		
 		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="gameStatus" Text="You Won!" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="48"/>
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0" Height="73" VerticalAlignment="Top">
+			<TextBlock x:Name="gameStatus" Text="You Won!" Margin="0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Height="72"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="You" VerticalAlignment="Top" FontSize="29.333" Foreground="#FF707070" Margin="42,0,0,0"/>
-			<TextBlock HorizontalAlignment="Right" Margin="0,0,56,0" TextWrapping="Wrap" Text="Them" VerticalAlignment="Top" FontSize="29.333" Foreground="#FF707070"/>
-			<TextBlock x:Name="yourScore" HorizontalAlignment="Left" Margin="42,39,0,0" TextWrapping="Wrap" Text="154" VerticalAlignment="Top" FontSize="48" FontFamily="OCR A Extended"/>
-			<TextBlock x:Name="opponentScore" HorizontalAlignment="Right" Margin="0,39,42,0" TextWrapping="Wrap" Text="102" VerticalAlignment="Top" FontSize="48" FontFamily="OCR A Extended"/>
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
+			<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="You" VerticalAlignment="Top" FontSize="29.333" Foreground="#FF707070" Margin="8,0,0,0"/>
+			<TextBlock HorizontalAlignment="Right" Margin="0,0,154,0" TextWrapping="Wrap" Text="Them" VerticalAlignment="Top" FontSize="29.333" Foreground="#FF707070"/>
+			<TextBlock x:Name="yourScore" HorizontalAlignment="Left" Margin="66,0,0,0" TextWrapping="Wrap" Text="154" VerticalAlignment="Top" FontSize="48" FontFamily="OCR A Extended"/>
+			<TextBlock x:Name="opponentScore" HorizontalAlignment="Right" Margin="0,0,57,0" TextWrapping="Wrap" Text="102" VerticalAlignment="Top" FontSize="48" FontFamily="OCR A Extended"/>
 			<StackPanel Margin="8,93,2,163" Orientation="Horizontal">
-				<ListBox x:Name="yourWords" Width="222"/>
-				<ListBox x:Name="opponentsWords" Width="222"/>
+				<ListBox x:Name="yourWords" Width="229"/>
+				<ListBox x:Name="opponentsWords" Width="238"/>
 			</StackPanel>
-			<Button Content="High Scores" Height="151" HorizontalAlignment="Left" Margin="303,507,0,0" x:Name="highScoreButton_Copy" VerticalAlignment="Top" Width="151" BorderBrush="{x:Null}" Style="{StaticResource HighScoresBtnStyle}" Background="#FF2CAAEF" >
+			<Button Content="High Scores" Height="171" HorizontalAlignment="Left" Margin="317,528,0,0" x:Name="highScoreButton_Copy" VerticalAlignment="Top" Width="171" BorderBrush="{x:Null}" Style="{StaticResource HighScoresBtnStyle}" Background="#FF2CAAEF" >
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="Click">
 						<ec:NavigateToPageAction TargetPage="/Pages/HighScores.xaml"/>
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
 			</Button>
-			<Button Content="Play Again" Height="151" HorizontalAlignment="Left" Margin="1,507,0,0" x:Name="playAgainBtn" VerticalAlignment="Top" Width="151" BorderBrush="{x:Null}" Style="{StaticResource playAgainBtn}" Background="#FF2CAAEF" d:LayoutOverrides="HorizontalAlignment" >
+			<Button Content="Play Again" Height="171" HorizontalAlignment="Left" Margin="-8,528,0,0" x:Name="playAgainBtn" VerticalAlignment="Top" Width="171" BorderBrush="{x:Null}" Style="{StaticResource playAgainBtn}" Background="#FF2CAAEF" d:LayoutOverrides="HorizontalAlignment" >
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="Click">
 						<ec:NavigateToPageAction TargetPage="/MainPage.xaml"/>
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
 			</Button>
-			<Button Content="Main Menu" Height="151" HorizontalAlignment="Left" Margin="152,507,0,0" x:Name="mainMenuBtn" VerticalAlignment="Top" Width="151" BorderBrush="{x:Null}" Style="{StaticResource MainMenuBtn}" Background="#FF2CAAEF" >
+			<Button Content="Main Menu" Height="171" HorizontalAlignment="Left" Margin="154,528,0,0" x:Name="mainMenuBtn" VerticalAlignment="Top" Width="171" BorderBrush="{x:Null}" Style="{StaticResource MainMenuBtn}" Background="#FF2CAAEF" >
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="Click">
 						<ec:NavigateToPageAction TargetPage="/MainPage.xaml"/>

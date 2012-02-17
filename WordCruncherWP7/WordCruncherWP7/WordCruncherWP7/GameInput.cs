@@ -12,8 +12,6 @@ namespace WordCruncherWP7
     {
         public void Update(TouchCollection curTouches)
         {
-            //TouchCollection curTouches = TouchPanel.GetState();
-
             foreach (TouchLocation location in curTouches)
             {
                 float fingerX = location.Position.X;
@@ -26,7 +24,7 @@ namespace WordCruncherWP7
                             if (gs.collisionRect.Contains((int)fingerX, (int)fingerY))
                             {
                                 WordGame.Selecting = true;
-                                gs.color = Color.Red;
+                                gs.color = Color.Gray;
                                 WordGame.selectedSquares.Add(gs);
                             }
                         break;
@@ -54,7 +52,7 @@ namespace WordCruncherWP7
                                     if (WordGame.selectedSquares.Count > 0 && !WordGame.selectedSquares.Contains(gs) &&
                                         WordGame.IsValidNextSquare(WordGame.selectedSquares[WordGame.selectedSquares.Count-1], gs))
                                     {
-                                        gs.color = Color.Red;
+                                        gs.color = Color.Gray;
                                         WordGame.selectedSquares.Add(gs);
                                     }
                                     else

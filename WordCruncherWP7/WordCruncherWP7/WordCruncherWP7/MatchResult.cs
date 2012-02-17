@@ -28,5 +28,10 @@ namespace WordCruncherWP7
             this.opponentsScore = opponentsScore;
             this.opponentsUsername = opponentsUsername;
         }
+
+        public override string ToString()
+        {
+            return opponentsUsername + ": " + opponentsScore.ToString() + "/" + yourScore.ToString();
+        }
     }
 }

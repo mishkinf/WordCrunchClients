@@ -113,7 +113,7 @@
 								<Border.RenderTransform>
 									<CompositeTransform/>
 								</Border.RenderTransform>
-								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="Friends" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" Foreground="White"/>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="Instructions" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" Foreground="White"/>
 							</Border>
 							<Image Margin="41,38,43,49" Source="Images/WCrunch_11.png"/>
 						</Grid>
@@ -429,6 +429,7 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
+            <ProgressBar x:Name="loadingBar" IsIndeterminate="True" Visibility="Collapsed"/>
         </Grid>
     </Grid>
  

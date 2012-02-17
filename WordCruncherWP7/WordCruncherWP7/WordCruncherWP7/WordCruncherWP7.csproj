@@ -74,8 +74,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationSettings.cs" />
     <Compile Include="Bombs.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="Pages\CreateUser.xaml.cs">
       <DependentUpon>CreateUser.xaml</DependentUpon>
     </Compile>
@@ -123,6 +124,12 @@
     <Compile Include="Messages\MatchRequestMessage.cs" />
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\StartGameMessage.cs" />
+    <Compile Include="Pages\InitialSetup.xaml.cs">
+      <DependentUpon>InitialSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Instructions.xaml.cs">
+      <DependentUpon>Instructions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Particles\ParticleSystems\FireworksParticleSystem.cs" />
     <Compile Include="Particles\Particle.cs" />
     <Compile Include="Particles\ParticleSystem.cs" />
@@ -172,6 +179,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\InitialSetup.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Instructions.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="SampleData\highScoresData\highScoresData.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
@@ -188,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Background.png" />
+    <Resource Include="Pages\play_again_icon2.png" />
     <Resource Include="wcrunchicon.jpg" />
     <Resource Include="Images\wordcrunchlogo_transparent.png" />
     <Resource Include="Images\wordcrunch_bannerlogo.png" />

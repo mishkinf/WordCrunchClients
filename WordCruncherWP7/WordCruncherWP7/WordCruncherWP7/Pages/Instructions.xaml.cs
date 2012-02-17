@@ -13,12 +13,11 @@ using Microsoft.Phone.Controls;
 
 namespace WordCruncherWP7
 {
-    public partial class Settings : PhoneApplicationPage
+    public partial class Instructions : PhoneApplicationPage
     {
-        public Settings()
+        public Instructions()
         {
             InitializeComponent();
         }
-
     }
 }

@@ -16,11 +16,8 @@ namespace WordCruncherWP7.CrunchEventArgs
 {
     public class HighScoresArgs: EventArgs
     {
-        public ObservableCollection<MatchResult> matchResults;
-
-        public HighScoresArgs(ObservableCollection<MatchResult> matchResults)
+        public HighScoresArgs()
         {
-            this.matchResults = matchResults;
         }
     }
 }

@@ -31,13 +31,9 @@ namespace WordCruncherWP7
         public string letter;
         public Rectangle rect, collisionRect;
         public Color color;
-        public int x, y;
+        public int x, y, value = 1, index = 0;
         private float scale = 1.0f;
-        public int value = 1;
-        public int index = 0;
-        public bool bombed = false;
-        public bool hasBomb = false;
-        public bool yourBomb = false;
+        public bool bombed = false, hasBomb = false, yourBomb = false;
 
         public GameSquare(string letter, int value, Rectangle rect, Color c, int x, int y, int index)
         {

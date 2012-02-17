@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_blue.xnb</Output>
-      <Time>2011-12-15T00:00:34.6804844-08:00</Time>
+      <Time>2012-02-14T22:14:34.3945313-08:00</Time>
     </Item>
     <Item>
       <Source>square_red.png</Source>
@@ -126,6 +126,33 @@
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark2.xnb</Output>
       <Time>2012-02-11T22:58:17-08:00</Time>
+    </Item>
+    <Item>
+      <Source>square_gray.png</Source>
+      <Name>square_gray</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_gray.xnb</Output>
+      <Time>2012-02-14T22:10:32.4863281-08:00</Time>
+    </Item>
+    <Item>
+      <Source>square_blue2.png</Source>
+      <Name>square_blue2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_blue2.xnb</Output>
+      <Time>2012-02-14T22:15:21.8115235-08:00</Time>
+    </Item>
+    <Item>
+      <Source>spark_black.png</Source>
+      <Name>spark_black</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_black.xnb</Output>
+      <Time>2012-02-14T22:33:52.6796875-08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

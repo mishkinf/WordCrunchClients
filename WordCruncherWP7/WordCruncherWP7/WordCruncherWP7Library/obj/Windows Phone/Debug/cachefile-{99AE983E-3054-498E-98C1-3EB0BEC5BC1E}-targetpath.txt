@@ -12,3 +12,6 @@ Content\fadeup3.xnb
 Content\spark.xnb
 Content\spark_enemy.xnb
 Content\spark2.xnb
+Content\square_gray.xnb
+Content\square_blue2.xnb
+Content\spark_black.xnb

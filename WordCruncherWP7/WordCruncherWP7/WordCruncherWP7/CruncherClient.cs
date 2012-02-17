@@ -19,9 +19,9 @@ namespace WordCruncherWP7
         // The maximum size of the data buffer to use with the asynchronous socket methods
         const int MAX_BUFFER_SIZE = 2048;
         private Socket connection;
-        private string server = Constants.ServerURL;
-        private int port = System.Convert.ToInt32(Constants.ServerPort);
-        private byte[] mybuffer = new byte[MAX_BUFFER_SIZE];
+        private string server = Globals.ServerURL;
+        private int port = System.Convert.ToInt32(Globals.ServerPort);
+        private byte[] mybuffer;
 
         private EndPoint ClientEndPoint
         {
@@ -34,9 +34,15 @@ namespace WordCruncherWP7
 
         public CruncherClient(string serverAddress, int port)
         {
+            mybuffer = new byte[MAX_BUFFER_SIZE];
             this.connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            this.server = Constants.ServerURL;
-            this.port = System.Convert.ToInt32(Constants.ServerPort);
+            this.server = Globals.ServerURL;
+            this.port = System.Convert.ToInt32(Globals.ServerPort);
+        }
+
+        public void Disconnect()
+        {
+            CleanUp(connection);
         }
 
         public void Connect()
@@ -50,33 +56,39 @@ namespace WordCruncherWP7
 
         public void SetupReceive()
         {
-            SocketAsyncEventArgs args = getSocketEventArgs();
-            mybuffer = new byte[MAX_BUFFER_SIZE];
-            args.SetBuffer(mybuffer, 0, MAX_BUFFER_SIZE);
-            //args.SetBuffer(0, 4);
-            args.Completed += setupReceive_complete;
-
-            this.connection.ReceiveAsync(args);
-
-            if (OnCreateConnectionCompleted != null)
+            if (connection.Connected)
             {
-                OnCreateConnectionCompleted(this, new ConnectionArgs(true));
+                SocketAsyncEventArgs args = getSocketEventArgs();
+                mybuffer = new byte[MAX_BUFFER_SIZE];
+                args.SetBuffer(mybuffer, 0, MAX_BUFFER_SIZE);
+                //args.SetBuffer(0, 4);
+                args.Completed += setupReceive_complete;
+
+                this.connection.ReceiveAsync(args);
+
+                if (OnCreateConnectionCompleted != null)
+                {
+                    OnCreateConnectionCompleted(this, new ConnectionArgs(true));
+                }
             }
         }
 
         void setupReceive_complete(object sender, SocketAsyncEventArgs e)
         {
-            byte[] header = new byte[4] { e.Buffer[0], e.Buffer[1], e.Buffer[2], e.Buffer[3] };
-            Array.Reverse(header);
-            int length = System.BitConverter.ToInt32(header, 0);
-            string response = UTF8Encoding.UTF8.GetString(e.Buffer, 4, length);
-
-            if (OnDataReceivedSuccessfully != null)
+            if (connection.Connected)
             {
-                OnDataReceivedSuccessfully(this, new MessageArgs(response));
-            }
+                byte[] header = new byte[4] { e.Buffer[0], e.Buffer[1], e.Buffer[2], e.Buffer[3] };
+                Array.Reverse(header);
+                int length = System.BitConverter.ToInt32(header, 0);
+                string response = UTF8Encoding.UTF8.GetString(e.Buffer, 4, length);
 
-            this.SetupReceive();
+                if (OnDataReceivedSuccessfully != null)
+                {
+                    OnDataReceivedSuccessfully(this, new MessageArgs(response));
+                }
+
+                this.SetupReceive();
+            }
         }
 
         byte[] Combine(byte[] a1, byte[] a2)
@@ -131,8 +143,10 @@ namespace WordCruncherWP7
             // check for errors
             if (e.SocketError != SocketError.Success)
             {
+               
                 // do some resource cleanup
-                CleanUp(e);
+                if(e.ConnectSocket != null)
+                    CleanUp(e.ConnectSocket);
 
                 return;
             }
@@ -165,7 +179,7 @@ namespace WordCruncherWP7
 
         private void HandleSend(SocketAsyncEventArgs e)
         {
-            if (e.ConnectSocket != null)
+            if (this.connection.Connected && e.ConnectSocket != null)
             {
                 if (OnDataSentSuccessfully != null)
                     OnDataSentSuccessfully(this, new ConnectionArgs(true));
@@ -190,13 +204,19 @@ namespace WordCruncherWP7
             }*/
         }
 
-        private void CleanUp(SocketAsyncEventArgs e)
+        private void CleanUp(Socket socket)
         {
-            if (e.ConnectSocket != null)
+            mybuffer = new byte[MAX_BUFFER_SIZE];
+
+            try
             {
-                e.ConnectSocket.Shutdown(SocketShutdown.Both);
-                e.ConnectSocket.Close();
+                socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
             }
+            catch(Exception ex)
+            {
+            }
+            //}
         }
     }
 

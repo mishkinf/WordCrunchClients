@@ -14,12 +14,13 @@ using WordCruncherWP7.Messages;
 using Newtonsoft.Json.Linq;
 using Microsoft.Phone.Tasks;
 using WordCruncherWP7.CrunchEventArgs;
+using System.IO.IsolatedStorage;
 
 namespace WordCruncherWP7
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        CruncherClient c = new CruncherClient("10.211.55.4", 2222);
+        //CruncherClient c = new CruncherClient("10.211.55.4", 2222);
         bool inited = false;
 
         //CruncherClient c = new CruncherClient("ec2-184-73-99-238.compute-1.amazonaws.com", 2222);
@@ -27,21 +28,39 @@ namespace WordCruncherWP7
         public MainPage()
         {
             InitializeComponent();
+
+            loadingBar.Visibility = Visibility.Collapsed;
             MatchRequestMessage m = new MatchRequestMessage();
             m.encode();
             CrunchCore.OnGameStart += new EventHandler(CrunchCore_OnGameStart);
             CrunchCore.OnGameEnd += new EventHandler(CrunchCore_OnGameEnd);
             CrunchCore.OnError += new EventHandler<ErrorArgs>(CrunchCore_OnError);
+            CrunchCore.OnCreateConnectionCompleted += new EventHandler<ConnectionArgs>(CrunchCore_OnCreateConnectionCompleted);
+
+            if (Globals.AppSettings.FirstRun || Globals.AppSettings.Username == null)
+                Dispatcher.BeginInvoke(() =>
+                {
+                    Globals.AppSettings.FirstRun = false;
+                    NavigationService.Navigate(new Uri("/Pages/InitialSetup.xaml", UriKind.Relative));
+                });
+            else
+                Globals.YourUsername = Globals.AppSettings.Username;
+
+        }
+
+        void CrunchCore_OnCreateConnectionCompleted(object sender, ConnectionArgs e)
+        {
+            CrunchCore.SendMessage(new MatchRequestMessage());
         }
 
         void CrunchCore_OnError(object sender, ErrorArgs e)
         {
             Dispatcher.BeginInvoke(() =>
             {
-                if (!Constants.ErrorFlagged)
+                if (!Globals.ErrorFlagged)
                 {
                     MessageBox.Show(e.errorMessage);
-                    Constants.ErrorFlagged = true;
+                    Globals.ErrorFlagged = true;
                 }
 
             });
@@ -65,8 +84,13 @@ namespace WordCruncherWP7
 
         private void playGame(object sender, RoutedEventArgs e)
         {
-            Constants.ErrorFlagged = false;
-            CrunchCore.Setup();
+            loadingBar.Visibility = Visibility.Visible;
+
+            WordGame.ResetGame();
+
+            Globals.ErrorFlagged = false;
+
+            //CrunchCore.Setup();
             CrunchCore.inited = false;
             CrunchCore.Connect();
         }

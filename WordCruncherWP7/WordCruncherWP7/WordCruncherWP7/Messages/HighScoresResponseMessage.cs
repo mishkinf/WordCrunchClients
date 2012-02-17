@@ -16,28 +16,33 @@ namespace WordCruncherWP7.Messages
 {
     public class HighScoresResponseMessage : iMessage, iDecodableMessage 
     {
-        public ObservableCollection<MatchResult> matchResults = new ObservableCollection<MatchResult>();
+        //public ObservableCollection<MatchResult> matchResults = new ObservableCollection<MatchResult>();
 
         public static HighScoresResponseMessage fromJSON(string json)
         {
             JObject o = JObject.Parse(json);
 
-            ObservableCollection<MatchResult> results = new ObservableCollection<MatchResult>();
-            JArray scores = (JArray)o["scores"];
-            JArray opponents = (JArray)o["players"];
+           // ObservableCollection<MatchResult> results = new ObservableCollection<MatchResult>();
+            JArray games = (JArray)o["games"];
+            JArray game;
+            String opponentUsername;
+            int yourScore, opponentScore;
 
-            for (int i = 0; i < scores.Count; i++ )
+            for (int i = 0; i < games.Count; i++ )
             {
-                results.Add(new MatchResult((int)scores[i][0], (int)scores[i][1], (String)opponents[i]));
+                game = (JArray)games[i];
+                opponentUsername = (String)game[1]["username"];
+                opponentScore = (int)game[1]["score"];
+                yourScore = (int)game[0]["score"];
+                Globals.MatchResults.Add(new MatchResult(yourScore, opponentScore, opponentUsername));
             }
                 
 
-            return new HighScoresResponseMessage(results);
+            return new HighScoresResponseMessage();
         }
 
-        public HighScoresResponseMessage(ObservableCollection<MatchResult> results)
+        public HighScoresResponseMessage()
         {
-            this.matchResults = results;
         }
     }
 }

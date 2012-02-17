@@ -24,21 +24,20 @@ namespace WordCruncherWP7.Messages
         public String encode() {
             string deviceUniqueID = string.Empty;
             object deviceID;
+
             if (DeviceExtendedProperties.TryGetValue("DeviceUniqueId", out deviceID))
             {
-                deviceUniqueID =  Convert.ToBase64String((byte[])deviceID);
-                Constants.username = deviceUniqueID;
+                deviceUniqueID = Convert.ToBase64String((byte[])deviceID);
             }
 
             if (deviceUniqueID == null || deviceUniqueID == "")
                 deviceUniqueID = "FAKEUNIQUEID";
 
-
             JObject json = new JObject(
                 new JProperty("type", "hello"),
-                new JProperty("username", deviceUniqueID),
+                new JProperty("username", Globals.YourUsername),
                 new JProperty("token", deviceUniqueID),
-                new JProperty("version", Constants.ProtocolVersion)
+                new JProperty("version", Globals.ProtocolVersion)
                 );
       
             return json.ToString();

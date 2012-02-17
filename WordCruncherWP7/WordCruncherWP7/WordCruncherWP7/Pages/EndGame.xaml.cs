@@ -17,6 +17,7 @@ namespace WordCruncherWP7
     {
         public EndGame()
         {
+            CrunchCore.Disconnect();
             InitializeComponent();
 
             if (WordGame.scoreYou > WordGame.scoreOpponent)

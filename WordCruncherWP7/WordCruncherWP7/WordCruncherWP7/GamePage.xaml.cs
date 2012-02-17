@@ -28,7 +28,7 @@ namespace WordCruncherWP7
         SpriteBatch spriteBatch;
         GameInput input;
 
-        Texture2D textureBlue, textureRed, textureBomb, textureDelete, fadeUp;
+        Texture2D textureBlue, textureRed, textureGray, textureBomb, textureDelete, fadeUp;
         SpriteFont letterFont, letterValueFont, labelsFont;
         RenderTarget2D renderTarget, renderTargetFlipped;
 
@@ -100,13 +100,14 @@ namespace WordCruncherWP7
 
             spriteBatch = new SpriteBatch(SharedGraphicsDeviceManager.Current.GraphicsDevice);
             yourParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark");
-            enemyParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark2");
+            enemyParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark_black");
 
             yourParticles.LoadContent();
             enemyParticles.LoadContent();
 
-            textureBlue = content.Load<Texture2D>("square_blue");
-            textureRed = content.Load<Texture2D>("square_red"); 
+            textureBlue = content.Load<Texture2D>("square_blue2");
+            textureRed = content.Load<Texture2D>("square_red");
+            textureGray = content.Load<Texture2D>("square_gray");
 
             fadeUp = content.Load<Texture2D>("fadeup3");
             textureBomb = content.Load<Texture2D>("bomb");
@@ -193,10 +194,10 @@ namespace WordCruncherWP7
                 if (gs.color == Color.Blue || bombs.IsBombing(gs.index))
                 {
                     spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2),scaleChange, SpriteEffects.None, 0.0f);
-                } else if (gs.color == Color.Red)
+                } else if (gs.color == Color.Gray)
                 {
-                    spriteBatch.Draw(textureRed, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.Scale, SpriteEffects.None, 0.0f);
-                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.White, 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, gs.Scale, SpriteEffects.None, 0.0f);
+                    spriteBatch.Draw(textureGray, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.Scale, SpriteEffects.None, 0.0f);
+                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.FromNonPremultiplied(51, 160, 232, 255), 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, gs.Scale, SpriteEffects.None, 0.0f);
                 }
                    
                 if (gs.hasBomb)
@@ -207,10 +208,10 @@ namespace WordCruncherWP7
             {
                 scaleChange = bombs.IsBombing(gs.index) ? gs.Scale + bombs.GetScaleOffset() : 1f;
 
-                if (gs.color == Color.Red || (!gs.yourBomb && bombs.IsBombing(gs.index)))
+                if (gs.color == Color.Gray || (!gs.yourBomb && bombs.IsBombing(gs.index)))
                 {
-                    spriteBatch.Draw(textureRed, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), scaleChange, SpriteEffects.None, 0.0f);
-                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.White, 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, scaleChange, SpriteEffects.None, 0.0f);
+                    spriteBatch.Draw(textureGray, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), scaleChange, SpriteEffects.None, 0.0f);
+                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.FromNonPremultiplied(51, 160, 232, 255), 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, scaleChange, SpriteEffects.None, 0.0f);
                 }
                 else
                 {
@@ -248,8 +249,8 @@ namespace WordCruncherWP7
                     quad.Indexes, 0, 2);
             }
             spriteBatch.Draw(fadeUp, new Vector2(0, 480), Color.White);
-            spriteBatch.DrawString(labelsFont, "You: " + WordGame.scoreYou.ToString(), new Vector2(10, 740), Color.Green);
-            spriteBatch.DrawString(labelsFont, "Him: " + WordGame.scoreOpponent.ToString(), new Vector2(310, 740), Color.Red);
+            spriteBatch.DrawString(labelsFont, Globals.YourUsername + ": " + WordGame.scoreYou.ToString(), new Vector2(10, 740), Color.Green);
+            spriteBatch.DrawString(labelsFont, Globals.OpponentUsername + ": " + WordGame.scoreOpponent.ToString(), new Vector2(310, 740), Color.Red);
             spriteBatch.End();
 
         }

@@ -38,7 +38,8 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<ListBox x:Name="highScoresListBox" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding ElementName=MatchResults, Path=.}" />
+			<ListBox x:Name="highScoresListBox2" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding ElementName=MatchResults, Path=.}" Height="287" VerticalAlignment="Bottom" />
+			<ListBox x:Name="highScoresListBox"/>
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

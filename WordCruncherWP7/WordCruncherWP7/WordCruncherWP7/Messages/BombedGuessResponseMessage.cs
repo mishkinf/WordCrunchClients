@@ -20,7 +20,7 @@ namespace WordCruncherWP7.Messages
         public int[] selectionPath;
         public int player_index;
         public ePlayer Player;
-        public bool YourGuess { get { return player_index == Constants.PlayerIndex; } }
+        public bool YourGuess { get { return player_index == Globals.PlayerIndex; } }
         public Word Word;
 
         public static BombedGuessResponseMessage fromJSON(string message) {
@@ -33,17 +33,17 @@ namespace WordCruncherWP7.Messages
             Word word;
             GameSquare[] squares;
 
-            if (Constants.PlayerIndex == player_index)
+            if (Globals.PlayerIndex == player_index)
                 player = ePlayer.You;
             else
                 player = ePlayer.Opponent;
 
-            if (Constants.PlayerIndex == 1)
+            if (Globals.PlayerIndex == 1)
             {
                 scoreYou = (int)o["scores"][0];
                 scoreOpponent = (int)o["scores"][1];
             }
-            else if (Constants.PlayerIndex == 2)
+            else if (Globals.PlayerIndex == 2)
             {
                 scoreYou = (int)o["scores"][1];
                 scoreOpponent = (int)o["scores"][0];

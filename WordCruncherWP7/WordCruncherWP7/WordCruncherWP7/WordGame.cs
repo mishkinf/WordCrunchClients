@@ -23,7 +23,7 @@ namespace WordCruncherWP7
         public static GameSquare[,] squares = new GameSquare[5,5];
         public static GameSquare[] squares2 = new GameSquare[25];
         public static List<GameSquare> selectedSquares = new List<GameSquare>();
-        public static List<GameWall> walls = new List<GameWall>();
+
         public static bool Selecting = false;
         public static int scoreYou = 0;
         public static int scoreOpponent = 0;
@@ -109,6 +109,17 @@ namespace WordCruncherWP7
 
             WordGame.boxSize = boxAvailability / 5;
             WordGame.boxPadding = separation / 2; // (int)((boxSide * 0.2f) / 2);
+        }
+
+        public static void ResetGame()
+        {
+            Globals.Reset();
+            WordGame.scoreOpponent = 0;
+            WordGame.scoreOpponent = 0;
+            WordGame.Selecting = false;
+            WordGame.squares = new GameSquare[5,5];
+            WordGame.squares2 = new GameSquare[25];
+            WordGame.selectedSquares = new List<GameSquare>();
         }
     }
 

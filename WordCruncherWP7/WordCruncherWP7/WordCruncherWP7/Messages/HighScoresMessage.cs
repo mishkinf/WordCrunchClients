@@ -14,11 +14,6 @@ namespace WordCruncherWP7.Messages
 {
     public class HighScoresMessage : iMessage, iEncodableMessage
     {
-        public static HighScoresMessage fromJSON(string message)
-        {
-            return new HighScoresMessage();
-        }
-
         public HighScoresMessage()
         {
         }

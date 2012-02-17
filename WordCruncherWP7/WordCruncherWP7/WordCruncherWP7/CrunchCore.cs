@@ -21,7 +21,7 @@ namespace WordCruncherWP7
 {
     public static class CrunchCore
     {
-        static CruncherClient c = new CruncherClient(Constants.ServerURL, System.Convert.ToInt32(Constants.ServerPort));
+        static CruncherClient c;
         public static bool inited = false;
         public static event EventHandler OnGameStart;
         public static event EventHandler OnGameEnd;
@@ -30,18 +30,26 @@ namespace WordCruncherWP7
         public static event EventHandler<BombedArgs> OnBombed;
         public static event EventHandler<GoodGuessArgs> OnGoodGuess;
         public static event EventHandler<HighScoresArgs> OnHighScoresReturned;
+        public static event EventHandler<ConnectionArgs> OnCreateConnectionCompleted;
         public static List<Word> yourWords = new List<Word>();
         public static List<Word> opponentsWords = new List<Word>();
 
-        public static void Setup()
+        private static void Setup()
         {
+            c = new CruncherClient(Globals.ServerURL, System.Convert.ToInt32(Globals.ServerPort));
             c.OnCreateConnectionCompleted += c_CreateConnectionCompleted;
             c.OnDataReceivedSuccessfully += c_OnDataReceivedSuccessfully;
 
         }
 
+        public static void Disconnect()
+        {
+            c.Disconnect();
+        }
+
         public static void Connect()
         {
+            Setup();
             c.Connect();
         }
 
@@ -64,7 +72,9 @@ namespace WordCruncherWP7
 
                         break;
                     case "hello_response":
-                        c.SendMessage(new MatchRequestMessage());
+                        if (OnCreateConnectionCompleted != null)
+                            OnCreateConnectionCompleted("CrunchCore", new ConnectionArgs(true));
+                        
                         break;
                     case "in_queue":
                         // Do nothing.. Display waiting message to user
@@ -73,10 +83,16 @@ namespace WordCruncherWP7
                         WordGame.InitGame(500, 800);
                         StartGameMessage s = StartGameMessage.fromJSON(e.Message);
 
-                        if (s.player1 == Constants.username)
-                            Constants.PlayerIndex = 1;
-                        else if (s.player2 == Constants.username)
-                            Constants.PlayerIndex = 2;
+                        if (s.player1 == Globals.YourUsername)
+                        {
+                            Globals.PlayerIndex = 1;
+                            Globals.OpponentUsername = s.player2;
+                        }
+                        else if (s.player2 == Globals.YourUsername)
+                        {
+                            Globals.PlayerIndex = 2;
+                            Globals.OpponentUsername = s.player1;
+                        }
 
                         if (OnGameStart != null)
                         {
@@ -110,6 +126,7 @@ namespace WordCruncherWP7
 
                         break;
                     case "end_game":
+                        c.Disconnect();
                         JObject json = JObject.Parse(e.Message);
                         string reason = (String)json.Property("reason").Value;
 
@@ -122,15 +139,16 @@ namespace WordCruncherWP7
                         HighScoresResponseMessage scoresResponse = HighScoresResponseMessage.fromJSON(e.Message);
 
                         if (OnHighScoresReturned != null)
-                            OnHighScoresReturned("CrunchCore", new HighScoresArgs(scoresResponse.matchResults));
+                            OnHighScoresReturned("CrunchCore", new HighScoresArgs());
                         break;
                     case "goodbye":
+                        c.Disconnect();
                         break;
                 }
             }
             catch (Exception ex)
             {
-               
+                c.Disconnect();
                 if (OnError != null)
                     OnError("CrunchCore", new ErrorArgs(ex.Message));
             }
