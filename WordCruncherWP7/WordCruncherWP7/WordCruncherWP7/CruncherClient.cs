@@ -47,6 +47,7 @@ namespace WordCruncherWP7
 
         public void Connect()
         {
+            this.connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             SocketAsyncEventArgs args = getSocketEventArgs();
 
             args.Completed += SocketAsyncEventArgs_Completed;

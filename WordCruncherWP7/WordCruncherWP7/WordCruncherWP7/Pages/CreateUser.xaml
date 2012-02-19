@@ -22,16 +22,17 @@
 		
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="ApplicationTitle" Text="Hi" Style="{StaticResource PhoneTextNormalStyle}"/>
-			<TextBlock x:Name="PageTitle" Text="Word Crunch" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+			<Image Margin="0,0,6,0" Source="/WordCruncherWP7;component/Images/wordcrunch_bannerlogo.png" Stretch="Fill" Height="73"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
-				<TextBlock TextWrapping="Wrap" Text="Choose a Username"/>
-				<TextBox TextWrapping="Wrap"/>
-				<Button Content="Go"/>
+				<TextBlock TextWrapping="Wrap" Text="Game Setup" Margin="33,0,0,29" FontSize="48" FontFamily="Segoe UI Light" Foreground="#FF959595"/>
+				<TextBlock TextWrapping="Wrap" Text="Please choose a Username" Margin="0,0,0,-10" FontSize="34.667" FontFamily="Segoe UI Light" HorizontalAlignment="Center"/>
+				<TextBox TextWrapping="Wrap" BorderThickness="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="411" BorderBrush="#BF001BFF" FontFamily="Segoe WP Semibold"/>
+				<TextBlock TextWrapping="Wrap" Text="Example: Hollshkin216" Margin="0,0,36,-10" FontSize="34.667" FontFamily="Segoe UI Light" HorizontalAlignment="Right" Foreground="#FF414141"/>
+				<Button Content="Go" HorizontalAlignment="Right" Width="177" BorderThickness="3" Margin="0,317,21,0"/>
 			</StackPanel>
 		</Grid>
 	</Grid>

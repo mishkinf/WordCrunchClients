@@ -400,7 +400,7 @@
             	</Button.RenderTransform>
             	<i:Interaction.Triggers>
             		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/Pages/FindFriends.xaml"/>
+            			<ec:NavigateToPageAction TargetPage="/Pages/Instructions.xaml"/>
             		</i:EventTrigger>
             	</i:Interaction.Triggers>
             </Button>

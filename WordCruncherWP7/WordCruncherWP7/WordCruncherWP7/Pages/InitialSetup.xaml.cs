@@ -18,11 +18,18 @@ namespace WordCruncherWP7
         public InitialSetup()
         {
             InitializeComponent();
+            usernameBox.Focus();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private bool ValidUsername(String username)
         {
-            if (ValidUsername(usernameBox.Text))
+            //CrunchCore.
+            return true;
+        }
+
+        private void goButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	if (ValidUsername(usernameBox.Text))
             {
                 Globals.AppSettings.Username = usernameBox.Text;
                 Globals.YourUsername = usernameBox.Text;
@@ -36,12 +43,6 @@ namespace WordCruncherWP7
             {
                 errorMessage.Visibility = Visibility.Visible;
             }
-        }
-
-        private bool ValidUsername(String username)
-        {
-            //CrunchCore.
-            return true;
         }
     }
 }

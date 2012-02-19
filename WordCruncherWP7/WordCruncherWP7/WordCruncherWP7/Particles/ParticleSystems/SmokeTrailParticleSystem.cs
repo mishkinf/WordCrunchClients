@@ -16,9 +16,10 @@ namespace WordCrunchWP7
 {
     public class SmokeTrailParticleSystem : ParticleSystem
     {
-        public SmokeTrailParticleSystem(ContentManager content, SpriteBatch spriteBatch, int howManyEffects)
+        public SmokeTrailParticleSystem(ContentManager content, SpriteBatch spriteBatch, int howManyEffects, String texture)
             : base(content, spriteBatch, howManyEffects)
         {
+            this.textureFilename = texture;
             base.Initialize();
         }
 
@@ -26,8 +27,6 @@ namespace WordCrunchWP7
         {
             minNumParticles = 5;
             maxNumParticles = 15;
-
-            textureFilename = "smoke";
 
             minInitialSpeed = 10.0f;
             maxInitialSpeed = 30.0f;

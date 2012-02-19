@@ -15,10 +15,10 @@
 	<phone:PhoneApplicationPage.Resources>
 		<DataTemplate x:Key="ItemTemplate">
 			<StackPanel Width="455" Orientation="Horizontal" Height="77">
-				<TextBlock Text="{Binding Opponent}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="Red" Width="224" VerticalAlignment="Center"/>
-				<TextBlock Text="{Binding OpponentsScore}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FFFF8181" VerticalAlignment="Center"/>
-				<TextBlock Text="{Binding YourScore}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FF8DA4FF" VerticalAlignment="Center"/>
-				<CheckBox IsChecked="{Binding Result, Mode=TwoWay}" VerticalAlignment="Center"/>
+				<TextBlock Text="{Binding OpponentsUsername}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="Red" Width="224"/>
+				<TextBlock Text="{Binding OpponentsScore}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FFFF8181"/>
+				<TextBlock Text="{Binding YourScore}" Style="{StaticResource PhoneTextTitle2Style}" Foreground="#FF8DA4FF"/>
+				<CheckBox IsChecked="{Binding Result, Mode=TwoWay}"/>
 			</StackPanel>
 		</DataTemplate>
 	</phone:PhoneApplicationPage.Resources>
@@ -32,14 +32,12 @@
 		
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="ApplicationTitle" Text="Word Cruncher" Style="{StaticResource PhoneTextNormalStyle}"/>
 			<TextBlock x:Name="PageTitle" Text="High Scores" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<ListBox x:Name="highScoresListBox2" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding ElementName=MatchResults, Path=.}" Height="287" VerticalAlignment="Bottom" />
-			<ListBox x:Name="highScoresListBox"/>
-		</Grid>
+			<ListBox x:Name="highScoresListBox" Loaded="highScoresListBox_Loaded" ItemContainerStyle="{StaticResource listLoadingAnimationTemplate}" Margin="0,-9,0,0" ItemTemplate="{StaticResource ItemTemplate}" />
+        </Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

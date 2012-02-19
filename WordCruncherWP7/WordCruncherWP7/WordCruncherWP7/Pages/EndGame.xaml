@@ -268,34 +268,27 @@
 		
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0" Height="73" VerticalAlignment="Top">
-			<TextBlock x:Name="gameStatus" Text="You Won!" Margin="0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Height="72"/>
+			<TextBlock x:Name="gameStatus" Text="You Won!" Margin="0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center" Height="72" FontFamily="Segoe WP Light"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
-			<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="You" VerticalAlignment="Top" FontSize="29.333" Foreground="#FF707070" Margin="8,0,0,0"/>
-			<TextBlock HorizontalAlignment="Right" Margin="0,0,154,0" TextWrapping="Wrap" Text="Them" VerticalAlignment="Top" FontSize="29.333" Foreground="#FF707070"/>
-			<TextBlock x:Name="yourScore" HorizontalAlignment="Left" Margin="66,0,0,0" TextWrapping="Wrap" Text="154" VerticalAlignment="Top" FontSize="48" FontFamily="OCR A Extended"/>
-			<TextBlock x:Name="opponentScore" HorizontalAlignment="Right" Margin="0,0,57,0" TextWrapping="Wrap" Text="102" VerticalAlignment="Top" FontSize="48" FontFamily="OCR A Extended"/>
-			<StackPanel Margin="8,93,2,163" Orientation="Horizontal">
-				<ListBox x:Name="yourWords" Width="229"/>
-				<ListBox x:Name="opponentsWords" Width="238"/>
+			<TextBlock x:Name="yourNameBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="You" VerticalAlignment="Top" FontSize="40" Foreground="#FF707070" Margin="14,-1,0,0" FontFamily="Segoe WP Light"/>
+			<TextBlock x:Name="opponentNameBox" HorizontalAlignment="Right" Margin="0,-1,129,0" TextWrapping="Wrap" Text="Them" VerticalAlignment="Top" FontSize="40" Foreground="#FF707070" FontFamily="Segoe WP Light" d:LayoutOverrides="HorizontalAlignment"/>
+			<TextBlock x:Name="yourScore" HorizontalAlignment="Left" Margin="14,43,0,0" TextWrapping="Wrap" Text="154" VerticalAlignment="Top" FontSize="48" FontFamily="/WordCruncherWP7;component/Fonts/Fonts.zip#Segoe UI Light"/>
+			<TextBlock x:Name="opponentScore" HorizontalAlignment="Right" Margin="0,43,150,0" TextWrapping="Wrap" Text="102" VerticalAlignment="Top" FontSize="48" FontFamily="/WordCruncherWP7;component/Fonts/Fonts.zip#Segoe UI Light"/>
+			<StackPanel Margin="8,107,2,183" Orientation="Horizontal">
+				<ListBox x:Name="yourWords" Width="229" Margin="0,2,0,0"/>
+				<ListBox x:Name="opponentsWords" Width="238" Margin="0,2,0,0"/>
 			</StackPanel>
-			<Button Content="High Scores" Height="171" HorizontalAlignment="Left" Margin="317,528,0,0" x:Name="highScoreButton_Copy" VerticalAlignment="Top" Width="171" BorderBrush="{x:Null}" Style="{StaticResource HighScoresBtnStyle}" Background="#FF2CAAEF" >
+			<Button Content="High Scores" Height="185" HorizontalAlignment="Left" Margin="240,514,0,0" x:Name="highScoreButton_Copy" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Style="{StaticResource HighScoresBtnStyle}" Background="#FF2CAAEF" >
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="Click">
 						<ec:NavigateToPageAction TargetPage="/Pages/HighScores.xaml"/>
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
 			</Button>
-			<Button Content="Play Again" Height="171" HorizontalAlignment="Left" Margin="-8,528,0,0" x:Name="playAgainBtn" VerticalAlignment="Top" Width="171" BorderBrush="{x:Null}" Style="{StaticResource playAgainBtn}" Background="#FF2CAAEF" d:LayoutOverrides="HorizontalAlignment" >
-				<i:Interaction.Triggers>
-					<i:EventTrigger EventName="Click">
-						<ec:NavigateToPageAction TargetPage="/MainPage.xaml"/>
-					</i:EventTrigger>
-				</i:Interaction.Triggers>
-			</Button>
-			<Button Content="Main Menu" Height="171" HorizontalAlignment="Left" Margin="154,528,0,0" x:Name="mainMenuBtn" VerticalAlignment="Top" Width="171" BorderBrush="{x:Null}" Style="{StaticResource MainMenuBtn}" Background="#FF2CAAEF" >
+			<Button Content="Main Menu" Height="185" HorizontalAlignment="Left" Margin="64,514,0,0" x:Name="mainMenuBtn" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Style="{StaticResource MainMenuBtn}" Background="#FF2CAAEF" >
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="Click">
 						<ec:NavigateToPageAction TargetPage="/MainPage.xaml"/>

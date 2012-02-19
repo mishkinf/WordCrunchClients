@@ -26,7 +26,7 @@ namespace WordCrunchWP7
         protected override void InitializeConstants()
         {
             minNumParticles = 10;
-            maxNumParticles = 40;
+            maxNumParticles = 30;
 
             minInitialSpeed = 50.0f;
             maxInitialSpeed = 80.0f;
@@ -34,10 +34,10 @@ namespace WordCrunchWP7
             minAcceleration = 20.0f;
             maxAcceleration = 80.0f;
 
-            minRotationSpeed = 0.0f;
+            minRotationSpeed = 5.0f;
             maxRotationSpeed = 10.0f;
 
-            minLifetime = 0.2f;
+            minLifetime = 0.5f;
             maxLifetime = 3.0f;
 
             minScale = 0.05f;

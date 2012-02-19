@@ -21,12 +21,14 @@ namespace WordCruncherWP7
             InitializeComponent();
 
             if (WordGame.scoreYou > WordGame.scoreOpponent)
-                gameStatus.Text = "You Won!";
+                gameStatus.Text = "You Won.";
             else if (WordGame.scoreOpponent > WordGame.scoreYou)
-                gameStatus.Text = "You Lost!";
+                gameStatus.Text = "You Lost.";
             else
-                gameStatus.Text = "Tie Game!";
+                gameStatus.Text = "Tie Game.";
 
+            opponentNameBox.Text = Globals.OpponentUsername;
+            yourNameBox.Text = Globals.YourUsername;
             yourWords.ItemsSource = CrunchCore.yourWords;
             opponentsWords.ItemsSource = CrunchCore.opponentsWords;
 

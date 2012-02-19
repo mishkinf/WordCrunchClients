@@ -28,8 +28,8 @@ namespace WordCruncherWP7
         SpriteBatch spriteBatch;
         GameInput input;
 
-        Texture2D textureBlue, textureRed, textureGray, textureBomb, textureDelete, fadeUp;
-        SpriteFont letterFont, letterValueFont, labelsFont;
+        Texture2D textureBlue, textureRed, textureGray, textureBomb, textureDelete, fadeUp, timerGraphic;
+        SpriteFont letterFont, letterValueFont, labelsFont, timerFont, scoresFont;
         RenderTarget2D renderTarget, renderTargetFlipped;
 
         Bombs bombs = new Bombs();
@@ -40,6 +40,7 @@ namespace WordCruncherWP7
 
         SparksParticleSystem yourParticles;
         SparksParticleSystem enemyParticles;
+        StopWatch stopwatch;
 
         public GamePage()
         {
@@ -59,6 +60,8 @@ namespace WordCruncherWP7
             CrunchCore.OnGoodGuess += new EventHandler<GoodGuessArgs>(CrunchCore_OnGoodGuess);
             TouchPanel.EnabledGestures = GestureType.DoubleTap | GestureType.Hold;
 
+            stopwatch = new StopWatch();
+            stopwatch.Start();
             quad = new Quad(Vector3.Zero, Vector3.Up, Vector3.Backward, 10, 9);
         }
 
@@ -108,13 +111,16 @@ namespace WordCruncherWP7
             textureBlue = content.Load<Texture2D>("square_blue2");
             textureRed = content.Load<Texture2D>("square_red");
             textureGray = content.Load<Texture2D>("square_gray");
+            timerGraphic = content.Load<Texture2D>("timergraphic");
 
             fadeUp = content.Load<Texture2D>("fadeup3");
             textureBomb = content.Load<Texture2D>("bomb");
             textureDelete = content.Load<Texture2D>("deletemetexture");
             letterFont = content.Load<SpriteFont>("CourierNew");
             letterValueFont = content.Load<SpriteFont>("squareValue");
-            labelsFont = content.Load<SpriteFont>("labelsFont");
+            labelsFont = content.Load<SpriteFont>("usernamesFont");
+            timerFont = content.Load<SpriteFont>("timerFont");
+            scoresFont = content.Load<SpriteFont>("labelsFont");
 
             renderTarget = new RenderTarget2D(spriteBatch.GraphicsDevice, spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth, spriteBatch.GraphicsDevice.PresentationParameters.BackBufferHeight);
             renderTargetFlipped = new RenderTarget2D(spriteBatch.GraphicsDevice, spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth, spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth);
@@ -249,8 +255,17 @@ namespace WordCruncherWP7
                     quad.Indexes, 0, 2);
             }
             spriteBatch.Draw(fadeUp, new Vector2(0, 480), Color.White);
-            spriteBatch.DrawString(labelsFont, Globals.YourUsername + ": " + WordGame.scoreYou.ToString(), new Vector2(10, 740), Color.Green);
-            spriteBatch.DrawString(labelsFont, Globals.OpponentUsername + ": " + WordGame.scoreOpponent.ToString(), new Vector2(310, 740), Color.Red);
+            float textx1 = 110, textx2 = 320;
+            spriteBatch.DrawString(scoresFont, WordGame.scoreYou.ToString(), new Vector2(textx1, 660), Color.White);
+            spriteBatch.DrawString(scoresFont, WordGame.scoreOpponent.ToString(), new Vector2(textx2, 660), Color.White);
+
+            spriteBatch.DrawString(labelsFont, Globals.YourUsername, new Vector2(textx1, 750), Color.LightGray);
+            spriteBatch.DrawString(labelsFont, Globals.OpponentUsername, new Vector2(textx2, 750), Color.LightGray);
+            spriteBatch.Draw(timerGraphic, new Vector2(45, 670), Color.White);
+            
+            if(stopwatch.GetElapsedTimeSecs() > 10 || (stopwatch.GetElapsedTimeSecs() <= 10 && stopwatch.GetTimeSpanInterval().Milliseconds % 800 <= 400))
+                spriteBatch.DrawString(timerFont, stopwatch.GetFormattedTimeRemaining(), new Vector2(219, 717), Color.FromNonPremultiplied(7, 197, 236, 255));
+
             spriteBatch.End();
 
         }

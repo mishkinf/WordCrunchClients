@@ -16,9 +16,11 @@ namespace WordCrunchWP7
 {
     public class FireworksParticleSystem : ParticleSystem
     {
-        public FireworksParticleSystem(ContentManager content, SpriteBatch spriteBatch, int howManyEffects)
+        public FireworksParticleSystem(ContentManager content, SpriteBatch spriteBatch, int howManyEffects, String texture)
             : base(content, spriteBatch, howManyEffects)
         {
+            this.textureFilename = texture;
+
             base.Initialize();
         }
 

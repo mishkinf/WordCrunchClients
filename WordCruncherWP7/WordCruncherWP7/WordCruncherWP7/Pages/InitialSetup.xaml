@@ -16,25 +16,25 @@
 	<!--LayoutRoot is the root grid where all page content is placed-->
 	<Grid x:Name="LayoutRoot" Background="Transparent">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="768"/>
 		</Grid.RowDefinitions>
 		
 		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,0" Height="90" VerticalAlignment="Top" d:LayoutOverrides="Height">
+			<ProgressBar x:Name="loadingBar" IsIndeterminate="True" Margin="0,0,-12,0" VerticalAlignment="Top" Visibility="Collapsed"/>
 			<Image Height="100" Source="/WordCruncherWP7;component/Images/wordcrunch_bannerlogo.png"/>
-			<TextBlock x:Name="PageTitle" Text="Game Setup" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="32"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+		<Grid x:Name="ContentPanel" Margin="12,120,12,0">
 			<StackPanel>
-				<TextBlock TextWrapping="Wrap" Text="Choose a UserName"/>
-				<TextBlock TextWrapping="Wrap" Text="Username taken! Please Choose a different username" Foreground="Red" FontSize="16" HorizontalAlignment="Center" Opacity="1" Visibility="Collapsed" Name="errorMessage" />
-				<TextBox TextWrapping="Wrap" Text="" Name="usernameBox" />
-				<Button Content="Go" Click="Button_Click" Name="goButton" />
+				<TextBlock TextWrapping="Wrap" Text="Setup" Margin="12,-16,0,3" FontSize="73.333" FontFamily="/WordCruncherWP7;component/Fonts/Fonts.zip#Segoe UI Light" Foreground="#FF959595"/>
+				<TextBlock TextWrapping="Wrap" Text="Choose a username" Margin="12,0,0,-10" FontSize="29.333" FontFamily="/WordCruncherWP7;component/Fonts/Fonts.zip#Segoe UI Light"/>
+				<TextBox x:Name="usernameBox" TextWrapping="Wrap" BorderThickness="3" VerticalAlignment="Center" BorderBrush="#BF001BFF" FontFamily="Segoe WP Semibold" TextOptions.TextHintingMode="Animated" MaxLength="12"/>
+				<TextBlock TextWrapping="Wrap" Text="Username taken! Please Choose a different username" Foreground="Red" FontSize="16" HorizontalAlignment="Center" Opacity="1" x:Name="errorMessage" Margin="0,-15,0,11" FontFamily="Segoe UI" Visibility="Collapsed" />
+				<TextBlock TextWrapping="Wrap" Text="Example: Hollshkin216" Margin="0,-7,12,-10" FontSize="20" FontFamily="/WordCruncherWP7;component/Fonts/Fonts.zip#Segoe UI Light" HorizontalAlignment="Right" Foreground="#FF414141"/>
+				<Button x:Name="goButton" Content="Go" HorizontalAlignment="Right" Width="177" BorderThickness="3" Margin="0,20,5,0" Click="goButton_Click"/>
 			</StackPanel>
-			<ProgressBar x:Name="loadingBar" IsIndeterminate="True" Margin="0,171,-24,235" Visibility="Collapsed"/>
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

@@ -20,7 +20,7 @@ namespace WordCruncherWP7
         public const int ProtocolVersion = 1;
 
         public static bool ErrorFlagged = false;
-        public static String YourUsername = "Mishkin2";
+        public static String YourUsername;
         public static String OpponentUsername;
         public static int PlayerIndex = -1;
         public static List<MatchResult> MatchResults = new List<MatchResult>();

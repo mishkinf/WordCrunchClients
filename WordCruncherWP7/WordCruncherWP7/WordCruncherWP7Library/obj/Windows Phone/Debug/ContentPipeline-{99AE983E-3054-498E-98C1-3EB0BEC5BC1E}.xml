@@ -53,7 +53,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\labelsFont.xnb</Output>
-      <Time>2011-12-12T21:31:47.4995156-08:00</Time>
+      <Time>2012-02-18T14:46:54.9430781-08:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>
@@ -153,6 +153,33 @@
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_black.xnb</Output>
       <Time>2012-02-14T22:33:52.6796875-08:00</Time>
+    </Item>
+    <Item>
+      <Source>timergraphic.png</Source>
+      <Name>timergraphic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\timergraphic.xnb</Output>
+      <Time>2012-02-18T14:14:46-08:00</Time>
+    </Item>
+    <Item>
+      <Source>timerFont.spritefont</Source>
+      <Name>timerFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\timerFont.xnb</Output>
+      <Time>2012-02-18T14:26:50.9352656-08:00</Time>
+    </Item>
+    <Item>
+      <Source>usernamesFont.spritefont</Source>
+      <Name>usernamesFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\usernamesFont.xnb</Output>
+      <Time>2012-02-18T14:43:50.0202266-08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
