@@ -70,7 +70,7 @@ namespace WordCruncherWP7
                 if (gs.collisionRect.Contains((int)tap.X, (int)tap.Y))
                 {
                     gs.hasBomb = true;
-                    CrunchCore.SendMessage(new DropBombMessage(gs.index + 1));
+                    CrunchCore.SendMessage(new DropBombMessage(gs.index ));
                 }
             }
         }

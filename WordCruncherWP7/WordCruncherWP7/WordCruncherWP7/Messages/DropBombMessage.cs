@@ -27,7 +27,7 @@ namespace WordCruncherWP7.Messages
 
         public String encode() {
             JObject json = new JObject(
-                new JProperty("type", "drop_bomb"),
+                new JProperty("type", "wc_drop_bomb"),
                 new JProperty("index", index)
                 );
       

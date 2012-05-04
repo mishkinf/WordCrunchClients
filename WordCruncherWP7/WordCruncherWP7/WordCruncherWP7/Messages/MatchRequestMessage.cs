@@ -20,7 +20,7 @@ namespace WordCruncherWP7.Messages
         }
 
         public String encode() {
-            JObject o = new JObject(new JProperty("type", "match_request"));
+            JObject o = new JObject(new JProperty("type", "wc_match_request"));
 
             return o.ToString();
         }

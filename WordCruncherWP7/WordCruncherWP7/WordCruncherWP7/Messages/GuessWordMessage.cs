@@ -24,7 +24,7 @@ namespace WordCruncherWP7.Messages
         public GuessWordMessage(int[] selection) {
             id = guessId++;
 
-            JObject o = new JObject(new JProperty("type", "guess_word"));
+            JObject o = new JObject(new JProperty("type", "wc_guess_word"));
             o.Add(new JProperty("id", id));
             o.Add(new JProperty("selection", selection));
 

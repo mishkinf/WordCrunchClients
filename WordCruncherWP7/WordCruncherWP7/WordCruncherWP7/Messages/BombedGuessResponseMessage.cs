@@ -28,7 +28,7 @@ namespace WordCruncherWP7.Messages
             int id = (int) o["id"];
             int scoreYou = -1, scoreOpponent = -1, length;
             int[] bombs, selectionPath;
-            int player_index = (int)o["player_index"];
+            int player_index = (int)o["player_id"];
             ePlayer player;
             Word word;
             GameSquare[] squares;
@@ -38,12 +38,12 @@ namespace WordCruncherWP7.Messages
             else
                 player = ePlayer.Opponent;
 
-            if (Globals.PlayerIndex == 1)
+            if (Globals.PlayerIndex == 0)
             {
                 scoreYou = (int)o["scores"][0];
                 scoreOpponent = (int)o["scores"][1];
             }
-            else if (Globals.PlayerIndex == 2)
+            else if (Globals.PlayerIndex == 1)
             {
                 scoreYou = (int)o["scores"][1];
                 scoreOpponent = (int)o["scores"][0];
@@ -53,7 +53,7 @@ namespace WordCruncherWP7.Messages
             length = bombsJson.Count;
             bombs = new int[length];
             for(int i = 0; i < length; i++) {
-                bombs[i] = (int) bombsJson[i] - 1;
+                bombs[i] = (int) bombsJson[i] ;
             }
 
             JArray selectionJson = (JArray)o["selection"];
@@ -61,7 +61,7 @@ namespace WordCruncherWP7.Messages
             selectionPath = new int[length];
             for (int i = 0; i < length; i++)
             {
-                selectionPath[i] = (int)selectionJson[i] - 1;
+                selectionPath[i] = (int)selectionJson[i];
             }
 
             squares = new GameSquare[selectionPath.Length];

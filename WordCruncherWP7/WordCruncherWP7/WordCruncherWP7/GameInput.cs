@@ -32,7 +32,7 @@ namespace WordCruncherWP7
                         int[] selectedIndexes = new int[WordGame.selectedSquares.Count];
                         int index = 0;
                         foreach (GameSquare gs in WordGame.selectedSquares)
-                            selectedIndexes[index++] = gs.index + 1;
+                            selectedIndexes[index++] = gs.index;
 
                         CrunchCore.SendMessage(new GuessWordMessage(selectedIndexes));
 

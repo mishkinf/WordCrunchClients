@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="ApplicationSettings.cs" />
     <Compile Include="Bombs.cs" />
+    <Compile Include="DispatcherHelper.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="CrunchEventArgs\GoodGuessArgs.cs" />
     <Compile Include="CrunchEventArgs\HighScoresArgs.cs" />

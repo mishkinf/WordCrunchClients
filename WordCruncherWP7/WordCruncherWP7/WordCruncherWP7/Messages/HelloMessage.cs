@@ -34,9 +34,9 @@ namespace WordCruncherWP7.Messages
                 deviceUniqueID = "FAKEUNIQUEID";
 
             JObject json = new JObject(
-                new JProperty("type", "hello"),
+                new JProperty("type", "wc_hello"),
                 new JProperty("username", Globals.YourUsername),
-                new JProperty("token", deviceUniqueID),
+                new JProperty("user_token", deviceUniqueID),
                 new JProperty("version", Globals.ProtocolVersion)
                 );
       

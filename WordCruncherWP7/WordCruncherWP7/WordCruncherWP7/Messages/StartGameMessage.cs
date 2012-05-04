@@ -15,19 +15,22 @@ namespace WordCruncherWP7.Messages
 {
     public class StartGameMessage : iMessage, iDecodableMessage
     {
-        public String player1, player2;
+        public String player_id, user1, user2;
         public int bombCount, columns, rows;                                                                                    
         public static StartGameMessage fromJSON(string message)
         {
             JObject o = JObject.Parse(message);
 
-            string player1 = (string)o["players"][0];
-            string player2 = (string)o["players"][1];
+
+            IEnumerable<JToken> keys = o.Children();
+            string player_id = o["player_id"].ToString();
+            string player1 = (string)o["users"][0];
+            string player2 = (string)o["users"][1];
 
             int bomb_count = (int)o["bomb_count"];
 
-            int columns = (int)o["board"]["columns"];
-            int rows = (int)o["board"]["rows"];
+            int columns = Int32.Parse(o["board"]["cols"].ToString());
+            int rows = Int32.Parse(o["board"]["rows"].ToString());
 
             int total = columns*rows;
             List<GameSquare> squares = new List<GameSquare>();
@@ -38,9 +41,9 @@ namespace WordCruncherWP7.Messages
             for(int c = 0; c < columns; c++)
             {
                 for(int r = 0; r < rows; r++) {
-                    int letter_ascii = (int)o["board"]["matrix"][index][0];
+                    int letter_ascii = (int)o["board"]["matrix"][index]["letter"];
                     string letter = System.Convert.ToChar(letter_ascii).ToString();
-                    int value = (int)o["board"]["matrix"][index][1];
+                    int value = (int)o["board"]["matrix"][index]["value"];
 
                     WordGame.SetSquare(letter, value, r, c, index);
 
@@ -60,13 +63,14 @@ namespace WordCruncherWP7.Messages
 
             
 
-            return new StartGameMessage(player1, player2, bomb_count, columns, rows);
+            return new StartGameMessage(player_id, bomb_count, columns, rows, player1, player2);
         }
 
-        public StartGameMessage(String player1, String player2, int bombCount, int columns, int rows)
+        public StartGameMessage(String player_id, int bombCount, int columns, int rows, string player1, string player2)
         {
-            this.player1 = player1;
-            this.player2 = player2;
+            this.user1 = player1;
+            this.user2 = player2;
+            this.player_id = player_id;
             this.bombCount = bombCount;
             this.columns = columns;
             this.rows = rows;

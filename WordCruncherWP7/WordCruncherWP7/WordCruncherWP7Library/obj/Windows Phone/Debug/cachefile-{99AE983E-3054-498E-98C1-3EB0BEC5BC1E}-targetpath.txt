@@ -1,9 +1,6 @@
 Content\redRect.xnb
 Content\square_blue.xnb
 Content\square_red.xnb
-Content\CourierNew.xnb
-Content\squareValue.xnb
-Content\labelsFont.xnb
 Content\bomb.xnb
 Content\deletemetexture.xnb
 Content\fadeup.xnb
@@ -16,5 +13,8 @@ Content\square_gray.xnb
 Content\square_blue2.xnb
 Content\spark_black.xnb
 Content\timergraphic.xnb
+Content\CourierNew.xnb
+Content\squareValue.xnb
+Content\labelsFont.xnb
 Content\timerFont.xnb
 Content\usernamesFont.xnb

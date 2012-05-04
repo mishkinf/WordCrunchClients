@@ -68,30 +68,31 @@ namespace WordCruncherWP7
 
                 switch (msg_type)
                 {
-                    case "hello":
+                    case "wc_hello":
 
                         break;
-                    case "hello_response":
+                    case "wc_hello_response":
                         if (OnCreateConnectionCompleted != null)
                             OnCreateConnectionCompleted("CrunchCore", new ConnectionArgs(true));
                         
                         break;
-                    case "in_queue":
+                    case "wc_in_queue":
                         // Do nothing.. Display waiting message to user
                         break;
-                    case "start_game":
+                    case "wc_start_game":
                         WordGame.InitGame(500, 800);
                         StartGameMessage s = StartGameMessage.fromJSON(e.Message);
 
-                        if (s.player1 == Globals.YourUsername)
+                        if (Int32.Parse(s.player_id) == 0)
+                        {
+                            Globals.PlayerIndex = 0;
+                            //Globals.YourUsername
+                            Globals.OpponentUsername = s.user2;
+                        }
+                        else
                         {
                             Globals.PlayerIndex = 1;
-                            Globals.OpponentUsername = s.player2;
-                        }
-                        else if (s.player2 == Globals.YourUsername)
-                        {
-                            Globals.PlayerIndex = 2;
-                            Globals.OpponentUsername = s.player1;
+                            Globals.OpponentUsername = s.user1;
                         }
 
                         if (OnGameStart != null)
@@ -100,7 +101,7 @@ namespace WordCruncherWP7
                             PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
                         }
                         break;
-                    case "good_guess_response":
+                    case "wc_good_guess":
                         GoodGuessResponseMessage response = GoodGuessResponseMessage.fromJSON(e.Message);
 
                         WordGame.scoreYou = response.scoreYou;
@@ -113,7 +114,7 @@ namespace WordCruncherWP7
                             OnGoodGuess("CrunchCore", new GoodGuessArgs(response));
 
                         break;
-                    case "bombed_guess_response":
+                    case "wc_bombed_guess":
                         BombedGuessResponseMessage bomb = BombedGuessResponseMessage.fromJSON(e.Message);
 
                         RoutedEventArgs args = new RoutedEventArgs();
@@ -125,7 +126,7 @@ namespace WordCruncherWP7
                             OnBombed("CrunchCore", new BombedArgs(bomb));
 
                         break;
-                    case "end_game":
+                    case "wc_stop_game":
                         c.Disconnect();
                         JObject json = JObject.Parse(e.Message);
                         string reason = (String)json.Property("reason").Value;
@@ -135,13 +136,13 @@ namespace WordCruncherWP7
                             OnGameEnd("CrunchCore", new EventArgs());
                         }
                         break;
-                    case "high_scores_response":
+                    case "wc_high_scores":
                         HighScoresResponseMessage scoresResponse = HighScoresResponseMessage.fromJSON(e.Message);
 
                         if (OnHighScoresReturned != null)
                             OnHighScoresReturned("CrunchCore", new HighScoresArgs());
                         break;
-                    case "goodbye":
+                    case "wc_goodbye":
                         c.Disconnect();
                         break;
                 }

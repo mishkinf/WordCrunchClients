@@ -27,17 +27,17 @@ namespace WordCruncherWP7.Messages
             Word word;
             ePlayer player;
 
-            if ((int)o["player_index"] == Globals.PlayerIndex)
+            if ((int)o["player_id"] == Globals.PlayerIndex)
                 player = ePlayer.You;
             else
                 player = ePlayer.Opponent;
 
-            if (Globals.PlayerIndex == 1)
+            if (Globals.PlayerIndex == 0)
             {
                 scoreYou = (int)o["scores"][0];
                 scoreOpponent = (int)o["scores"][1];
             }
-            else if (Globals.PlayerIndex == 2)
+            else if (Globals.PlayerIndex == 1)
             {
                 scoreYou = (int)o["scores"][1];
                 scoreOpponent = (int)o["scores"][0];
@@ -48,7 +48,7 @@ namespace WordCruncherWP7.Messages
             selectionPath = new int[length];
             for (int i = 0; i < length; i++)
             {
-                selectionPath[i] = (int)selectionJson[i] - 1;
+                selectionPath[i] = (int)selectionJson[i];
             }
 
             squares = new GameSquare[selectionPath.Length];

@@ -297,30 +297,6 @@
     						</EasingDoubleKeyFrame>
     						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
     					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="findFriendButton">
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="highScoreButton">
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="settingsButton">
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="20">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-    					</DoubleAnimationUsingKeyFrames>
     					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="feedbackButton">
     						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="20">
     							<EasingDoubleKeyFrame.EasingFunction>
@@ -336,33 +312,6 @@
     							</EasingDoubleKeyFrame.EasingFunction>
     						</EasingDoubleKeyFrame>
     						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="findFriendButton">
-    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="highScoreButton">
-    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="settingsButton">
-    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
     					</DoubleAnimationUsingKeyFrames>
     					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="feedbackButton">
     						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -394,37 +343,7 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button Content="Find a Friend" Height="202" HorizontalAlignment="Left" Margin="-1,187,0,0" x:Name="findFriendButton" VerticalAlignment="Top" Width="202" d:LayoutOverrides="HorizontalAlignment" BorderBrush="{x:Null}" Style="{StaticResource FriendBtnStyle}" Background="#FF2CAAEF" FontSize="21.333" RenderTransformOrigin="0.5,0.5" Opacity="0" >
-            	<Button.RenderTransform>
-            		<CompositeTransform/>
-            	</Button.RenderTransform>
-            	<i:Interaction.Triggers>
-            		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/Pages/Instructions.xaml"/>
-            		</i:EventTrigger>
-            	</i:Interaction.Triggers>
-            </Button>
-            <Button Content="High Scores" Height="202" HorizontalAlignment="Left" Margin="188,187,0,0" x:Name="highScoreButton" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}" Style="{StaticResource HighScoresBtnStyle}" Background="#FF2CAAEF" RenderTransformOrigin="0.5,0.5" Opacity="0" >
-            	<Button.RenderTransform>
-            		<CompositeTransform/>
-            	</Button.RenderTransform>
-            	<i:Interaction.Triggers>
-            		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/Pages/HighScores.xaml"/>
-            		</i:EventTrigger>
-            	</i:Interaction.Triggers>
-            </Button>
-            <Button Content="Settings" Height="201" HorizontalAlignment="Left" Margin="-1,375,0,0" x:Name="settingsButton" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}" Style="{StaticResource SettingsBtnStyle}" Background="#FF2CAAEF" d:LayoutOverrides="HorizontalAlignment" RenderTransformOrigin="0.5,0.5" Opacity="0">
-            	<Button.RenderTransform>
-            		<CompositeTransform/>
-            	</Button.RenderTransform>
-            	<i:Interaction.Triggers>
-            		<i:EventTrigger EventName="Click">
-            			<ec:NavigateToPageAction TargetPage="/Pages/Settings.xaml"/>
-            		</i:EventTrigger>
-            	</i:Interaction.Triggers>
-            </Button>
-            <Button Content="Rate this app!" Height="201" HorizontalAlignment="Left" Margin="188,375,0,0" x:Name="feedbackButton" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}" Style="{StaticResource FeedbackBtnStyle}" Background="#FF2CAAEF" Click="feedbackButton_Click" RenderTransformOrigin="0.5,0.5" Opacity="0">
+            <Button Content="Rate this app!" Height="201" HorizontalAlignment="Left" Margin="0,202,0,0" x:Name="feedbackButton" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}" Style="{StaticResource FeedbackBtnStyle}" Background="#FF2CAAEF" Click="feedbackButton_Click" RenderTransformOrigin="0.5,0.5" Opacity="0" d:LayoutOverrides="HorizontalAlignment">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>

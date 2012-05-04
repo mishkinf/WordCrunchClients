@@ -21,7 +21,7 @@ namespace WordCruncherWP7.Messages
         public String encode()
         {
             JObject json = new JObject(
-                new JProperty("type", "high_scores")
+                new JProperty("type", "wc_high_scores")
                 );
 
             return json.ToString();
