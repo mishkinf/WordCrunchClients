@@ -192,6 +192,7 @@
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
     <Resource Include="Pages\play_again_icon2.png" />
+    <Resource Include="thumpjumplogo.png" />
     <Resource Include="wcrunchicon.jpg" />
     <Resource Include="Images\wordcrunchlogo_transparent.png" />
     <Resource Include="Images\wordcrunch_bannerlogo.png" />

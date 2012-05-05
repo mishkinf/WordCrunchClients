@@ -72,8 +72,9 @@ namespace WordCruncherWP7
 
         void CrunchCore_OnBombed(object sender, BombedArgs e)
         {
+
             bombs.DropBomb(e.Message.bombs);
-            e.Message.Word.SetBombed();
+            //e.Message.Word.SetBombed();
             WordScored(e.Message.Player, e.Message.Word);
         }
 

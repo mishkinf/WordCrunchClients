@@ -50,10 +50,10 @@ namespace WordCruncherWP7
 
         public void SetBombed() 
         {
-            //foreach (GameSquare s in GameSquares)
-            //{
-            //    s.hasBomb = true;
-            //}
+            foreach (GameSquare s in GameSquares)
+            {
+                s.hasBomb = true;
+            }
         }
 
         public override string ToString()

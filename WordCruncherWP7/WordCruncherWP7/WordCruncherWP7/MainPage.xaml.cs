@@ -29,7 +29,7 @@ namespace WordCruncherWP7
         {
             InitializeComponent();
 
-            loadingBar.Visibility = Visibility.Collapsed;
+            connectingGrid.Visibility = Visibility.Collapsed;
             MatchRequestMessage m = new MatchRequestMessage();
             m.encode();
             CrunchCore.OnGameStart += new EventHandler(CrunchCore_OnGameStart);
@@ -84,7 +84,7 @@ namespace WordCruncherWP7
 
         private void playGame(object sender, RoutedEventArgs e)
         {
-            loadingBar.Visibility = Visibility.Visible;
+            connectingGrid.Visibility = Visibility.Visible;
 
             WordGame.ResetGame();
 
@@ -99,6 +99,13 @@ namespace WordCruncherWP7
         {
             MarketplaceReviewTask review = new MarketplaceReviewTask();
             review.Show();
+        }
+
+        private void thumpJumpLogo_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+        	WebBrowserTask task = new WebBrowserTask();
+			task.URL = "https://www.thumpjump.com/phonelanding";
+			task.Show();
         }
     }
 }

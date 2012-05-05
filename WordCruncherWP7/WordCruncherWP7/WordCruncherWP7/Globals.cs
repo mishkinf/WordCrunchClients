@@ -15,7 +15,7 @@ namespace WordCruncherWP7
     public static class Globals
     {
         //  "10.37.129.2";
-        public const String ServerURL = "192.168.1.4"; //ec2-184-73-99-238.compute-1.amazonaws.com";
+        public const String ServerURL = "10.211.55.2"; //"192.168.1.4"; //ec2-184-73-99-238.compute-1.amazonaws.com";
         public const String ServerPort = "2222";
         public const int ProtocolVersion = 1;
 

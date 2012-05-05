@@ -268,6 +268,53 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+		<Style x:Key="visitWebsiteTemplate" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.3">
+											<VisualTransition.GeneratedEasingFunction>
+												<CircleEase EasingMode="EaseOut"/>
+											</VisualTransition.GeneratedEasingFunction>
+										</VisualTransition>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="0.82" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.842" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="White" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="ButtonBackground" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}" RenderTransformOrigin="0.5,0.5" BorderBrush="Black" Background="#FF3FA9F5">
+								<Border.RenderTransform>
+									<CompositeTransform/>
+								</Border.RenderTransform>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left" Foreground="White"/>
+							</Border>
+							<Image Margin="28,30,26,28" Source="thumpjumplogo.png"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -289,39 +336,33 @@
     			</VisualStateGroup.Transitions>
     			<VisualState x:Name="PreLoaded">
     				<Storyboard>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="playButton">
-    						<EasingDoubleKeyFrame KeyTime="0" Value="20">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="feedbackButton">
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="20">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="playButton">
-    						<EasingDoubleKeyFrame KeyTime="0" Value="0">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
-    					</DoubleAnimationUsingKeyFrames>
-    					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="feedbackButton">
-    						<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
-    							<EasingDoubleKeyFrame.EasingFunction>
-    								<CircleEase EasingMode="EaseOut"/>
-    							</EasingDoubleKeyFrame.EasingFunction>
-    						</EasingDoubleKeyFrame>
-    						<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
-    					</DoubleAnimationUsingKeyFrames>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="playButton" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="feedbackButton" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="thumpJumpLogo" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="-38.25" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="thumpJumpLogo" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="-22.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="thumpJumpLogo" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="2.725" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="thumpJumpLogo" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="0.94" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="thumpJumpLogo" d:IsOptimized="True"/>
+    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Image.Stretch)" Storyboard.TargetName="thumpJumpLogo">
+    						<DiscreteObjectKeyFrame KeyTime="0">
+    							<DiscreteObjectKeyFrame.Value>
+    								<Stretch>Fill</Stretch>
+    							</DiscreteObjectKeyFrame.Value>
+    						</DiscreteObjectKeyFrame>
+    					</ObjectAnimationUsingKeyFrames>
+    					<DoubleAnimation Duration="0" To="22.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="playButton" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="9" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="playButton" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="211.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="feedbackButton" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="-3" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="feedbackButton" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle" d:IsOptimized="True"/>
+    					<ColorAnimation Duration="0" To="#FF2CAAEF" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="-7.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="rectangle" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="6" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="rectangle" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1.082" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="rectangle" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle1" d:IsOptimized="True"/>
+    					<ColorAnimation Duration="0" To="#BF000000" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle1" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="37.333" Storyboard.TargetProperty="(TextBlock.FontSize)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
     				</Storyboard>
     			</VisualState>
     		</VisualStateGroup>
@@ -338,6 +379,11 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" Height="97" Margin="14,0,1,8" Opacity="0" Stroke="Black" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+            	<Rectangle.RenderTransform>
+            		<CompositeTransform/>
+            	</Rectangle.RenderTransform>
+            </Rectangle>
             <Button Content="Play" Height="202" HorizontalAlignment="Left" Margin="-1,0,0,0" x:Name="playButton" VerticalAlignment="Top" Width="391" Click="playGame" d:LayoutOverrides="VerticalAlignment" Foreground="White" BorderBrush="{x:Null}" Style="{StaticResource CrunchBtnStyle}" Background="#FF2CAAEF" FontSize="16" RenderTransformOrigin="0.5,0.5" Opacity="0" >
             	<Button.RenderTransform>
             		<CompositeTransform/>
@@ -348,7 +394,16 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <ProgressBar x:Name="loadingBar" IsIndeterminate="True" Visibility="Collapsed"/>
+            <Image x:Name="thumpJumpLogo" Height="100" Margin="218,0,138,-22" Opacity="0" VerticalAlignment="Bottom" Source="thumpjumplogo.png" RenderTransformOrigin="0.5,0.5" Tap="thumpJumpLogo_Tap">
+            	<Image.RenderTransform>
+            		<CompositeTransform/>
+            	</Image.RenderTransform>
+            </Image>
+        </Grid>
+        <Grid x:Name="connectingGrid" Margin="0,1,1,-16" Grid.RowSpan="2">
+        	<Rectangle x:Name="rectangle1" Fill="#FFF4F4F5" Margin="0,0,0,13" Opacity="0" Stroke="Black"/>
+        	<ProgressBar x:Name="loadingBar" IsIndeterminate="True" Margin="0,78,23,56"/>
+        	<TextBlock x:Name="textBlock" Margin="12,57,8,200" Opacity="0" Grid.Row="1" TextWrapping="Wrap" FontFamily="Segoe WP Semibold" HorizontalAlignment="Center" Width="438" VerticalAlignment="Center" TextAlignment="Center"><Run Text="Please wait as we "/><LineBreak/><Run Text="find an opponent and"/><LineBreak/><Run Text="connect you..."/><LineBreak/></TextBlock>
         </Grid>
     </Grid>
  
