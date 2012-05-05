@@ -40,6 +40,7 @@ namespace WordCruncherWP7
 
         private void Reset()
         {
+            bombedIndices.Clear();
             ticks = 100;
             bombing = true;
         }
@@ -47,7 +48,10 @@ namespace WordCruncherWP7
         public void UpdateBomb()
         {
             if (ticks <= 0)
+            {
                 bombing = false;
+                bombedIndices.Clear();
+            }
             else if (bombing)
                 ticks--;
         }
@@ -88,7 +92,7 @@ namespace WordCruncherWP7
                 }
             }
 
-            //bombedIndices.Clear();
+            
         }
     }
 

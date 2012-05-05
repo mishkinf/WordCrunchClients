@@ -191,6 +191,7 @@
       <All>True</All>
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
+    <Resource Include="Pages\menu_icon.png" />
     <Resource Include="Pages\play_again_icon2.png" />
     <Resource Include="thumpjumplogo.png" />
     <Resource Include="wcrunchicon.jpg" />

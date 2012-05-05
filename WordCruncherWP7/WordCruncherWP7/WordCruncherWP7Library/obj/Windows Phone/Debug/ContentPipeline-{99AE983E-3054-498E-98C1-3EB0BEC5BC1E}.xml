@@ -29,42 +29,6 @@
       <Time>2011-12-12T22:09:08.3613281-08:00</Time>
     </Item>
     <Item>
-      <Source>CourierNew.spritefont</Source>
-      <Name>CourierNew</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\CourierNew.xnb</Output>
-      <Time>2011-11-21T21:22:18.7943835-08:00</Time>
-    </Item>
-    <Item>
-      <Source>squareValue.spritefont</Source>
-      <Name>squareValue</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\squareValue.xnb</Output>
-      <Time>2011-12-12T21:38:35.0063516-08:00</Time>
-    </Item>
-    <Item>
-      <Source>labelsFont.spritefont</Source>
-      <Name>labelsFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\labelsFont.xnb</Output>
-      <Time>2012-02-18T14:46:54.9430781-08:00</Time>
-    </Item>
-    <Item>
-      <Source>bomb.png</Source>
-      <Name>bomb</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb.xnb</Output>
-      <Time>2012-02-05T15:41:58.1699219-08:00</Time>
-    </Item>
-    <Item>
       <Source>deletemetexture.jpg</Source>
       <Name>deletemetexture</Name>
       <Importer>TextureImporter</Importer>
@@ -164,6 +128,42 @@
       <Time>2012-02-18T14:14:46-08:00</Time>
     </Item>
     <Item>
+      <Source>bomb.png</Source>
+      <Name>bomb</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb.xnb</Output>
+      <Time>2012-05-05T13:34:25.6699218-07:00</Time>
+    </Item>
+    <Item>
+      <Source>CourierNew.spritefont</Source>
+      <Name>CourierNew</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\CourierNew.xnb</Output>
+      <Time>2011-11-21T21:22:18.7943835-08:00</Time>
+    </Item>
+    <Item>
+      <Source>squareValue.spritefont</Source>
+      <Name>squareValue</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\squareValue.xnb</Output>
+      <Time>2011-12-12T21:38:35.0063516-08:00</Time>
+    </Item>
+    <Item>
+      <Source>labelsFont.spritefont</Source>
+      <Name>labelsFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\labelsFont.xnb</Output>
+      <Time>2012-02-18T14:46:54.9430781-08:00</Time>
+    </Item>
+    <Item>
       <Source>timerFont.spritefont</Source>
       <Name>timerFont</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -179,7 +179,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\usernamesFont.xnb</Output>
-      <Time>2012-02-18T14:43:50.0202266-08:00</Time>
+      <Time>2012-05-05T13:19:46.0341796-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

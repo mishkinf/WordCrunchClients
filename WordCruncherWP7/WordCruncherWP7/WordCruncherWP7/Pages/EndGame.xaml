@@ -221,7 +221,9 @@
 								<VisualStateGroup x:Name="CommonStates">
 									<VisualState x:Name="Normal">
 										<Storyboard>
-											<ColorAnimation Duration="0" To="#FF2CAAEF" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<ColorAnimation Duration="0" To="#FF5FB1FF" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
 										</Storyboard>
 									</VisualState>
 									<VisualState x:Name="MouseOver"/>
@@ -241,7 +243,11 @@
 								</Border.RenderTransform>
 								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Height="45" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="18.667" HorizontalAlignment="Left"/>
 							</Border>
-							<Image Margin="37,38,47,49" Source="Images/menu_icon.png"/>
+							<Image x:Name="image" Margin="43,36,42,49" Source="menu_icon.png" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -281,14 +287,7 @@
 				<ListBox x:Name="yourWords" Width="229" Margin="0,2,0,0"/>
 				<ListBox x:Name="opponentsWords" Width="238" Margin="0,2,0,0"/>
 			</StackPanel>
-			<Button Content="High Scores" Height="185" HorizontalAlignment="Left" Margin="240,514,0,0" x:Name="highScoreButton_Copy" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Style="{StaticResource HighScoresBtnStyle}" Background="#FF2CAAEF" >
-				<i:Interaction.Triggers>
-					<i:EventTrigger EventName="Click">
-						<ec:NavigateToPageAction TargetPage="/Pages/HighScores.xaml"/>
-					</i:EventTrigger>
-				</i:Interaction.Triggers>
-			</Button>
-			<Button Content="Main Menu" Height="185" HorizontalAlignment="Left" Margin="64,514,0,0" x:Name="mainMenuBtn" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Style="{StaticResource MainMenuBtn}" Background="#FF2CAAEF" >
+			<Button Content="Main Menu" Height="185" HorizontalAlignment="Left" Margin="145,512,0,0" x:Name="mainMenuBtn" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Style="{StaticResource MainMenuBtn}" Background="#FF2CAAEF" >
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="Click">
 						<ec:NavigateToPageAction TargetPage="/MainPage.xaml"/>
