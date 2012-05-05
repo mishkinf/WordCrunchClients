@@ -18,6 +18,8 @@ using WordCruncherWP7.Messages;
 using Mishimation;
 using WordCruncherWP7.CrunchEventArgs;
 using WordCrunchWP7;
+using System.IO;
+using Microsoft.Xna.Framework.Media;
 
 namespace WordCruncherWP7
 {
@@ -28,11 +30,11 @@ namespace WordCruncherWP7
         SpriteBatch spriteBatch;
         GameInput input;
 
-        Texture2D textureBlue, textureRed, textureGray, textureBomb, textureDelete, fadeUp, timerGraphic;
+        Texture2D textureBlue, textureRed, textureGray, textureBomb, textureBombSmall, textureDelete, fadeUp, timerGraphic;
         SpriteFont letterFont, letterValueFont, labelsFont, timerFont, scoresFont;
         RenderTarget2D renderTarget, renderTargetFlipped;
 
-        Bombs bombs = new Bombs();
+        Bombs bombs;
 
         Quad quad;
         BasicEffect quadEffect;
@@ -40,6 +42,7 @@ namespace WordCruncherWP7
 
         SparksParticleSystem yourParticles;
         SparksParticleSystem enemyParticles;
+        FireworksParticleSystem bombParticles;
         StopWatch stopwatch;
 
         public GamePage()
@@ -48,17 +51,18 @@ namespace WordCruncherWP7
 
             // Get the application's ContentManager
             content = (Application.Current as App).Content;
-
+            
             input = new GameInput();
             // Create a timer for this page
             timer = new GameTimer();
             timer.UpdateInterval = TimeSpan.FromTicks(333333);
             timer.Update += OnUpdate;
             timer.Draw += OnDraw;
- 
+
+            bombs = new Bombs();
             CrunchCore.OnBombed += new EventHandler<BombedArgs>(CrunchCore_OnBombed);
             CrunchCore.OnGoodGuess += new EventHandler<GoodGuessArgs>(CrunchCore_OnGoodGuess);
-            TouchPanel.EnabledGestures = GestureType.DoubleTap | GestureType.Hold;
+            TouchPanel.EnabledGestures = GestureType.DoubleTap | GestureType.Hold | GestureType.Tap;
 
             stopwatch = new StopWatch();
             stopwatch.Start();
@@ -72,28 +76,44 @@ namespace WordCruncherWP7
 
         void CrunchCore_OnBombed(object sender, BombedArgs e)
         {
-
-            bombs.DropBomb(e.Message.bombs);
-            //e.Message.Word.SetBombed();
+            bombs.DropBomb(e.Message.bombs, e.Message.YourGuess);
+            e.Message.Word.Bombed = true;
             WordScored(e.Message.Player, e.Message.Word);
         }
 
         private void WordScored(ePlayer player, Word word)
         {
-            switch (player)
+            bool yourScore = player == ePlayer.You;
+
+            if (word.Bombed)
+                yourScore = !yourScore;
+
+            switch (yourScore)
             {
-                case ePlayer.You:
+                case true:
                     CrunchCore.yourWords.Add(word);
 
-                    foreach(GameSquare s in word.GameSquares)
+                    foreach (GameSquare s in word.GameSquares)
+                    {
                         yourParticles.AddParticles(new Vector2(s.rect.X + 50, s.rect.Y + 50));
+                        //if (word.Bombed)
+                        //{
+                        //    bombParticles.AddParticles(new Vector2(s.rect.X + 50, s.rect.Y + 50));
+                        //}
+                        //else
+                        //{
+                            
+                        //}
+                    }
 
                     break;
-                case ePlayer.Opponent:
+                case false:
                     CrunchCore.opponentsWords.Add(word);
-                    
+
                     foreach (GameSquare s in word.GameSquares)
+                    {
                         enemyParticles.AddParticles(new Vector2(s.rect.X + 50, s.rect.Y + 50));
+                    }
                     break;
             }
         }
@@ -105,9 +125,11 @@ namespace WordCruncherWP7
             spriteBatch = new SpriteBatch(SharedGraphicsDeviceManager.Current.GraphicsDevice);
             yourParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark");
             enemyParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark_black");
+            bombParticles = new FireworksParticleSystem(content, spriteBatch, 30, "spark_enemy");
 
             yourParticles.LoadContent();
             enemyParticles.LoadContent();
+            bombParticles.LoadContent();
 
             textureBlue = content.Load<Texture2D>("square_blue2");
             textureRed = content.Load<Texture2D>("square_red");
@@ -115,6 +137,7 @@ namespace WordCruncherWP7
             timerGraphic = content.Load<Texture2D>("timergraphic");
 
             fadeUp = content.Load<Texture2D>("fadeup3");
+            textureBombSmall = content.Load<Texture2D>("bomb_small");
             textureBomb = content.Load<Texture2D>("bomb");
             textureDelete = content.Load<Texture2D>("deletemetexture");
             letterFont = content.Load<SpriteFont>("CourierNew");
@@ -151,11 +174,21 @@ namespace WordCruncherWP7
             while (TouchPanel.IsGestureAvailable)
             {
                 GestureSample gs = TouchPanel.ReadGesture();
+
                 switch (gs.GestureType)
                 {
                     case GestureType.DoubleTap:
                         bombs.AddBomb(gs.Position);
                         break;
+                    //case GestureType.Tap:
+                    //     using (MemoryStream stream = new MemoryStream())
+                    //        {
+                    //            renderTarget.SaveAsJpeg(stream, renderTarget.Width, renderTarget.Height);
+                    //            stream.Position = 0;
+                    //            MediaLibrary media = new MediaLibrary();
+                    //            media.SavePicture("screenshot" + e.ElapsedTime.ToString()  + ".jpg", stream);
+                    //        } 
+                    //    break;
                 }
             }
 
@@ -166,6 +199,7 @@ namespace WordCruncherWP7
         {
             yourParticles.Update(e.ElapsedTime);
             enemyParticles.Update(e.ElapsedTime);
+            bombParticles.Update(e.ElapsedTime);
 
             Matrix view = Matrix.CreateLookAt(new Vector3(0, 10f, 10f), new Vector3(0.0f, 7.0f, 0.0f), Vector3.Up);
             Matrix projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, spriteBatch.GraphicsDevice.Viewport.AspectRatio, 0.01f, 1000f);
@@ -198,31 +232,40 @@ namespace WordCruncherWP7
             {
                 scaleChange = bombs.IsBombing(gs.index) ? gs.Scale - bombs.GetScaleOffset() : 1f;
 
+                if (bombs.IsBombing(gs.index))
+                    scaleChange = scaleChange;
+
                 if (gs.color == Color.Blue || bombs.IsBombing(gs.index))
                 {
                     spriteBatch.Draw(textureBlue, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2),scaleChange, SpriteEffects.None, 0.0f);
                 } else if (gs.color == Color.Gray)
                 {
+                    Vector2 letterSize = letterFont.MeasureString(gs.letter.ToUpper());
                     spriteBatch.Draw(textureGray, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.Scale, SpriteEffects.None, 0.0f);
-                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.FromNonPremultiplied(51, 160, 232, 255), 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, gs.Scale, SpriteEffects.None, 0.0f);
+                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + gs.rect.Width / 2 , gs.rect.Y + gs.rect.Height / 2), Color.FromNonPremultiplied(51, 160, 232, 255), 0.0f, letterFont.MeasureString(gs.letter.ToUpper()) / 2, scaleChange, SpriteEffects.None, 0.0f);
                 }
                    
                 if (gs.hasBomb)
-                    spriteBatch.Draw(textureBomb, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), gs.Scale, SpriteEffects.None, 0.0f);
+                    spriteBatch.Draw(textureBomb, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), scaleChange, SpriteEffects.None, 0.0f);
             }
 
             foreach (GameSquare gs in WordGame.squares)
             {
                 scaleChange = bombs.IsBombing(gs.index) ? gs.Scale + bombs.GetScaleOffset() : 1f;
 
+
+                Vector2 letterSize = letterFont.MeasureString(gs.letter.ToUpper());
+
                 if (gs.color == Color.Gray || (!gs.yourBomb && bombs.IsBombing(gs.index)))
                 {
                     spriteBatch.Draw(textureGray, new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), null, Color.White, 0.0f, new Vector2(gs.rect.Width / 2, gs.rect.Height / 2), scaleChange, SpriteEffects.None, 0.0f);
-                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.FromNonPremultiplied(51, 160, 232, 255), 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, scaleChange, SpriteEffects.None, 0.0f);
+                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), Color.FromNonPremultiplied(51, 160, 232, 255), 0.0f, letterFont.MeasureString(gs.letter.ToUpper()) / 2, scaleChange, SpriteEffects.None, 0.0f);
+                    //spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + gs.rect.Width / 2 - letterSize.X / 2, gs.rect.Y + gs.rect.Height / 2 - letterSize.Y / 2), Color.FromNonPremultiplied(51, 160, 232, 255), 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, scaleChange, SpriteEffects.None, 0.0f);
                 }
                 else
                 {
-                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + 46, gs.rect.Y + 48), Color.White, 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, scaleChange, SpriteEffects.None, 0.0f);
+                    spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + gs.rect.Width / 2, gs.rect.Y + gs.rect.Height / 2), Color.White, 0.0f, letterFont.MeasureString(gs.letter.ToUpper()) / 2, scaleChange, SpriteEffects.None, 0.0f);
+                    //spriteBatch.DrawString(letterFont, gs.letter.ToString().ToUpper(), new Vector2(gs.rect.X + gs.rect.Width / 2 - letterSize.X / 2, gs.rect.Y + gs.rect.Height / 2 - letterSize.Y / 2), Color.White, 0.0f, letterFont.MeasureString(gs.letter.ToLower()) / 2, scaleChange, SpriteEffects.None, 0.0f);
                 }
                        
                 if(gs.hasBomb)
@@ -230,6 +273,7 @@ namespace WordCruncherWP7
 
                 yourParticles.Draw(e.ElapsedTime);
                 enemyParticles.Draw(e.ElapsedTime);
+                bombParticles.Draw(e.ElapsedTime);
             }
 
             spriteBatch.End();
@@ -256,16 +300,24 @@ namespace WordCruncherWP7
                     quad.Indexes, 0, 2);
             }
             spriteBatch.Draw(fadeUp, new Vector2(0, 480), Color.White);
-            float textx1 = 110, textx2 = 320;
-            spriteBatch.DrawString(scoresFont, WordGame.scoreYou.ToString(), new Vector2(textx1, 660), Color.White);
+            float textx1 = 170, textx2 = 315;
+            spriteBatch.DrawString(scoresFont, WordGame.scoreYou.ToString(), new Vector2(textx1 - scoresFont.MeasureString(WordGame.scoreYou.ToString()).X, 660), Color.White);
             spriteBatch.DrawString(scoresFont, WordGame.scoreOpponent.ToString(), new Vector2(textx2, 660), Color.White);
 
-            spriteBatch.DrawString(labelsFont, Globals.YourUsername, new Vector2(textx1, 750), Color.LightGray);
+            Vector2 yourUsernameSize = labelsFont.MeasureString(Globals.YourUsername.Trim());
+            
+            spriteBatch.DrawString(labelsFont, Globals.YourUsername, new Vector2(textx1 - yourUsernameSize.X, 750), Color.LightGray);
             spriteBatch.DrawString(labelsFont, Globals.OpponentUsername, new Vector2(textx2, 750), Color.LightGray);
             spriteBatch.Draw(timerGraphic, new Vector2(45, 670), Color.White);
             
             if(stopwatch.GetElapsedTimeSecs() > 10 || (stopwatch.GetElapsedTimeSecs() <= 10 && stopwatch.GetTimeSpanInterval().Milliseconds % 800 <= 400))
-                spriteBatch.DrawString(timerFont, stopwatch.GetFormattedTimeRemaining(), new Vector2(219, 717), Color.FromNonPremultiplied(7, 197, 236, 255));
+            {
+                string time = stopwatch.GetFormattedTimeRemaining();
+                spriteBatch.DrawString(timerFont, time, new Vector2(243f - timerFont.MeasureString(time).X / 2.0f, 717f), Color.FromNonPremultiplied(7, 197, 236, 255));
+            }
+
+            for (int i = 0; i < bombs.NumBombs(); i++)
+                spriteBatch.Draw(textureBombSmall, new Vector2(0, 760 - i * 30), Color.White);
 
             spriteBatch.End();
 

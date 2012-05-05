@@ -18,3 +18,4 @@ Content\squareValue.xnb
 Content\labelsFont.xnb
 Content\timerFont.xnb
 Content\usernamesFont.xnb
+Content\bomb_small.xnb

@@ -34,7 +34,8 @@ namespace WordCruncherWP7
                         foreach (GameSquare gs in WordGame.selectedSquares)
                             selectedIndexes[index++] = gs.index;
 
-                        CrunchCore.SendMessage(new GuessWordMessage(selectedIndexes));
+                        if(selectedIndexes.Length >= 3)
+                            CrunchCore.SendMessage(new GuessWordMessage(selectedIndexes));
 
                         foreach (GameSquare gs in WordGame.squares)
                             gs.color = Color.Blue;

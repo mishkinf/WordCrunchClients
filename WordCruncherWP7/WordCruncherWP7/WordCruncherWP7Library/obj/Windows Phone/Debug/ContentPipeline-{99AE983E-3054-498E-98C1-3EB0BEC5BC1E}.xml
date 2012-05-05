@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb.xnb</Output>
-      <Time>2012-05-05T13:34:25.6699218-07:00</Time>
+      <Time>2012-05-05T14:17:21.4658203-07:00</Time>
     </Item>
     <Item>
       <Source>CourierNew.spritefont</Source>
@@ -179,7 +179,16 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\usernamesFont.xnb</Output>
-      <Time>2012-05-05T13:19:46.0341796-07:00</Time>
+      <Time>2012-05-05T14:17:12.1064453-07:00</Time>
+    </Item>
+    <Item>
+      <Source>bomb_small.png</Source>
+      <Name>bomb_small</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb_small.xnb</Output>
+      <Time>2012-05-05T14:17:21.4677734-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

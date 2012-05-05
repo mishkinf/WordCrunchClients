@@ -16,6 +16,8 @@ namespace WordCruncherWP7
 {
     public class Bombs
     {
+        const int MAX_BOMBS = 5;
+        int numberDropped = 0;
         int ticks = 0;
         public bool bombing = false;
         static List<int> bombedIndices = new List<int>();
@@ -24,18 +26,20 @@ namespace WordCruncherWP7
         {
         }
 
-        public void DropBomb(int[] indices)
+        public void DropBomb(int[] indices, bool yourGuess)
         {
-            Reset();
-            bombedIndices.AddRange(indices);
+            if (!yourGuess)
+            {
+                Reset();
+                bombedIndices.AddRange(indices);
+            }
+
             ResetBombs();
         }
 
-        public void DropBomb(int index) 
+        public int NumBombs()
         {
-            Reset();
-            bombedIndices.Add(index);
-            ResetBombs();
+            return MAX_BOMBS - numberDropped;
         }
 
         private void Reset()
@@ -71,28 +75,33 @@ namespace WordCruncherWP7
 
         public void AddBomb(Vector2 tap)
         {
-            foreach (GameSquare gs in WordGame.squares)
+            if (numberDropped < MAX_BOMBS)
             {
-                if (gs.collisionRect.Contains((int)tap.X, (int)tap.Y))
+                numberDropped++;
+
+                foreach (GameSquare gs in WordGame.squares)
                 {
-                    gs.hasBomb = true;
-                    CrunchCore.SendMessage(new DropBombMessage(gs.index ));
+                    if (gs.collisionRect.Contains((int)tap.X, (int)tap.Y))
+                    {
+                        gs.hasBomb = true;
+                        CrunchCore.SendMessage(new DropBombMessage(gs.index ));
+                    }
                 }
             }
         }
 
         public void ResetBombs()
         {
-            foreach (int index in bombedIndices)
-            {
+
+            foreach(int index in Bombs.bombedIndices)
                 foreach (GameSquare s in WordGame.squares)
                 {
-                    if (s.index == index)
+                    if(s.index == index)
                         s.hasBomb = false;
                 }
-            }
-
             
+
+            //bombedIndices.Clear();
         }
     }
 

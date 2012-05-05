@@ -20,7 +20,7 @@ namespace WordCruncherWP7.Messages
         public int[] selectionPath;
         public int player_index;
         public ePlayer Player;
-        public bool YourGuess { get { return player_index == Globals.PlayerIndex; } }
+        public bool YourGuess { get { return Player == ePlayer.You; } }
         public Word Word;
 
         public static BombedGuessResponseMessage fromJSON(string message) {
