@@ -1,0 +1,35 @@
+﻿<phone:PhoneApplicationPage 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	x:Class="WordCruncherWP7.LoadingGame"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	Foreground="{StaticResource PhoneForegroundBrush}"
+	Orientation="Portrait"
+	shell:SystemTray.IsVisible="True">
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		
+		<!--TitlePanel contains the name of the application and page title-->
+
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<ProgressBar x:Name="loadingBar" IsIndeterminate="True" Margin="0,78,0,41" RenderTransformOrigin="0.5,0.5">
+				<ProgressBar.RenderTransform>
+					<CompositeTransform/>
+				</ProgressBar.RenderTransform>
+			</ProgressBar>
+			<TextBlock x:Name="textBlock" Margin="12,57,8,200" Grid.Row="1" TextWrapping="Wrap" FontFamily="Segoe WP Semibold" HorizontalAlignment="Center" Width="438" VerticalAlignment="Center" TextAlignment="Center" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="40"><Run Text="Please wait as we "/><LineBreak/><Run Text="find an opponent and"/><LineBreak/><Run Text="connect you..."/><LineBreak/></TextBlock>
+		</Grid>
+	</Grid>
+</phone:PhoneApplicationPage>

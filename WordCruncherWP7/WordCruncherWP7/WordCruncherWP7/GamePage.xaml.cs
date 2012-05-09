@@ -69,6 +69,12 @@ namespace WordCruncherWP7
             quad = new Quad(Vector3.Zero, Vector3.Up, Vector3.Backward, 10, 9);
         }
 
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            (App.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            e.Cancel = true;
+        }
+
         void CrunchCore_OnGoodGuess(object sender, GoodGuessArgs e)
         {
             WordScored(e.Message.Player, e.Message.Word);
@@ -120,6 +126,7 @@ namespace WordCruncherWP7
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            CrunchCore.StopTimer();
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true);
 
             spriteBatch = new SpriteBatch(SharedGraphicsDeviceManager.Current.GraphicsDevice);

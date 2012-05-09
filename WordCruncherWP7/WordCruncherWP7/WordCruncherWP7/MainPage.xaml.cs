@@ -15,23 +15,20 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Phone.Tasks;
 using WordCruncherWP7.CrunchEventArgs;
 using System.IO.IsolatedStorage;
+using Microsoft.Phone.Shell;
 
 namespace WordCruncherWP7
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        //CruncherClient c = new CruncherClient("10.211.55.4", 2222);
         bool inited = false;
 
-        //CruncherClient c = new CruncherClient("ec2-184-73-99-238.compute-1.amazonaws.com", 2222);
-        // Constructor
         public MainPage()
         {
             InitializeComponent();
 
-            connectingGrid.Visibility = Visibility.Collapsed;
             MatchRequestMessage m = new MatchRequestMessage();
-            m.encode();
+
             CrunchCore.OnGameStart += new EventHandler(CrunchCore_OnGameStart);
             CrunchCore.OnGameEnd += new EventHandler(CrunchCore_OnGameEnd);
             CrunchCore.OnError += new EventHandler<ErrorArgs>(CrunchCore_OnError);
@@ -48,6 +45,19 @@ namespace WordCruncherWP7
 
         }
 
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            try
+            {
+                CrunchCore.Disconnect();
+            }
+            catch
+            {
+            }
+
+            base.OnNavigatedTo(e);
+        }
+
         void CrunchCore_OnCreateConnectionCompleted(object sender, ConnectionArgs e)
         {
             CrunchCore.SendMessage(new MatchRequestMessage());
@@ -61,6 +71,7 @@ namespace WordCruncherWP7
                 {
                     MessageBox.Show(e.errorMessage);
                     Globals.ErrorFlagged = true;
+                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
                 }
 
             });
@@ -84,15 +95,17 @@ namespace WordCruncherWP7
 
         private void playGame(object sender, RoutedEventArgs e)
         {
-            connectingGrid.Visibility = Visibility.Visible;
-
             WordGame.ResetGame();
 
             Globals.ErrorFlagged = false;
 
-            //CrunchCore.Setup();
             CrunchCore.inited = false;
             CrunchCore.Connect();
+
+            Dispatcher.BeginInvoke(() =>
+            {
+                NavigationService.Navigate(new Uri("/Pages/LoadingGame.xaml", UriKind.Relative));
+            });
         }
 
         private void feedbackButton_Click(object sender, RoutedEventArgs e)
@@ -103,9 +116,24 @@ namespace WordCruncherWP7
 
         private void thumpJumpLogo_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-        	WebBrowserTask task = new WebBrowserTask();
-			task.URL = "https://www.thumpjump.com/phonelanding";
-			task.Show();
+            ShowWebsite();
+        }
+
+        private void instructionsBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            instructionsPanel.Visibility = Visibility.Visible;
+        }
+
+        private void ShowWebsite()
+        {
+            WebBrowserTask task = new WebBrowserTask();
+            task.URL = "http://www.thumpjump.com/wp7/mobile.html";
+            task.Show();
+        }
+
+        private void instructionsPanel_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            instructionsPanel.Visibility = Visibility.Collapsed;
         }
     }
 }

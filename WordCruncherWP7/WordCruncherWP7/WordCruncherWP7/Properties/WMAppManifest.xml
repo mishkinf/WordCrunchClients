@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{93b990d5-3cdc-46a4-bd54-4f64e0de5963}" Title="Word Crunch" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="WordCruncherWP7 author" Description="Sample description" Publisher="WordCruncherWP7">
+  <App xmlns="" ProductID="{93b990d5-3cdc-46a4-bd54-4f64e0de5963}" Title="Word Crunch" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.games" Author="ThumpJump.com" Description="Word Crunch is a live multiplayer word search battle with a twist!" Publisher="ThumpJump.com">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />

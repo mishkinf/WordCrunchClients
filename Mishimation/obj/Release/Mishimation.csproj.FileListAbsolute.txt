@@ -1,0 +1,5 @@
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\Mishimation\Bin\Release\Mishimation.dll
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\Mishimation\Bin\Release\Mishimation.pdb
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\Mishimation\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\Mishimation\obj\Release\Mishimation.dll
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\Mishimation\obj\Release\Mishimation.pdb

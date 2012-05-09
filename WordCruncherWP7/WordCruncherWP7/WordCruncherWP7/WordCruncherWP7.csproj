@@ -124,6 +124,9 @@
     <Compile Include="Pages\Instructions.xaml.cs">
       <DependentUpon>Instructions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LoadingGame.xaml.cs">
+      <DependentUpon>LoadingGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Particles\ParticleSystems\FireworksParticleSystem.cs" />
     <Compile Include="Particles\Particle.cs" />
     <Compile Include="Particles\ParticleSystem.cs" />
@@ -133,9 +136,6 @@
     <Compile Include="Quad.cs" />
     <Compile Include="SampleData\highScoresData\highScoresData.xaml.cs">
       <DependentUpon>highScoresData.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stopwatch.cs" />
     <Compile Include="Word.cs" />
@@ -170,11 +170,11 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SampleData\highScoresData\highScoresData.xaml">
+    <Page Include="Pages\LoadingGame.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Settings.xaml">
+    <Page Include="SampleData\highScoresData\highScoresData.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -185,18 +185,21 @@
     <DesignTimeOnly Include="SampleData\highScoresData\highScoresData.xsd" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Background.png" />
     <BlendEmbeddedFont Include="Fonts\segoeuil.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
-    <Resource Include="Pages\menu_icon.png" />
-    <Resource Include="Pages\play_again_icon2.png" />
-    <Resource Include="thumpjumplogo.png" />
-    <Resource Include="wcrunchicon.jpg" />
-    <Resource Include="Images\wordcrunchlogo_transparent.png" />
-    <Resource Include="Images\wordcrunch_bannerlogo.png" />
+    <Resource Include="Images\Capture1.jpg" />
+    <Resource Include="Images\Capture2.jpg" />
+    <Resource Include="Images\Capture4.jpg" />
+    <Resource Include="Images\feedback_icon.png" />
+    <Resource Include="Images\main_menu_icon.png" />
+    <Resource Include="Images\wordcrunchheader.png" />
+    <Resource Include="Images\play_icon.png" />
+    <Resource Include="Images\thumpjumplogo.png" />
+    <Resource Include="Images\thumpjumplogogray.png" />
+    <Resource Include="Images\thumpjump_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Mishimation\Mishimation.csproj">
@@ -208,20 +211,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\menu_icon.png" />
-    <Resource Include="Images\play_again_icon.png" />
-    <Resource Include="Images\WCrunch_03.png" />
-    <Resource Include="Images\WCrunch_07.png" />
-    <Resource Include="Images\WCrunch_11.png" />
-    <Resource Include="Images\WCrunch_13.png" />
-    <Resource Include="Images\WCrunch_18.png" />
-    <Resource Include="Images\WCrunch_21.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SplashScreenImage.jpg" />
+    <Resource Include="Background.png" />
     <Resource Include="ApplicationIcon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\instructions_icon.png" />
+    <Content Include="SplashScreenImage.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

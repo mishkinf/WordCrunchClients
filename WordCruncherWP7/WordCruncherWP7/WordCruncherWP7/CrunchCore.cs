@@ -16,6 +16,7 @@ using Microsoft.Phone.Controls;
 using WordCruncherWP7.CrunchEventArgs;
 using Microsoft.Phone.Shell;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace WordCruncherWP7
 {
@@ -33,13 +34,29 @@ namespace WordCruncherWP7
         public static event EventHandler<ConnectionArgs> OnCreateConnectionCompleted;
         public static List<Word> yourWords = new List<Word>();
         public static List<Word> opponentsWords = new List<Word>();
+        static DispatcherTimer timer = new DispatcherTimer();
+        static int time = 0;
 
         private static void Setup()
         {
             c = new CruncherClient(Globals.ServerURL, System.Convert.ToInt32(Globals.ServerPort));
             c.OnCreateConnectionCompleted += c_CreateConnectionCompleted;
             c.OnDataReceivedSuccessfully += c_OnDataReceivedSuccessfully;
+            timer.Tick += (object o, EventArgs sender) =>
+            {
+                if (time++ > 20 && OnError != null)
+                {
+                    OnError("CrunchCore", new ErrorArgs("We're sorry, we seem to be experiencing technical difficulties! Try again later."));
+                    StopTimer();
+                }
+            };
+            timer.Interval = new TimeSpan(0, 0, 0, 1, 0); // 100 Milliseconds 
+        }
 
+        public static void StopTimer()
+        {
+            timer.Stop();
+            time = 0;
         }
 
         public static void Disconnect()
@@ -51,6 +68,8 @@ namespace WordCruncherWP7
         {
             Setup();
             c.Connect();
+
+            timer.Start();
         }
 
         public static void SendMessage(iEncodableMessage message)
@@ -143,7 +162,12 @@ namespace WordCruncherWP7
                             OnHighScoresReturned("CrunchCore", new HighScoresArgs());
                         break;
                     case "wc_goodbye":
+                        
                         c.Disconnect();
+
+                        if (OnError != null)
+                            OnError("CrunchCore", new ErrorArgs((string)msg["reason"]));
+
                         break;
                 }
             }

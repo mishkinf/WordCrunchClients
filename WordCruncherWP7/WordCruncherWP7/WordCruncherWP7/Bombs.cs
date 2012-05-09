@@ -16,7 +16,7 @@ namespace WordCruncherWP7
 {
     public class Bombs
     {
-        const int MAX_BOMBS = 5;
+        const int MAX_BOMBS = 4;
         int numberDropped = 0;
         int ticks = 0;
         public bool bombing = false;

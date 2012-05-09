@@ -198,11 +198,6 @@ namespace WordCruncherWP7
             }
 
             this.SetupReceive();
-            /*
-            if (OnCreateConnectionCompleted != null)
-            {
-                OnCreateConnectionCompleted(this, new ConnectionArgs(true));
-            }*/
         }
 
         private void CleanUp(Socket socket)
@@ -217,7 +212,7 @@ namespace WordCruncherWP7
             catch(Exception ex)
             {
             }
-            //}
+
         }
     }
 
