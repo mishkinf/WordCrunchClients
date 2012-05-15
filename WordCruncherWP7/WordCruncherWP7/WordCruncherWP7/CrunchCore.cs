@@ -40,6 +40,8 @@ namespace WordCruncherWP7
         private static void Setup()
         {
             c = new CruncherClient(Globals.ServerURL, System.Convert.ToInt32(Globals.ServerPort));
+
+
             c.OnCreateConnectionCompleted += c_CreateConnectionCompleted;
             c.OnDataReceivedSuccessfully += c_OnDataReceivedSuccessfully;
             timer.Tick += (object o, EventArgs sender) =>
@@ -66,9 +68,15 @@ namespace WordCruncherWP7
 
         public static void Connect()
         {
+            if (c != null)
+            {
+                c.OnCreateConnectionCompleted -= c_CreateConnectionCompleted;
+                c.OnDataReceivedSuccessfully -= c_OnDataReceivedSuccessfully;
+            }
+
             Setup();
             c.Connect();
-
+            time = 0;
             timer.Start();
         }
 
@@ -175,7 +183,7 @@ namespace WordCruncherWP7
             {
                 c.Disconnect();
                 if (OnError != null)
-                    OnError("CrunchCore", new ErrorArgs(ex.Message));
+                    OnError("CrunchCore", new ErrorArgs(e.Message));
             }
         }
 

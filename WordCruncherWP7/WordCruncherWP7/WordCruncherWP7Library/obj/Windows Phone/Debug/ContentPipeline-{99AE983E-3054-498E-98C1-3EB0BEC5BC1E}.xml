@@ -74,12 +74,12 @@
       <Time>2012-02-11T15:20:38.071289-08:00</Time>
     </Item>
     <Item>
-      <Source>spark_enemy.png</Source>
-      <Name>spark_enemy</Name>
+      <Source>spark_red.png</Source>
+      <Name>spark_red</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_enemy.xnb</Output>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_red.xnb</Output>
       <Time>2012-02-11T22:58:17-08:00</Time>
     </Item>
     <Item>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\timergraphic.xnb</Output>
-      <Time>2012-02-18T14:14:46-08:00</Time>
+      <Time>2012-05-15T00:16:19.7646484-07:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>
@@ -135,6 +135,51 @@
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb.xnb</Output>
       <Time>2012-05-05T15:22:37.2539062-07:00</Time>
+    </Item>
+    <Item>
+      <Source>bomb_small.png</Source>
+      <Name>bomb_small</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb_small.xnb</Output>
+      <Time>2012-05-05T15:22:37.2568359-07:00</Time>
+    </Item>
+    <Item>
+      <Source>spark_blue.png</Source>
+      <Name>spark_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_blue.xnb</Output>
+      <Time>2012-05-14T23:19:40.6357422-07:00</Time>
+    </Item>
+    <Item>
+      <Source>spark_square_blue.png</Source>
+      <Name>spark_square_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_square_blue.xnb</Output>
+      <Time>2012-05-15T00:16:40.7988281-07:00</Time>
+    </Item>
+    <Item>
+      <Source>spark_square_red.png</Source>
+      <Name>spark_square_red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\spark_square_red.xnb</Output>
+      <Time>2012-05-15T00:16:31.734375-07:00</Time>
+    </Item>
+    <Item>
+      <Source>square_dark_gray.png</Source>
+      <Name>square_dark_gray</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\square_dark_gray.xnb</Output>
+      <Time>2012-05-14T23:58:15.6308594-07:00</Time>
     </Item>
     <Item>
       <Source>CourierNew.spritefont</Source>
@@ -180,15 +225,6 @@
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\usernamesFont.xnb</Output>
       <Time>2012-05-05T14:17:12.1064453-07:00</Time>
-    </Item>
-    <Item>
-      <Source>bomb_small.png</Source>
-      <Name>bomb_small</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Debug\Content\bomb_small.xnb</Output>
-      <Time>2012-05-05T15:22:37.2568359-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

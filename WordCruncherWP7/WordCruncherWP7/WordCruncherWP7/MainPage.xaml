@@ -3,7 +3,7 @@
     d:DesignWidth="480" d:DesignHeight="768"
     mc:Ignorable="d"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"  Loaded="PhoneApplicationPage_Loaded">
 	<phone:PhoneApplicationPage.Resources>
 		<Style x:Key="CrunchBtnStyle" TargetType="Button">
 			<Setter Property="Background" Value="Transparent"/>
@@ -518,7 +518,7 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Grid x:Name="instructionsPanel" Margin="0,-121,0,0" Grid.RowSpan="2" Background="#B2000000" Visibility="Collapsed" Tap="instructionsPanel_Tap">
+            <Grid x:Name="instructionsPanel" Margin="0,-121,0,0" Grid.RowSpan="2" Background="#F7000000" Tap="instructionsPanel_Tap" Visibility="Collapsed">
             	<TextBlock x:Name="PageTitle" Text="Instructions" Margin="18,0,-21,0" Style="{StaticResource PhoneTextTitle1Style}" Height="98" VerticalAlignment="Top"/>
             	<Image HorizontalAlignment="Left" Margin="32,123,0,0" Source="Images/Capture1.jpg" Width="120" Height="200" VerticalAlignment="Top" d:LayoutOverrides="GridBox"/>
             	<Image Margin="267,231,29,216" Source="Images/Capture2.jpg"/>

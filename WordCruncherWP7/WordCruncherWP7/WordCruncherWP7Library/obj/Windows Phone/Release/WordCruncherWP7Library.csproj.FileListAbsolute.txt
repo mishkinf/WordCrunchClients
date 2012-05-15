@@ -6,7 +6,6 @@ C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCru
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\fadeup2.xnb
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\fadeup3.xnb
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark.xnb
-C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark_enemy.xnb
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark2.xnb
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\square_gray.xnb
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\square_blue2.xnb
@@ -25,3 +24,5 @@ C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCru
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\obj\Windows Phone\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\obj\Windows Phone\Release\WordCruncherWP7LibraryTest.dll
 C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\obj\Windows Phone\Release\WordCruncherWP7LibraryTest.pdb
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark_red.xnb
+C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark_blue.xnb

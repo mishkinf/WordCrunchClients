@@ -74,15 +74,6 @@
       <Time>2012-02-11T15:20:38.071289-08:00</Time>
     </Item>
     <Item>
-      <Source>spark_enemy.png</Source>
-      <Name>spark_enemy</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark_enemy.xnb</Output>
-      <Time>2012-02-11T22:58:17-08:00</Time>
-    </Item>
-    <Item>
       <Source>spark2.png</Source>
       <Name>spark2</Name>
       <Importer>TextureImporter</Importer>
@@ -125,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\timergraphic.xnb</Output>
-      <Time>2012-02-18T14:14:46-08:00</Time>
+      <Time>2012-05-14T23:11:56-07:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>
@@ -189,6 +180,24 @@
       <Options>None</Options>
       <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\usernamesFont.xnb</Output>
       <Time>2012-05-05T14:17:12.1064453-07:00</Time>
+    </Item>
+    <Item>
+      <Source>spark_red.png</Source>
+      <Name>spark_red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark_red.xnb</Output>
+      <Time>2012-02-11T22:58:17-08:00</Time>
+    </Item>
+    <Item>
+      <Source>spark_blue.png</Source>
+      <Name>spark_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mishkin\Documents\Visual Studio 2010\Projects\WordCrunchClients\WordCruncherWP7\WordCruncherWP7\WordCruncherWP7Library\bin\Windows Phone\Release\Content\spark_blue.xnb</Output>
+      <Time>2012-05-14T23:19:40.6357422-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

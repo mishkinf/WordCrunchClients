@@ -22,17 +22,29 @@ namespace WordCruncherWP7
     public partial class MainPage : PhoneApplicationPage
     {
         bool inited = false;
+        EventHandler gameStartedEvent;
+        EventHandler gameEndedEvent;
+        EventHandler<ErrorArgs> gameErrorEvent;
+        EventHandler<ConnectionArgs> connectedCreatedEvent;
+        static bool eventsSubscribed = false;
 
         public MainPage()
         {
             InitializeComponent();
 
-            MatchRequestMessage m = new MatchRequestMessage();
+            GamePage.Initialized = false;
 
-            CrunchCore.OnGameStart += new EventHandler(CrunchCore_OnGameStart);
-            CrunchCore.OnGameEnd += new EventHandler(CrunchCore_OnGameEnd);
-            CrunchCore.OnError += new EventHandler<ErrorArgs>(CrunchCore_OnError);
-            CrunchCore.OnCreateConnectionCompleted += new EventHandler<ConnectionArgs>(CrunchCore_OnCreateConnectionCompleted);
+            if(gameStartedEvent == null)
+                gameStartedEvent = new EventHandler(CrunchCore_OnGameStart);
+
+            if(gameEndedEvent == null)
+                gameEndedEvent = new EventHandler(CrunchCore_OnGameEnd);
+
+            if(gameErrorEvent == null)
+                gameErrorEvent = new EventHandler<ErrorArgs>(CrunchCore_OnError);
+
+            if(connectedCreatedEvent == null)
+                connectedCreatedEvent = new EventHandler<ConnectionArgs>(CrunchCore_OnCreateConnectionCompleted);
 
             if (Globals.AppSettings.FirstRun || Globals.AppSettings.Username == null)
                 Dispatcher.BeginInvoke(() =>
@@ -50,12 +62,39 @@ namespace WordCruncherWP7
             try
             {
                 CrunchCore.Disconnect();
+
+                CrunchCore.OnGameStart -= gameStartedEvent;
+                CrunchCore.OnGameEnd -= gameEndedEvent;
+                CrunchCore.OnError -= gameErrorEvent;
+                CrunchCore.OnCreateConnectionCompleted -= connectedCreatedEvent;
             }
             catch
             {
             }
 
             base.OnNavigatedTo(e);
+        }
+
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!eventsSubscribed)
+            {
+                CrunchCore.OnGameStart += gameStartedEvent;
+                CrunchCore.OnGameEnd += gameEndedEvent;
+                CrunchCore.OnError += gameErrorEvent;
+                CrunchCore.OnCreateConnectionCompleted += connectedCreatedEvent;
+                eventsSubscribed = true;
+            }
+        }
+
+        private void gamePage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            CrunchCore.OnGameStart -= gameStartedEvent;
+            CrunchCore.OnGameEnd -= gameEndedEvent;
+            CrunchCore.OnError -= gameErrorEvent;
+            CrunchCore.OnCreateConnectionCompleted -= connectedCreatedEvent;
+            eventsSubscribed = false;
         }
 
         void CrunchCore_OnCreateConnectionCompleted(object sender, ConnectionArgs e)
@@ -104,6 +143,7 @@ namespace WordCruncherWP7
 
             Dispatcher.BeginInvoke(() =>
             {
+                CrunchCore.StopTimer();
                 NavigationService.Navigate(new Uri("/Pages/LoadingGame.xaml", UriKind.Relative));
             });
         }
@@ -135,5 +175,6 @@ namespace WordCruncherWP7
         {
             instructionsPanel.Visibility = Visibility.Collapsed;
         }
+
     }
 }

@@ -30,7 +30,7 @@
 			<StackPanel>
 				<TextBlock TextWrapping="Wrap" Text="Setup" Margin="12,-16,0,3" FontSize="73.333" FontFamily="/WordCruncherWP7;component/Fonts/Fonts.zip#Segoe UI Light" Foreground="{StaticResource PhoneDisabledBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Choose a username" Margin="12,0,0,-10" FontSize="29.333" FontFamily="/WordCruncherWP7;component/Fonts/Fonts.zip#Segoe UI Light" Foreground="{StaticResource PhoneForegroundBrush}"/>
-				<TextBox x:Name="usernameBox" TextWrapping="Wrap" BorderThickness="3" VerticalAlignment="Center" BorderBrush="#BF001BFF" FontFamily="Segoe WP Semibold" TextOptions.TextHintingMode="Animated" MaxLength="12" Foreground="Black" InputScope="LogOnName">
+				<TextBox x:Name="usernameBox" TextWrapping="Wrap" BorderThickness="3" VerticalAlignment="Center" BorderBrush="#BF001BFF" FontFamily="Segoe WP Semibold" TextOptions.TextHintingMode="Animated" MaxLength="11" Foreground="Black" InputScope="LogOnName">
 					<TextBox.SelectionForeground>
 						<SolidColorBrush Color="Black"/>
 					</TextBox.SelectionForeground>

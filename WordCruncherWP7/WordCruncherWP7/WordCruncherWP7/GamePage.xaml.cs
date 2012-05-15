@@ -43,7 +43,11 @@ namespace WordCruncherWP7
         SparksParticleSystem yourParticles;
         SparksParticleSystem enemyParticles;
         FireworksParticleSystem bombParticles;
-        StopWatch stopwatch;
+        static StopWatch stopwatch;
+
+         EventHandler<BombedArgs> bombedEvent;
+         EventHandler<GoodGuessArgs> goodGuessEvent;
+        public static bool Initialized = false;
 
         public GamePage()
         {
@@ -58,20 +62,46 @@ namespace WordCruncherWP7
             timer.UpdateInterval = TimeSpan.FromTicks(333333);
             timer.Update += OnUpdate;
             timer.Draw += OnDraw;
-
-            bombs = new Bombs();
-            CrunchCore.OnBombed += new EventHandler<BombedArgs>(CrunchCore_OnBombed);
-            CrunchCore.OnGoodGuess += new EventHandler<GoodGuessArgs>(CrunchCore_OnGoodGuess);
             TouchPanel.EnabledGestures = GestureType.DoubleTap | GestureType.Hold | GestureType.Tap;
+            bombs = new Bombs();
 
-            stopwatch = new StopWatch();
-            stopwatch.Start();
+            CrunchCore.yourWords.Clear();
+            CrunchCore.opponentsWords.Clear();
+
+            if(stopwatch == null)
+                stopwatch = new StopWatch();
+
+            if (!Initialized)
+            {
+                stopwatch.Start();
+                WordGame.scoreOpponent = 0;
+                WordGame.scoreYou = 0;
+            }
+
             quad = new Quad(Vector3.Zero, Vector3.Up, Vector3.Backward, 10, 9);
+
+            if (bombedEvent == null)
+                bombedEvent = new EventHandler<BombedArgs>(CrunchCore_OnBombed);
+
+            if (goodGuessEvent == null)
+                goodGuessEvent = new EventHandler<GoodGuessArgs>(CrunchCore_OnGoodGuess);
+        }
+
+        private void gamePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            //if (!initialized)
+            //{
+
+            CrunchCore.OnBombed += bombedEvent;
+            CrunchCore.OnGoodGuess += goodGuessEvent;
+            //}
+
+            Initialized = true;
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-            (App.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            (App.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/Pages/PausedGame.xaml", UriKind.Relative));
             e.Cancel = true;
         }
 
@@ -130,8 +160,8 @@ namespace WordCruncherWP7
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true);
 
             spriteBatch = new SpriteBatch(SharedGraphicsDeviceManager.Current.GraphicsDevice);
-            yourParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark");
-            enemyParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark_black");
+            yourParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark_square_blue");
+            enemyParticles = new SparksParticleSystem(content, spriteBatch, 30, "spark_square_red");
             bombParticles = new FireworksParticleSystem(content, spriteBatch, 30, "spark_enemy");
 
             yourParticles.LoadContent();
@@ -308,27 +338,34 @@ namespace WordCruncherWP7
             }
             spriteBatch.Draw(fadeUp, new Vector2(0, 480), Color.White);
             float textx1 = 170, textx2 = 315;
-            spriteBatch.DrawString(scoresFont, WordGame.scoreYou.ToString(), new Vector2(textx1 - scoresFont.MeasureString(WordGame.scoreYou.ToString()).X, 660), Color.White);
-            spriteBatch.DrawString(scoresFont, WordGame.scoreOpponent.ToString(), new Vector2(textx2, 660), Color.White);
+            spriteBatch.DrawString(scoresFont, WordGame.scoreYou.ToString(), new Vector2(textx1 - scoresFont.MeasureString(WordGame.scoreYou.ToString()).X, 610), Color.White);
+            spriteBatch.DrawString(scoresFont, WordGame.scoreOpponent.ToString(), new Vector2(textx2, 610), Color.White);
 
             Vector2 yourUsernameSize = labelsFont.MeasureString(Globals.YourUsername.Trim());
             
-            spriteBatch.DrawString(labelsFont, Globals.YourUsername, new Vector2(textx1 - yourUsernameSize.X, 750), Color.LightGray);
-            spriteBatch.DrawString(labelsFont, Globals.OpponentUsername, new Vector2(textx2, 750), Color.LightGray);
-            spriteBatch.Draw(timerGraphic, new Vector2(45, 670), Color.White);
+            spriteBatch.DrawString(labelsFont, Globals.YourUsername, new Vector2(textx1 - yourUsernameSize.X, 700), Color.LightGray);
+            spriteBatch.DrawString(labelsFont, Globals.OpponentUsername, new Vector2(textx2, 700), Color.LightGray);
+            spriteBatch.Draw(timerGraphic, new Vector2(45, 620), Color.White);
             
             if(stopwatch.GetElapsedTimeSecs() > 10 || (stopwatch.GetElapsedTimeSecs() <= 10 && stopwatch.GetTimeSpanInterval().Milliseconds % 800 <= 400))
             {
                 string time = stopwatch.GetFormattedTimeRemaining();
-                spriteBatch.DrawString(timerFont, time, new Vector2(243f - timerFont.MeasureString(time).X / 2.0f, 717f), Color.FromNonPremultiplied(7, 197, 236, 255));
+                spriteBatch.DrawString(timerFont, time, new Vector2(243f - timerFont.MeasureString(time).X / 2.0f, 667f), Color.FromNonPremultiplied(7, 197, 236, 255));
             }
 
             for (int i = 0; i < bombs.NumBombs(); i++)
-                spriteBatch.Draw(textureBombSmall, new Vector2(0, 760 - i * 30), Color.White);
+                spriteBatch.Draw(textureBombSmall, new Vector2(180+30*i, 760 ), Color.White);
 
             spriteBatch.End();
 
         }
+
+        private void gamePage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            CrunchCore.OnBombed -= bombedEvent;
+            CrunchCore.OnGoodGuess -= goodGuessEvent;
+        }
+
     }
 
 

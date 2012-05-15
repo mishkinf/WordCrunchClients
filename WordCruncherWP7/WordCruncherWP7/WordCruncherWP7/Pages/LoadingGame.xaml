@@ -24,12 +24,17 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<ProgressBar x:Name="loadingBar" IsIndeterminate="True" Margin="0,78,0,41" RenderTransformOrigin="0.5,0.5">
+			<Grid.Background>
+				<SolidColorBrush Color="Black"/>
+			</Grid.Background>
+			<ProgressBar x:Name="loadingBar" IsIndeterminate="True" Margin="0,-11,0,130" RenderTransformOrigin="0.5,0.5">
 				<ProgressBar.RenderTransform>
 					<CompositeTransform/>
 				</ProgressBar.RenderTransform>
 			</ProgressBar>
-			<TextBlock x:Name="textBlock" Margin="12,57,8,200" Grid.Row="1" TextWrapping="Wrap" FontFamily="Segoe WP Semibold" HorizontalAlignment="Center" Width="438" VerticalAlignment="Center" TextAlignment="Center" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="40"><Run Text="Please wait as we "/><LineBreak/><Run Text="find an opponent and"/><LineBreak/><Run Text="connect you..."/><LineBreak/></TextBlock>
+			<TextBlock x:Name="textBlock" Margin="12,326,8,229" TextWrapping="Wrap" FontFamily="Segoe WP Semibold" HorizontalAlignment="Center" Width="438" TextAlignment="Center" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="40" d:LayoutOverrides="Height, GridBox"><Run Text="Please wait as we "/><LineBreak/><Run Text="find an opponent and"/><LineBreak/><Run Text="connect you..."/><LineBreak/></TextBlock>
+			<Image Height="149" Margin="147,162,161,0" Source="/WordCruncherWP7;component/Images/thumpjump_icon.png" Stretch="Fill" VerticalAlignment="Top"/>
+			<Image Height="42" Margin="120,0,120,21" Source="/WordCruncherWP7;component/Images/wordcrunchheader.png" Stretch="Fill" VerticalAlignment="Bottom"/>
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

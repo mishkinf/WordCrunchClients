@@ -6,7 +6,6 @@ Content\fadeup.xnb
 Content\fadeup2.xnb
 Content\fadeup3.xnb
 Content\spark.xnb
-Content\spark_enemy.xnb
 Content\spark2.xnb
 Content\square_gray.xnb
 Content\square_blue2.xnb
@@ -19,3 +18,5 @@ Content\squareValue.xnb
 Content\labelsFont.xnb
 Content\timerFont.xnb
 Content\usernamesFont.xnb
+Content\spark_red.xnb
+Content\spark_blue.xnb

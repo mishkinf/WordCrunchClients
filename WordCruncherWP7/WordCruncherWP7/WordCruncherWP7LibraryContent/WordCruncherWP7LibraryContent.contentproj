@@ -112,8 +112,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="spark_enemy.png">
-      <Name>spark_enemy</Name>
+    <Compile Include="spark_red.png">
+      <Name>spark_red</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -179,6 +179,32 @@
   <ItemGroup>
     <Compile Include="bomb_small.png">
       <Name>bomb_small</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="spark_blue.png">
+      <Name>spark_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="spark_square_blue.png">
+      <Name>spark_square_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="spark_square_red.png">
+      <Name>spark_square_red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="square_dark_gray.png">
+      <Name>square_dark_gray</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

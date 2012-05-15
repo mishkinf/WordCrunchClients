@@ -127,6 +127,9 @@
     <Compile Include="Pages\LoadingGame.xaml.cs">
       <DependentUpon>LoadingGame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PausedGame.xaml.cs">
+      <DependentUpon>PausedGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Particles\ParticleSystems\FireworksParticleSystem.cs" />
     <Compile Include="Particles\Particle.cs" />
     <Compile Include="Particles\ParticleSystem.cs" />
@@ -174,6 +177,10 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\PausedGame.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="SampleData\highScoresData\highScoresData.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
@@ -216,7 +223,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\instructions_icon.png" />
-    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
